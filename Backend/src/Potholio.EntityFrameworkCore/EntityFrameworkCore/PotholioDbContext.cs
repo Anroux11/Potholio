@@ -3,6 +3,9 @@ using Abp.Zero.EntityFrameworkCore;
 using Potholio.Authorization.Roles;
 using Potholio.Authorization.Users;
 using Potholio.MultiTenancy;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Linq;
+using System;
 
 namespace Potholio.EntityFrameworkCore
 {
@@ -13,6 +16,27 @@ namespace Potholio.EntityFrameworkCore
         public PotholioDbContext(DbContextOptions<PotholioDbContext> options)
             : base(options)
         {
+        }
+        //Converts datetime
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            var dateTimeConverter = new ValueConverter<DateTime, DateTime>(
+                v => v.ToUniversalTime(),           // Convert to UTC when saving
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc)); // Specify UTC kind when reading
+
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                var properties = entityType.ClrType.GetProperties()
+                    .Where(p => p.PropertyType == typeof(DateTime));
+
+                foreach (var property in properties)
+                {
+                    modelBuilder.Entity(entityType.Name).Property(property.Name)
+                        .HasConversion(dateTimeConverter);
+                }
+            }
         }
     }
 }
