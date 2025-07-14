@@ -34,6 +34,11 @@ export const useStyles = createStyles({
       url("/Landingpage.jpg");
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   `,
   splitRight: css`
     height: 100%;
@@ -45,6 +50,12 @@ export const useStyles = createStyles({
     padding-top: 20px;
     right: 0;
     background-color: #0b192c;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      right: 0;
+      left: 0;
+    }
   `,
   centered: css`
     position: absolute;
@@ -77,6 +88,14 @@ export const useStyles = createStyles({
     font-size: 30px;
     padding: 1rem;
     color: white;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+    }
   `,
   input: css`
     width: 300px;
@@ -86,34 +105,54 @@ export const useStyles = createStyles({
       border-color: #ff6500;
       background-color: #0b192c !important;
     }
+
+    @media (max-width: 480px) {
+      width: 300px;
+    }
+
+    @media (max-width: 360px) {
+      width: 200px;
+    }
   `,
   flex: css`
     justify: space-between;
     align: center;
   `,
-  //   heading: css`
-  //     justify-content: center;
-  //     align-items: center;
-  //     font-size: 35px;
-  //     padding: 1rem;
-  //     color: white;
-  //   `,
-  //   input: css`
-  //     width: 300px;
-  //     background: lightgrey;
-  //     &:hover: {
-  //       background-color: lightgrey;
-  //     }
-  //   `,
-  //   checkbox: css`
-  //     color: white;
-  //     text-align: -webkit-center;
-  //   `,
-  //   link: css`
-  //     color: lightgreen;
-  //   `,
-  //   flex: css`
-  //     justify: space-between;
-  //     align: center;
-  //   `,
+  link: css`
+    color: #ff6500;
+  `,
+  mobileLogo: css`
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #0b192c;
+
+    @media (max-width: 768px) {
+      display: block;
+      margin-bottom: 20px;
+    }
+  `,
+  logoImage: css`
+    max-height: 170px;
+    width: auto;
+
+    @media (max-width: 480px) {
+      max-height: 120px;
+    }
+
+    @media (max-width: 360px) {
+      max-height: 100px;
+    }
+  `,
+
+  logoText: css`
+    color: #ff6500;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+    }
+  `,
 });
