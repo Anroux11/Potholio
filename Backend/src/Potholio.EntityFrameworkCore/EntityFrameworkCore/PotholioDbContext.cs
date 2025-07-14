@@ -12,6 +12,7 @@ namespace Potholio.EntityFrameworkCore
     public class PotholioDbContext : AbpZeroDbContext<Tenant, Role, User, PotholioDbContext>
     {
         /* Define a DbSet for each entity of the application */
+
         
         public PotholioDbContext(DbContextOptions<PotholioDbContext> options)
             : base(options)
