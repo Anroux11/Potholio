@@ -1,19 +1,29 @@
-name: Build and Test .NET Project
+name: Backend CI
 
 on:
   push:
+    paths:
+      - 'Backend/**'
     branches:
       - main
+  pull_request:
+    paths:
+      - 'Backend/**'
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
+    defaults:
+      run:
+        working-directory: Backend
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
@@ -23,5 +33,5 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --configuration Release
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal --logger:"console;verbosity=detailed"
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal
