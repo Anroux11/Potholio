@@ -78,7 +78,6 @@ const Login = () => {
               <Spin size="large" />
             </Flex>
           </div> */}
-        (
         <div className={styles.page}>
           <div className={styles.mobileLogo}>
             <Image
@@ -166,7 +165,6 @@ const Login = () => {
             </Form>
           </div>
         </div>
-        )
       </div>
     </>
   );
