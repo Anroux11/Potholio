@@ -21,7 +21,7 @@ import {
 import { useUserLoginActions } from "@/providers/auth-provider";
 
 type FieldType = {
-  userNameOrEmailAddress?: string;
+  email?: string;
   password?: string;
 };
 
@@ -36,7 +36,7 @@ const Login = () => {
     setLoading(true);
     try {
       const payload = {
-        userNameOrEmailAddress: values.userNameOrEmailAddress || "",
+        userNameOrEmailAddress: values.email || "",
         password: values.password || "",
         rememberClient: true,
       };
