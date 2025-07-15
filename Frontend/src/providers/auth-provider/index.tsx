@@ -165,7 +165,7 @@ export const UserLoginProvider = ({
 
   const userLogin = async (payload: IUserLogin) => {
     dispatch(getUserLoginPending());
-    const endpoint = `users/login`;
+    const endpoint = `https://potholio.onrender.com/api/TokenAuth/Authenticate`;
     await instance
       .post(endpoint, payload)
       .then((response) => {

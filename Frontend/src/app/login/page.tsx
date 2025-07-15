@@ -1,14 +1,15 @@
 "use client";
 
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import "@ant-design/v5-patch-for-react-19";
 // import Image from "next/image";
 import { useStyles } from "./style/styles";
 import Typography from "antd/es/typography";
-import { Button, Divider, Form, FormProps, Input } from "antd/es";
+import { useRouter } from "next/navigation";
+import { Button, Divider, Flex, Form, FormProps, Input, Spin } from "antd/es";
 // import Link from "next/link";
 // import Flex from "antd/es/flex";
-// import message from "antd/es/message";
+import message from "antd/es/message";
 import Image from "next/image";
 import {
   EyeInvisibleOutlined,
@@ -17,6 +18,7 @@ import {
   LockOutlined,
   MailOutlined,
 } from "@ant-design/icons";
+import { useUserLoginActions } from "@/providers/auth-provider";
 
 type FieldType = {
   email?: string;
@@ -26,34 +28,48 @@ type FieldType = {
 const Login = () => {
   const { styles } = useStyles();
   const { Title } = Typography;
-  //   const { userLogin } = useUserLoginActions();
-  //   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+    const { userLogin } = useUserLoginActions();
+    const [loading, setLoading] = useState(false);
 
-  const onFinish: FormProps<FieldType>["onFinish"] = async () => {
-    // setLoading(true);
-    // try {
-    //   const payload = {
-    //     email: values.email || "",
-    //     password: values.password || "",
-    //   };
-    //   await userLogin(payload);
-    //   setLoading(false);
-    //   const user = sessionStorage.getItem("role") || "";
-    //   const _user = JSON.parse(user);
-    //   if (_user.role === "trainer" || _user.role === "admin") {
-    //     router.push("/trainer");
-    //   } else {
-    //     router.push("/client");
-    //   }
-    // } catch (error) {
-    //   setLoading(false);
-    //   console.log("Error logging in:: ", error);
-    //   message.error("Login failed. Please check your credentials.");
-    // }
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+    setLoading(true);
+    try {
+      const payload = {
+        email: values.email || "",
+        password: values.password || "",
+        rememberClient: true,
+      };
+      await userLogin(payload);
+      setLoading(false);
+      const user = sessionStorage.getItem("role") || "";
+      const _user = JSON.parse(user);
+      if (_user.role === "municipality" || _user.role === "admin") {
+        router.push("/municipality");
+      } else {
+        router.push("/citizen");
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log("Error logging in:: ", error);
+      message.error("Login failed. Please check your credentials.");
+    }
   };
   return (
     <>
-      <div className={styles.splitLeft}>
+    {loading ? (
+      <div>
+        <Flex
+          justify="center"
+          align="center"
+          style={{ marginBottom: 20, width: "100%", height: "100vh" }}
+          >
+            <Spin size="large" />
+          </Flex>
+        </div>
+    ) : (
+      <>
+        <div className={styles.splitLeft}>
         <div className={styles.centered}>
           <Image
             src="/AppLogo-TransparentWhite.png"
@@ -67,17 +83,8 @@ const Login = () => {
           </h2>
         </div>
       </div>
-
       <div className={styles.splitRight}>
-        {/* <div>
-            <Flex
-              justify="center"
-              align="center"
-              style={{ marginBottom: 20, width: "100%", height: "100vh" }}
-            >
-              <Spin size="large" />
-            </Flex>
-          </div> */}
+
         <div className={styles.page}>
           <div className={styles.mobileLogo}>
             <Image
@@ -150,6 +157,7 @@ const Login = () => {
               <Form.Item>
                 <Button
                   block
+                  htmlType="submit"
                   type="primary"
                   style={{
                     width: "300px",
@@ -166,6 +174,8 @@ const Login = () => {
           </div>
         </div>
       </div>
+      </>
+    )}
     </>
   );
 };
