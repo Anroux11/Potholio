@@ -63,7 +63,7 @@ export const CitizenRegisterActionContext = createContext<
 >(undefined);
 
 export interface IUserLogin {
-  email: string;
+  userNameOrEmailAddress: string;
   password: string;
 }
 export interface IUserLoginStateContext {
