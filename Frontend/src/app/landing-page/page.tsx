@@ -1,47 +1,46 @@
-"use client";
+'use client';
 
 import "@ant-design/v5-patch-for-react-19";
 import Button from "antd/es/button";
-// import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useStyles } from "./style/styles";
 
-export default function Home() {
+const Home: React.FC = () => {
   const router = useRouter();
-  // const { styles } = useStyles();
-
-  const handleRegister = () => {
-    router.push("/register");
-  };
-
-  const handleLogin = () => {
-    router.push("/login");
-  };
+  const { styles } = useStyles();
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      Welcome to the Landing Page of Potholio
-      <Button
-        type="primary"
-        block
-        htmlType="button"
-        style={{ width: "145px", fontWeight: "bold" }}
-        size="large"
-        onClick={handleRegister}
-      >
-        Register
-      </Button>
-      <Button
-        type="primary"
-        block
-        htmlType="button"
-        style={{ width: "145px", fontWeight: "bold" }}
-        size="large"
-        onClick={handleLogin}
-      >
-        Login
-      </Button>
-      {/* add button to login */}
-      {/* add button to register */}
-    </div>
-  );
+    <>
+      <div className={styles.page}>
+        <div className={styles.logo}>
+          <Image src="/AppLogo-Small.png" alt="Potholio Logo" width={150} height={150} />
+          <div className={styles.sinceText}>Since 2025</div>
+        </div>
+        <h1 className={styles.heading}>Welcome to Potholio</h1>
+        <p className={styles.subHeading}>
+          A simple platform to report potholes wherever you are...
+        </p>
+        <Button
+          type="primary"
+          className={styles.orangeButton}
+          size="large"
+          onClick={() => router.push("/register")}
+        >
+          Get Started →
+        </Button>
+        <div className={styles.smallText}>Already a Member?</div>
+        <Button
+          type="primary"
+          className={styles.button}
+          size="large"
+          onClick={() => router.push("/login")}
+        >
+          Login →
+        </Button>
+      </div>
+    </>
+  )
 }
+
+export default Home;
