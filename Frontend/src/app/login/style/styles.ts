@@ -102,8 +102,13 @@ export const useStyles = createStyles({
     border-color: grey;
     background: #0b192c;
     &:hover {
-      border-color: #ff6500;
-      background-color: #0b192c !important;
+      background-color: #0B192C !important;
+    }
+      &:active {
+      background-color: #0B192C !important;
+    }
+      &:focus {
+      background-color: #0B192C !important;
     }
 
     @media (max-width: 480px) {
