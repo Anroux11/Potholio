@@ -31,7 +31,7 @@ export default function RootLayout({
         }}
       >
         <body
-          style={{ display: "inline-flex", width: "100vw", height: "100vh" }}
+          // style={{ display: "inline-flex", width: "100vw", height: "100vh" }}
         >
           <AntdApp>{children}</AntdApp>
         </body>
