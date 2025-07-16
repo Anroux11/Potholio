@@ -6,6 +6,7 @@ import { theme } from "antd/es";
 import ConfigProvider from "antd/es/config-provider";
 import { CitizenRegisterProvider, UserLoginProvider } from "@/providers/auth-provider";
 import { MunicipalityRegisterProvider} from "@/providers/auth-provider"
+import { ServiceProviderProvider } from "@/providers/serviceProvider-provider";
 
 export default function RootLayout({
   children,
@@ -35,7 +36,8 @@ export default function RootLayout({
         <body
           // style={{ display: "inline-flex", width: "100vw", height: "100vh" }}
         >
-        < MunicipalityRegisterProvider>
+        <ServiceProviderProvider>
+        <MunicipalityRegisterProvider>
         <CitizenRegisterProvider>
           <UserLoginProvider>
             <AntdApp>
@@ -44,6 +46,7 @@ export default function RootLayout({
           </UserLoginProvider>
           </CitizenRegisterProvider>
         </ MunicipalityRegisterProvider>
+        </ServiceProviderProvider>
         </body>
       </ConfigProvider>
     </html>

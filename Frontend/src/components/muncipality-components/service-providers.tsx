@@ -3,8 +3,8 @@ import { Flex, List } from "antd/es";
 import "@ant-design/v5-patch-for-react-19";
 
 import Title from "antd/es/typography/Title";
-import ViewIncident from "./view-incident";
-import AssignIncident from "./assign-incident";
+import ViewServiceProvider from "./view-service-provider";
+import CreateServiceProvider from "./add-service-provider";
 
 const data = [
   {
@@ -26,10 +26,11 @@ const data = [
   
 ];
 
-const IncidentList: React.FC = () => (
+const ServiceProviderList: React.FC = () => (
   <>
+      <CreateServiceProvider/>
     <List
-      header={<Title level={3}>Incident List</Title>}
+      header={<Title level={3}>Service Provider List</Title>}
       itemLayout="horizontal"
       dataSource={data}
       pagination={{ pageSize: 6 }}
@@ -40,13 +41,13 @@ const IncidentList: React.FC = () => (
           />
           <List.Item.Meta title={data.status} />
             <Flex gap="small" wrap>
-              <ViewIncident/>
-              <AssignIncident/>
+              <ViewServiceProvider/>
             </Flex>
         </List.Item>
+        
       )}
     />
   </>
 );
 
-export default IncidentList;
+export default ServiceProviderList;

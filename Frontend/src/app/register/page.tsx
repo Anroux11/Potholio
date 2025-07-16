@@ -91,12 +91,12 @@ const RegistrationForm = () => {
     } else if (isCitizen) {
       try {
         const payload = {
-          email: values.email,
+          emailAddress: values.email,
           password: values.password,
           role: "citizen",
-          username: values.username,
-          firstName: values.firstName,
-          lastName: values.lastName,
+          userName: values.username,
+          name: values.firstName,
+          surname: values.lastName,
         };
         await registerCitizen(payload);
         message.success("Registered successfully!");
