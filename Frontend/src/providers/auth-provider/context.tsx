@@ -32,12 +32,12 @@ export const MunicipalityRegisterActionContext = createContext<
 >(undefined);
 
 export interface ICitizenRegister {
-  email: string;
+  emailAddress: string;
   password: string;
   role: string;
-  username: string;
-  firstName: string;
-  lastName: string;
+  userName: string;
+  name: string;
+  surname: string;
 }
 export interface ICitizenRegisterStateContext {
   isPending: boolean; 

@@ -97,7 +97,7 @@ export const ServiceProviderProvider = ({
 
     const deleteServiceProvider = async (id: string) => {
         dispatch(deleteServiceProviderPending());
-        const endpoint = `/serviceProvider/${id}`;
+        const endpoint = `/response.data.result.accesstoken/${id}`;
         await instance
             .delete(endpoint)
             .then((response) => {

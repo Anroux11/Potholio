@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import "@ant-design/v5-patch-for-react-19";
+
 // import Image from "next/image";
 import { useStyles } from "./style/styles";
 import Typography from "antd/es/typography";
@@ -45,7 +45,7 @@ const Login = () => {
       const user = sessionStorage.getItem("role") || "";
       const _user = JSON.parse(user);
       if (_user.role === "municipality" || _user.role === "admin") {
-        router.push("/municipalityDashboard");
+        router.push("/municipality");
       } else if (_user.role === "citizen") {
         router.push("/citizen");
       }
@@ -57,7 +57,7 @@ const Login = () => {
   }
 
   const handleLogin = () => {
-    return router.push("/municipalityDashboard")
+    return router.push("/municipality")
   }
 
   return (

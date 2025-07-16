@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import {
+  HomeOutlined,
+  LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   SnippetsOutlined,
@@ -10,6 +12,8 @@ import {
 import { Button, Layout, Menu, theme, Image } from "antd/es";
 import { useStyles } from "./style/styles";
 import Title from "antd/es/typography/Title";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 // import IncidentList from "@/components/muncipality-components/incidents";
 
 const { Header, Sider, Content } = Layout;
@@ -21,6 +25,12 @@ const MunicipalityLayout = ({ children }: { children: React.ReactNode }) => {
 
   const [collapsed, setCollapsed] = useState(false);
   const { styles } = useStyles();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("token");
+    return router.replace("/login");
+  };
 
   return (
     <Layout
@@ -56,13 +66,24 @@ const MunicipalityLayout = ({ children }: { children: React.ReactNode }) => {
           items={[
             {
               key: "1",
-              icon: <SnippetsOutlined />,
-              label: "Incidents",
+              icon: <HomeOutlined/>,
+              label: <Link href="/municipality">Home</Link>,
             },
             {
               key: "2",
+              icon: <SnippetsOutlined />,
+              label: <Link href="/municipality/incidents">Incidents</Link>,
+              
+            },
+            {
+              key: "3",
               icon: <ToolOutlined />,
-              label: "Service Providers",
+              label: <Link href="/municipality/serviceProvider">Service Providers</Link>,
+            },
+            {
+              key: "4",
+              icon: <LogoutOutlined />,
+              label: <Link href="/login" onClick={handleLogout}> Logout</Link>,
             },
           ]}
         />

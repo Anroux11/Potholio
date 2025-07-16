@@ -4,8 +4,8 @@ import IncidentList from "@/components/muncipality-components/incidents";
 
 // import { Typography } from "antd/es";
 
+const IncidentsPage = () => {
 
-const MunicipalityPage = () => {
   return (
     <div>
       <IncidentList/>
@@ -13,4 +13,4 @@ const MunicipalityPage = () => {
   );
 };
 
-export default MunicipalityPage;
+export default IncidentsPage;

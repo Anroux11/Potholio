@@ -56,7 +56,7 @@ export const MunicipalityRegisterProvider = ({
     await instance
       .post(endpoint, payload)
       .then((response) => {
-        dispatch(getRegisterMunicipalitySuccess(response.data));
+        dispatch(getRegisterMunicipalitySuccess(response.data.result.accesstoken));
       })
       .catch((error) => {
         console.error(error);
@@ -114,7 +114,7 @@ export const CitizenRegisterProvider = ({
     await instance
       .post(endpoint, payload)
       .then((response) => {
-        dispatch(getRegisterCitizenSuccess(response.data));
+        dispatch(getRegisterCitizenSuccess(response.data.result.accesstoken));
       })
       .catch((error) => {
         console.error(error);

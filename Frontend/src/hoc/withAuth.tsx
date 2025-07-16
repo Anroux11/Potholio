@@ -27,11 +27,11 @@ const withAuth = <P extends object> (
 
             if (allowedRoles.length > 0 && !allowedRoles.includes(userRole || "")) {
                 if (userRole === "Admin") {
-                    router.push("/municipalityDashboard");
+                    router.push("/municipality");
                 } else if (userRole === "Citizen") {
                     router.push("/citizenDashBoard");
                 } else if (userRole === "ServiceProvider") {
-                    router.push("/serviceProviderDashboard");
+                    router.push("/serviceprovider/ashboard");
                 } else {
                     message.error("Login failed. Please check your credentials.");
                 }
