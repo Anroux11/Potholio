@@ -16,7 +16,7 @@ const { Header, Sider, Content } = Layout;
 
 const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
     const {
-        token: { colorBgContainer, borderRadiusLG },
+        token: { colorBgContainer},
     } = theme.useToken();
 
     const [collapsed, setCollapsed] = useState(false);
