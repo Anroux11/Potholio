@@ -16,7 +16,7 @@ export interface ICitizenStateContext {
 }
 export interface ICitizenActionContext {
   // getCitizens: (trainerId: string) => ICitizen[];
-  getCitizenList: (trainerId: string) => void;
+  getCitizenList: (citizenId: string) => void;
   getCitizen: (id: string) => void;
   createCitizen: (citizen: ICitizen) => void;
   updateCitizen: (citizen: ICitizen) => void;

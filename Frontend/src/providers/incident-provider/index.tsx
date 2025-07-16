@@ -8,9 +8,9 @@ import {
 import { IncidentReducer } from "./reducer";
 import { useContext, useReducer } from "react";
 import {
-  getIncidentsSuccess,
-  getIncidentsPending,
-  getIncidentsError,
+  getIncidentListSuccess,
+  getIncidentListPending,
+  getIncidentListError,
   getIncidentPending,
   getIncidentError,
   createIncidentPending,
@@ -33,25 +33,25 @@ export const IncidentProvider = ({
   const [state, dispatch] = useReducer(IncidentReducer, INITIAL_STATE);
   const instance = getAxiosInstance();
 
-  const getIncidents = async () => {
-    dispatch(getIncidentsPending());
+  const getIncidentList = async () => {
+    dispatch(getIncidentListPending());
     const endpoint = `incident/`;
     await instance
       .get(endpoint)
       .then((response) => {
-        const filteredData = response.data.data.map((food: IIncident) => ({
-          description: food.description ?? "",
-          status: food.status ?? "",
-          imageUrl: food.imageUrl ?? "",
-          geolocation: food.geolocation ?? "",
+        const filteredData = response.data.data.map((incident: IIncident) => ({
+          description: incident.description ?? "",
+          status: incident.status ?? "",
+          imageUrl: incident.imageUrl ?? "",
+          geolocation: incident.geolocation ?? "",
           //   reportingUser: ;
         }));
-        dispatch(getIncidentsSuccess(filteredData));
-        console.log("food items", filteredData);
+        dispatch(getIncidentListSuccess(filteredData));
+        console.log("incident list", filteredData);
       })
       .catch((error) => {
         console.error(error);
-        dispatch(getIncidentsError());
+        dispatch(getIncidentListError());
       });
   };
 
@@ -71,7 +71,7 @@ export const IncidentProvider = ({
 
   const createIncident = async (incident: IIncident) => {
     dispatch(createIncidentPending());
-    const endpoint = `food`;
+    const endpoint = `incident`;
     await instance
       .post(endpoint, incident)
       .then((response) => {
@@ -115,7 +115,7 @@ export const IncidentProvider = ({
     <IncidentStateContext.Provider value={state}>
       <IncidentActionContext.Provider
         value={{
-          getIncidents,
+          getIncidentList,
           getIncident,
           createIncident,
           updateIncident,

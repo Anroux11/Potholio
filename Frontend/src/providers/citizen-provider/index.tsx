@@ -8,9 +8,9 @@ import {
 import { CitizenReducer } from "./reducer";
 import { useContext, useReducer } from "react";
 import {
-  getCitizensSuccess,
-  getCitizensPending,
-  getCitizensError,
+  getCitizenListSuccess,
+  getCitizenListPending,
+  getCitizenListError,
   getCitizenPending,
   getCitizenError,
   createCitizenPending,
@@ -29,7 +29,7 @@ export const CitizenProvider = ({ children }: { children: React.ReactNode }) => 
   const instance = getAxiosInstance();
 
   const getCitizenList = async (trainerId: string) => {
-    dispatch(getCitizensPending());
+    dispatch(getCitizenListPending());
     const endpoint = `citizen/trainer/${trainerId}/citizens`;
     await instance
       .get(endpoint)
@@ -41,11 +41,11 @@ export const CitizenProvider = ({ children }: { children: React.ReactNode }) => 
           email: citizen.email || "",
           activeState: citizen.activeState || true,
         }));
-        dispatch(getCitizensSuccess(filteredData));
+        dispatch(getCitizenListSuccess(filteredData));
       })
       .catch((error) => {
         console.error(error);
-        dispatch(getCitizensError());
+        dispatch(getCitizenListError());
       });
   };
 
@@ -55,7 +55,7 @@ export const CitizenProvider = ({ children }: { children: React.ReactNode }) => 
     await instance
       .get(endpoint)
       .then((response) => {
-        dispatch(getCitizensSuccess(response.data));
+        dispatch(getCitizenListSuccess(response.data));
       })
       .catch((error) => {
         console.error(error);

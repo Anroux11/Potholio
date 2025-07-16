@@ -2,9 +2,9 @@ import { createAction } from "redux-actions";
 import { ICitizen, ICitizenStateContext } from "./context";
 
 export enum CitizenActionEnums {
-  getCitizensPending = "GET_CITIZENS_PENDING",
-  getCitizensSuccess = "GET_CITIZENS_SUCCESS",
-  getCitizensError = "GET_CITIZENS_ERROR",
+  getCitizenListPending = "GET_CITIZEN_LIST_PENDING",
+  getCitizenListSuccess = "GET_CITIZENS_LIST_SUCCESS",
+  getCitizenListError = "GET_CITIZENS_LIST_ERROR",
 
   getCitizenPending = "GET_CITIZEN_PENDING",
   getCitizenSuccess = "GET_CITIZEN_SUCCESS",
@@ -23,13 +23,13 @@ export enum CitizenActionEnums {
   deleteCitizenError = "DELETE_CITIZEN_ERROR",
 }
 
-export const getCitizensPending = createAction<ICitizenStateContext>(
-  CitizenActionEnums.getCitizensPending,
+export const getCitizenListPending = createAction<ICitizenStateContext>(
+  CitizenActionEnums.getCitizenListPending,
   () => ({ isPending: true, isSuccess: false, isError: false })
 );
 
-export const getCitizensSuccess = createAction<ICitizenStateContext, ICitizen[]>(
-  CitizenActionEnums.getCitizensSuccess,
+export const getCitizenListSuccess = createAction<ICitizenStateContext, ICitizen[]>(
+  CitizenActionEnums.getCitizenListSuccess,
   (citizens: ICitizen[]) => ({
     isPending: false,
     isSuccess: true,
@@ -38,8 +38,8 @@ export const getCitizensSuccess = createAction<ICitizenStateContext, ICitizen[]>
   })
 );
 
-export const getCitizensError = createAction<ICitizenStateContext>(
-  CitizenActionEnums.getCitizensError,
+export const getCitizenListError = createAction<ICitizenStateContext>(
+  CitizenActionEnums.getCitizenListError,
   () => ({ isPending: false, isSuccess: false, isError: true })
 );
 
