@@ -7,15 +7,15 @@ export const IncidentReducer = handleActions<
   IIncidentStateContext
 >(
   {
-    [IncidentActionEnums.getIncidentsPending]: (state, action) => ({
+    [IncidentActionEnums.getIncidentListPending]: (state, action) => ({
       ...state,
       ...action.payload,
     }),
-    [IncidentActionEnums.getIncidentsSuccess]: (state, action) => ({
+    [IncidentActionEnums.getIncidentListSuccess]: (state, action) => ({
       ...state,
       ...action.payload,
     }),
-    [IncidentActionEnums.getIncidentsError]: (state, action) => ({
+    [IncidentActionEnums.getIncidentListError]: (state, action) => ({
       ...state,
       ...action.payload,
     }),

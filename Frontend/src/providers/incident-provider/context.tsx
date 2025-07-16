@@ -21,7 +21,7 @@ export interface IIncidentStateContext {
   incidents?: IIncident[];
 }
 export interface IIncidentActionContext {
-  getIncidents: () => void;
+  getIncidentList: () => void;
   getIncident: (id: string) => void;
   createIncident: (incident: IIncident) => void;
   updateIncident: (incident: IIncident) => void;
