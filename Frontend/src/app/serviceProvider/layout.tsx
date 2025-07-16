@@ -7,8 +7,9 @@ import {
     MenuUnfoldOutlined,
     SnippetsOutlined,
     ToolOutlined,
+    LogoutOutlined,
 } from "@ant-design/icons";
-import { Button, Layout, Menu, theme, Image } from "antd/es";
+import { Button, Layout, Menu, Modal, theme, Image } from "antd/es";
 import Title from "antd/es/typography/Title";
 import { useStyles } from "./style/styles";
 
@@ -16,10 +17,11 @@ const { Header, Sider, Content } = Layout;
 
 const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
     const {
-        token: { colorBgContainer},
+        token: { colorBgContainer },
     } = theme.useToken();
 
     const [collapsed, setCollapsed] = useState(false);
+    const [logoutModalVisible, setLogoutModalVisible] = useState(false);
     const { styles } = useStyles();
     const router = useRouter();
     const pathname = usePathname();
@@ -29,6 +31,12 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
         if (pathname.includes("/incidents")) return "2";
         if (pathname.includes("/technicians")) return "3";
         return "1";
+    };
+
+    const confirmLogout = () => {
+        sessionStorage.clear();
+        setLogoutModalVisible(false);
+        router.push("/login");
     };
 
     return (
@@ -51,6 +59,7 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
                         preview={false}
                     />
                 </div>
+
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -78,6 +87,18 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
                         },
                     ]}
                 />
+
+                <div style={{ marginTop: "auto", padding: "12px" }}>
+                    <Button
+                        type="primary"
+                        danger
+                        icon={<LogoutOutlined />}
+                        block
+                        onClick={() => setLogoutModalVisible(true)}
+                    >
+                        {!collapsed && "Logout"}
+                    </Button>
+                </div>
             </Sider>
 
             <Button
@@ -99,6 +120,17 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
                     {children}
                 </Content>
             </Layout>
+
+            <Modal
+                open={logoutModalVisible}
+                title="Confirm Logout"
+                onCancel={() => setLogoutModalVisible(false)}
+                onOk={confirmLogout}
+                okText="Yes, Logout"
+                cancelText="Cancel"
+            >
+                <p>Are you sure you want to logout?</p>
+            </Modal>
         </Layout>
     );
 };

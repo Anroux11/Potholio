@@ -43,7 +43,7 @@ const ServiceProviderPage = () => {
                         size="large"
                         block
                         className={styles.quickActionButton}
-                        onClick={() => router.push("/reports")}
+                        onClick={() => router.push("./incidents")}
                     >
                         View all Incidents
                     </Button>
@@ -54,7 +54,7 @@ const ServiceProviderPage = () => {
                         size="large"
                         block
                         className={styles.quickActionButton}
-                        onClick={() => router.push("/add-technician")}
+                        onClick={() => router.push("./technicians")}
                     >
                         Add Technician
                     </Button>
@@ -65,7 +65,7 @@ const ServiceProviderPage = () => {
                         size="large"
                         block
                         className={styles.quickActionButton}
-                        onClick={() => router.push("/technicians")}
+                        onClick={() => router.push("./technicians")}
                     >
                         View all Technicians
                     </Button>
