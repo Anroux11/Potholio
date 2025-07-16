@@ -7,6 +7,18 @@ export const MunicipalityReducer = handleActions<
   IMunicipalityStateContext
 >(
   {
+    [MunicipalityActionEnums.getMunicipalityListPending]: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
+    [MunicipalityActionEnums.getMunicipalityListSuccess]: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
+    [MunicipalityActionEnums.getMunicipalityListError]: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
     [MunicipalityActionEnums.getMunicipalityPending]: (state, action) => ({
       ...state,
       ...action.payload,

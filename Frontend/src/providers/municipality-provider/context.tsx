@@ -14,8 +14,10 @@ export interface IMunicipalityStateContext {
   isSuccess: boolean; 
   isError: boolean;
   municipality?: IMunicipality;
+  municipalities? : IMunicipality[];
 }
 export interface IMunicipalityActionContext {
+  getMunicipalityList: () => void;
   getMunicipality: (id: string) => void; 
   createMunicipality: (municipality: IMunicipality) => void; 
   updateMunicipality: (municipality: IMunicipality) => void; 
