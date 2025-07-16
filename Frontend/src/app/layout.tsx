@@ -4,7 +4,8 @@ import "./globals.css";
 import AntdApp from "antd/es/app";
 import { theme } from "antd/es";
 import ConfigProvider from "antd/es/config-provider";
-import { UserLoginProvider } from "@/providers/auth-provider";
+import { CitizenRegisterProvider, UserLoginProvider } from "@/providers/auth-provider";
+import { MunicipalityRegisterProvider} from "@/providers/auth-provider"
 
 export default function RootLayout({
   children,
@@ -34,11 +35,15 @@ export default function RootLayout({
         <body
           // style={{ display: "inline-flex", width: "100vw", height: "100vh" }}
         >
+        < MunicipalityRegisterProvider>
+        <CitizenRegisterProvider>
           <UserLoginProvider>
             <AntdApp>
               {children}
             </AntdApp>
           </UserLoginProvider>
+          </CitizenRegisterProvider>
+        </ MunicipalityRegisterProvider>
         </body>
       </ConfigProvider>
     </html>
