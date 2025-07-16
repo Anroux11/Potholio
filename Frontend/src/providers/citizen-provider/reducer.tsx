@@ -7,15 +7,15 @@ export const CitizenReducer = handleActions<
   ICitizenStateContext
 >(
   {
-    [CitizenActionEnums.getCitizensPending]: (state, action) => ({
+    [CitizenActionEnums.getCitizenListPending]: (state, action) => ({
       ...state,
       ...action.payload,
     }),
-    [CitizenActionEnums.getCitizensSuccess]: (state, action) => ({
+    [CitizenActionEnums.getCitizenListSuccess]: (state, action) => ({
       ...state,
       ...action.payload,
     }),
-    [CitizenActionEnums.getCitizensError]: (state, action) => ({
+    [CitizenActionEnums.getCitizenListError]: (state, action) => ({
       ...state,
       ...action.payload,
     }),

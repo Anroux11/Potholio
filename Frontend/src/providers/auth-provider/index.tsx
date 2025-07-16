@@ -110,7 +110,7 @@ export const CitizenRegisterProvider = ({
 
   const registerCitizen = async (payload: ICitizenRegister) => {
     dispatch(getRegisterCitizenPending());
-    const endpoint = `users/register`;
+    const endpoint = `/services/app/CitizenRegister/Register`;
     await instance
       .post(endpoint, payload)
       .then((response) => {
@@ -169,7 +169,7 @@ export const UserLoginProvider = ({
     await instance
       .post(endpoint, payload)
       .then((response) => {
-        const token = response.data.data.token;
+        const token = response.data.result.accessToken;
         const decoded = jwtDecode(token);
         sessionStorage.setItem("token", token);
         sessionStorage.setItem("role", JSON.stringify(decoded));

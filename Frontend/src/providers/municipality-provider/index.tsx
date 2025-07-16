@@ -8,6 +8,9 @@ import {
 import { MunicipalityReducer } from "./reducer";
 import { useContext, useReducer } from "react";
 import {
+  getMunicipalityListPending,
+  getMunicipalityListSuccess,
+  getMunicipalityListError,
   getMunicipalityPending,
   getMunicipalityError,
   createMunicipalityPending,
@@ -29,6 +32,28 @@ export const MunicipalityProvider = ({
 }) => {
   const [state, dispatch] = useReducer(MunicipalityReducer, INITIAL_STATE);
   const instance = getAxiosInstance();
+
+  const getMunicipalityList = async () => {
+      dispatch(getMunicipalityListPending());
+      const endpoint = `municipality/`;
+      await instance
+        .get(endpoint)
+        .then((response) => {
+          const filteredData = response.data.data.map((municipality: IMunicipality) => ({
+            name: municipality.name ?? "",
+            email: municipality.email ?? "",
+            contactNumber: municipality.contactNumber ?? "",
+            address: municipality.address ?? "",
+            //   reportingUser: ;
+          }));
+          dispatch(getMunicipalityListSuccess(filteredData));
+          console.log("food items", filteredData);
+        })
+        .catch((error) => {
+          console.error(error);
+          dispatch(getMunicipalityListError());
+        });
+    };
 
   const getMunicipality = async (id: string) => {
     dispatch(getMunicipalityPending());
@@ -74,7 +99,7 @@ export const MunicipalityProvider = ({
 
   const deleteMunicipality = async (id: string) => {
     dispatch(deleteMunicipalityPending());
-    const endpoint = `https://fakestoreapi.com/trainers/${id}`;
+    const endpoint = `https:/municipality/${id}`;
     await instance
       .delete(endpoint)
       .then((response) => {
@@ -90,6 +115,7 @@ export const MunicipalityProvider = ({
     <MunicipalityStateContext.Provider value={state}>
       <MunicipalityActionContext.Provider
         value={{
+          getMunicipalityList,
           getMunicipality,
           createMunicipality,
           updateMunicipality,

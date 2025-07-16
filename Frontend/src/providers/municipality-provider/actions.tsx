@@ -2,6 +2,10 @@ import { createAction } from "redux-actions";
 import { IMunicipality, IMunicipalityStateContext } from "./context";
 
 export enum MunicipalityActionEnums {
+  getMunicipalityListPending = "GET_MUNICIPALITY_LIST_PENDING",
+  getMunicipalityListSuccess = "GET_MUNICIPALITY_LIST_SUCCESS",
+  getMunicipalityListError = "GET_MUNICIPALITY_LIST_ERROR",
+
   getMunicipalityPending = "GET_MUNICIPALITY_PENDING",
   getMunicipalitySuccess = "GET_MUNICIPALITY_SUCCESS",
   getMunicipalityError = "GET_MUNICIPALITY_ERROR",
@@ -18,6 +22,26 @@ export enum MunicipalityActionEnums {
   deleteMunicipalitySuccess = "DELETE_MUNICIPALITY_SUCCESS",
   deleteMunicipalityError = "DELETE_MUNICIPALITY_ERROR",
 }
+
+export const getMunicipalityListPending = createAction<IMunicipalityStateContext>(
+  MunicipalityActionEnums.getMunicipalityListPending,
+  () => ({ isPending: true, isSuccess: false, isError: false })
+);
+
+export const getMunicipalityListSuccess = createAction<IMunicipalityStateContext, IMunicipality[]>(
+  MunicipalityActionEnums.getMunicipalityListSuccess,
+  (municipalities: IMunicipality[]) => ({
+    isPending: false,
+    isSuccess: true,
+    isError: false,
+    municipalities,
+  })
+);
+
+export const getMunicipalityListError = createAction<IMunicipalityStateContext>(
+  MunicipalityActionEnums.getMunicipalityListError,
+  () => ({ isPending: false, isSuccess: false, isError: true })
+);
 
 export const getMunicipalityPending = createAction<IMunicipalityStateContext>(
   MunicipalityActionEnums.getMunicipalityPending,

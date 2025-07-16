@@ -2,9 +2,9 @@ import { createAction } from "redux-actions";
 import { IIncident, IIncidentStateContext } from "./context";
 
 export enum IncidentActionEnums {
-  getIncidentsPending = "GET_INCIDENTS_PENDING",
-  getIncidentsSuccess = "GET_INCIDENTS_SUCCESS",
-  getIncidentsError = "GET_INCIDENTS_ERROR",
+  getIncidentListPending = "GET_INCIDENT_LIST_PENDING",
+  getIncidentListSuccess = "GET_INCIDENTS_LIST_SUCCESS",
+  getIncidentListError = "GET_INCIDENTS_LIST_ERROR",
 
   getIncidentPending = "GET_INCIDENT_PENDING",
   getIncidentSuccess = "GET_INCIDENT_SUCCESS",
@@ -23,16 +23,16 @@ export enum IncidentActionEnums {
   deleteIncidentError = "DELETE_INCIDENT_ERROR",
 }
 
-export const getIncidentsPending = createAction<IIncidentStateContext>(
-  IncidentActionEnums.getIncidentsPending,
+export const getIncidentListPending = createAction<IIncidentStateContext>(
+  IncidentActionEnums.getIncidentListPending,
   () => ({ isPending: true, isSuccess: false, isError: false })
 );
 
-export const getIncidentsSuccess = createAction<
+export const getIncidentListSuccess = createAction<
   IIncidentStateContext, 
   IIncident[] 
 >(
-  IncidentActionEnums.getIncidentsSuccess,
+  IncidentActionEnums.getIncidentListSuccess,
   (incidents: IIncident[]) => ({
     isPending: false,
     isSuccess: true,
@@ -41,8 +41,8 @@ export const getIncidentsSuccess = createAction<
   })
 );
 
-export const getIncidentsError = createAction<IIncidentStateContext>(
-  IncidentActionEnums.getIncidentsError,
+export const getIncidentListError = createAction<IIncidentStateContext>(
+  IncidentActionEnums.getIncidentListError,
   () => ({ isPending: false, isSuccess: false, isError: true })
 );
 
