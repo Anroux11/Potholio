@@ -14,9 +14,11 @@ export interface IServiceProviderStateContext {
     isSuccess: boolean;
     isError: boolean;
     serviceProvider?: IServiceProvider;
+    serviceProviders?: IServiceProvider[];
 }
 
 export interface IServiceProviderActionContext {
+    getServiceProviderList: () => void;
     getServiceProvider: (id: string) => void;
     createServiceProvider: (serviceProvider: IServiceProvider) => void;
     updateServiceProvider: (serviceProvider: IServiceProvider) => void;

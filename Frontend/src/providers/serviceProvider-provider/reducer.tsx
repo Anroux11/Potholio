@@ -4,6 +4,18 @@ import { ServiceProviderActionEnums } from "./actions";
 
 export const ServiceProviderReducer = handleActions<IServiceProviderStateContext, IServiceProviderStateContext>(
     {
+        [ServiceProviderActionEnums.getServiceProviderListPending]: (state, action) => ({
+            ...state,
+            ...action.payload,
+        }),
+        [ServiceProviderActionEnums.getServiceProviderListSuccess]: (state, action) => ({
+            ...state,
+            ...action.payload,
+        }),
+        [ServiceProviderActionEnums.getServiceProviderListError]: (state, action) => ({
+            ...state,
+            ...action.payload,
+        }),
         [ServiceProviderActionEnums.getServiceProviderPending]: (state, action) => ({
             ...state,
             ...action.payload,

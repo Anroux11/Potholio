@@ -2,6 +2,10 @@ import { createAction } from "redux-actions";
 import { IServiceProvider, IServiceProviderStateContext } from "./context";
 
 export enum ServiceProviderActionEnums {
+    getServiceProviderListPending = "GET_SERVICE_PROVIDER_LIST_PENDING",
+    getServiceProviderListSuccess = "GET_SERVICE_PROVIDER_LIST_SUCCESS",
+    getServiceProviderListError = "GET_SERVICE_PROVIDER_LIST_ERROR",
+
     getServiceProviderPending = "GET_SERVICE_PROVIDER_PENDING",
     getServiceProviderSuccess = "GET_SERVICE_PROVIDER_SUCCESS",
     getServiceProviderError = "GET_SERVICE_PROVIDER_ERROR",
@@ -18,6 +22,37 @@ export enum ServiceProviderActionEnums {
     deleteServiceProviderSuccess = "DELETE_SERVICE_PROVIDER_SUCCESS",
     deleteServiceProviderError = "DELETE_SERVICE_PROVIDER_ERROR",
 }
+
+export const getServiceProviderListPending = createAction<IServiceProviderStateContext>(
+    ServiceProviderActionEnums.getServiceProviderListPending, () => (
+        {
+            isPending: true,
+            isSuccess: false,
+            isError: false,
+        }
+    )
+);
+
+export const getServiceProviderListSuccess = createAction<IServiceProviderStateContext, IServiceProvider[]>(
+    ServiceProviderActionEnums.getServiceProviderListSuccess, (serviceProviders: IServiceProvider[]) => (
+        {
+            isPending: false,
+            isSuccess: true,
+            isError: false,
+            serviceProviders,
+        }
+    )
+);
+
+export const getServiceProviderListError = createAction<IServiceProviderStateContext>(
+    ServiceProviderActionEnums.getServiceProviderListError, () => (
+        {
+            isPending: false,
+            isSuccess: false,
+            isError: true,
+        }
+    )
+);
 
 export const getServiceProviderPending = createAction<IServiceProviderStateContext>(
     ServiceProviderActionEnums.getServiceProviderPending, () => (
