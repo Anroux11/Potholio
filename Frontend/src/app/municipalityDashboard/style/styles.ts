@@ -12,6 +12,21 @@ export const useStyles = createStyles({
   `,
   image: css`
     transition: all 0.3s ease;
-    objectFit: contain;
+    objectfit: contain;
   `,
+  headerTitle: css`
+    padding: 0;
+    background: colorBgContainer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  `,
+//   title: css`
+//     margin: 0;
+//     font-size: clamp(1.2rem, 4vw, 1.5rem);
+//     white-space: nowrap;
+//     overflow: hidden;
+//     textoverflow: ellipsis;
+//   `,
 });
