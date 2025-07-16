@@ -5,9 +5,8 @@ export interface IMunicipalityRegister {
   email: string;
   password: string;
   role: string;
-  contactNumber: string;
+  contactNumber: number;
   address: string;
-  activeState: boolean;
 }
 export interface IMunicipalityRegisterStateContext {
   isPending: boolean;
@@ -35,8 +34,9 @@ export const MunicipalityRegisterActionContext = createContext<
 export interface ICitizenRegister {
   email: string;
   password: string;
+  role: string;
   username: string;
-  firtName: string;
+  firstName: string;
   lastName: string;
 }
 export interface ICitizenRegisterStateContext {

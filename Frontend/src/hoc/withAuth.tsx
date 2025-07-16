@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { message } from "antd";
 
 interface WithAuthProps {
     allowedRoles?: string[];
@@ -25,10 +26,14 @@ const withAuth = <P extends object> (
             }
 
             if (allowedRoles.length > 0 && !allowedRoles.includes(userRole || "")) {
-                if (userRole === "admin") {
-                    router.push("/admin");
+                if (userRole === "Admin") {
+                    router.push("/municipalityDashboard");
+                } else if (userRole === "Citizen") {
+                    router.push("/citizenDashBoard");
+                } else if (userRole === "ServiceProvider") {
+                    router.push("/serviceProviderDashboard");
                 } else {
-                    router.push("/citizen");
+                    message.error("Login failed. Please check your credentials.");
                 }
                 return;
             }
