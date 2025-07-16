@@ -8,6 +8,9 @@ import {
 import { ServiceProviderReducer } from "./reducer";
 import { useContext, useReducer } from "react";
 import {
+    getServiceProviderListPending,
+    getServiceProviderListSuccess,
+    getServiceProviderListError,
     getServiceProviderPending,
     getServiceProviderSuccess,
     getServiceProviderError,
@@ -29,6 +32,26 @@ export const ServiceProviderProvider = ({
 }) => {
     const [state, dispatch] = useReducer(ServiceProviderReducer, INITIAL_STATE);
     const instance = getAxiosInstance();
+
+    const getServiceProviderList = async () => {
+        dispatch(getServiceProviderListPending());
+        const endpoint = `serviceProvider/`;
+        await instance
+            .get(endpoint)
+            .then((response) => {
+                const filteredData = response.data.data.map((serviceProvider: IServiceProvider) => ({
+                    name: serviceProvider.name ?? "",
+                    email: serviceProvider.email ?? "",
+                    contactNumber: serviceProvider.contactNumber ?? "",
+                    address: serviceProvider.address ?? "",
+                }));
+                dispatch(getServiceProviderListSuccess(filteredData));
+            })
+            .catch((error) => {
+                console.error(error);
+                dispatch(getServiceProviderListError());
+            });
+    };
 
     const getServiceProvider = async (id: string) => {
         dispatch(getServiceProviderPending());
@@ -89,6 +112,7 @@ export const ServiceProviderProvider = ({
     return (
         <ServiceProviderStateContext.Provider value={state}>
             <ServiceProviderActionContext.Provider value={{
+                getServiceProviderList,
                 getServiceProvider,
                 createServiceProvider,
                 updateServiceProvider,
