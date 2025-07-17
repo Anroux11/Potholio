@@ -46,6 +46,24 @@ namespace Potholio.EntityFrameworkCore.Seed.Host
                 _context.SaveChanges();
             }
 
+            // Municipality role
+
+            var MunicipalityRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == null && r.Name == "Municipality");
+            if (MunicipalityRole == null)
+            {
+                MunicipalityRole = _context.Roles.Add(new Role(null, "Municipality", "Municipality") { IsStatic = true }).Entity;
+                _context.SaveChanges();
+            }
+
+            // ServiceProvider role
+
+            var ServiceProviderRole = _context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == null && r.Name == "ServiceProvider");
+            if (ServiceProviderRole == null)
+            {
+                ServiceProviderRole = _context.Roles.Add(new Role(null, "ServiceProvider", "ServiceProvider") { IsStatic = true }).Entity;
+                _context.SaveChanges();
+            }
+
 
             // Grant all permissions to admin role for host
 
