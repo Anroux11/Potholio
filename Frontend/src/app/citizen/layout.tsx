@@ -5,10 +5,10 @@ import { useRouter, usePathname } from "next/navigation";
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    ToolOutlined,
     LogoutOutlined,
     HomeOutlined,
     FileTextOutlined,
+    SettingOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, Modal, theme, Image } from "antd/es";
 import Title from "antd/es/typography/Title";
@@ -31,7 +31,7 @@ const CitizenLayout = ({ children }: { children: React.ReactNode }) => {
     const getSelectedKey = () => {
         if (pathname.includes("/dashboard")) return "1";
         if (pathname.includes("/incidents")) return "2";
-        if (pathname.includes("/technicians")) return "3";
+        if (pathname.includes("/settings")) return "3";
         return "1";
     };
 
@@ -67,9 +67,9 @@ const CitizenLayout = ({ children }: { children: React.ReactNode }) => {
                     mode="inline"
                     selectedKeys={[getSelectedKey()]}
                     onClick={(info) => {
-                        if (info.key === "1") router.push("/serviceProvider/dashboard");
-                        if (info.key === "2") router.push("/serviceProvider/incidents");
-                        if (info.key === "3") router.push("/serviceProvider/technicians");
+                        if (info.key === "1") router.push("/citizen/dashboard");
+                        if (info.key === "2") router.push("/citizen/incidents");
+                        if (info.key === "3") router.push("/citizen/technicians");
                     }}
                     items={[
                         {
@@ -84,7 +84,7 @@ const CitizenLayout = ({ children }: { children: React.ReactNode }) => {
                         },
                         {
                             key: "3",
-                            icon: <ToolOutlined />,
+                            icon: <SettingOutlined />,
                             label: "Settings",
                         },
                     ]}
