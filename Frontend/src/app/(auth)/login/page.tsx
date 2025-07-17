@@ -43,12 +43,16 @@ const Login = () => {
       await userLogin(payload);
       setLoading(false);
       const user = sessionStorage.getItem("role") || "";
-      console.log(user);
-      // const _user = JSON.parse(user);
+      
       if (user === "Municipality") {
+        message.success("Login successfully!");
         router.push("/municipality/dashboard");
       } else if (user === "Citizen") {
+        message.success("Login successfully!");
         router.push("/citizen/dashboard");
+      } else {
+        message.success("Could not find user");
+        router.push("/login");
       }
     } catch (error) {
       setLoading(false);
@@ -57,9 +61,9 @@ const Login = () => {
     }
   }
 
-  const handleLogin = () => {
-    return router.push("/municipality/dashboard")
-  }
+  // const handleLogin = () => {
+  //   return router.push("/municipality/dashboard")
+  // }
 
   return (
     <>
@@ -145,7 +149,6 @@ const Login = () => {
                       block
                       type="primary"
                       htmlType="submit"
-                      onClick={handleLogin}
                       style={{
                         width: "300px",
                         fontWeight: "bold",
