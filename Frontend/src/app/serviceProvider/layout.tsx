@@ -5,9 +5,10 @@ import { useRouter, usePathname } from "next/navigation";
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    SnippetsOutlined,
     ToolOutlined,
     LogoutOutlined,
+    HomeOutlined,
+    FileTextOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, Modal, theme, Image } from "antd/es";
 import Title from "antd/es/typography/Title";
@@ -72,12 +73,12 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
                     items={[
                         {
                             key: "1",
-                            icon: <SnippetsOutlined />,
+                            icon: <HomeOutlined />,
                             label: "Home",
                         },
                         {
                             key: "2",
-                            icon: <ToolOutlined />,
+                            icon: <FileTextOutlined />,
                             label: "Incidents",
                         },
                         {

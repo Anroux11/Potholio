@@ -57,7 +57,7 @@ const Login = () => {
   }
 
   const handleLogin = () => {
-    return router.push("/municipality")
+    return router.push("/municipality/dashboard")
   }
 
   return (
