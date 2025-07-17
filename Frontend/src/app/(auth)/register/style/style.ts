@@ -91,20 +91,20 @@ export const useStyles = createStyles({
     }
   `,
   input: css`
-    width: 300px;
+    width: 300px !important;
     border-color: grey;
     background: #0b192c;
     &:hover {
-      background-color: #0B192C !important;
+      background-color: #0b192c !important;
     }
-      &:active {
-      background-color: #0B192C !important;
+    &:active {
+      background-color: #0b192c !important;
     }
-      &:focus {
-      background-color: #0B192C !important;
+    &:focus {
+      background-color: #0b192c !important;
     }
 
-      @media (max-width: 480px) {
+    @media (max-width: 480px) {
       width: 300px;
     }
 
@@ -117,22 +117,29 @@ export const useStyles = createStyles({
     border-color: grey;
     background: #0b192c;
     &:hover {
-      background-color: #0B192C !important;
+      background-color: #0b192c !important;
     }
-      &:active {
-      background-color: #0B192C !important;
+    &:active {
+      background-color: #0b192c !important;
     }
-      &:focus {
-      background-color: #0B192C !important;
+    &:focus {
+      background-color: #0b192c !important;
     }
 
-      @media (max-width: 480px) {
+    @media (max-width: 480px) {
       width: 300px;
     }
 
     @media (max-width: 360px) {
       width: 200px;
     }
+  `,
+  municipalitySelect: css`
+    width: 300px !important;
+    max-width: 300px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   `,
   flex: css`
     justify: space-between;
