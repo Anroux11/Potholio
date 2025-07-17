@@ -13,9 +13,6 @@ import {
   LockOutlined,
   EyeTwoTone,
   EyeInvisibleOutlined,
-  PhoneOutlined,
-  TeamOutlined,
-  EnvironmentOutlined,
 } from "@ant-design/icons";
 import {
   Form,
@@ -218,53 +215,50 @@ const RegistrationForm = () => {
                     <div>
                       <Form.Item
                         name="name"
+                        // className={styles.select}
                         rules={[
                           {
                             required: true,
-                            message: "Please input Municipality Name!",
+                            message: "Please Select Municipality",
                           },
                         ]}
+                        style={{
+                          backgroundColor: "grey",
+                          background: "#0b192c",
+                        }}
                       >
-                        <Input
+                        <Select
                           size="large"
-                          placeholder="Name of Municipality"
-                          prefix={<TeamOutlined />}
-                          className={styles.input}
-                        />
-                      </Form.Item>
-
-                      <Form.Item
-                        name="address"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input address!",
-                          },
-                        ]}
-                      >
-                        <Input
-                          size="large"
-                          placeholder="Address of Municipality"
-                          prefix={<EnvironmentOutlined />}
-                          className={styles.input}
-                        />
-                      </Form.Item>
-
-                      <Form.Item
-                        name="contactNumber"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input the phone number!",
-                          },
-                        ]}
-                      >
-                        <Input
-                          className={styles.input}
-                          size="large"
-                          placeholder="Contact Number"
-                          prefix={<PhoneOutlined />}
-                        />
+                          placeholder="Choose Municipality"
+                          onChange={onChange}
+                          prefix={<UserOutlined />}
+                          className={styles.municipalitySelect}
+                        >
+                          <Select.Option value="City of Johannesburg Metropolitan Municipality">
+                            City of Johannesburg Metropolitan Municipality
+                          </Select.Option>
+                          <Select.Option value="eThekwini Metropolitan Municipality">
+                            eThekwini Metropolitan Municipality
+                          </Select.Option>
+                          <Select.Option value="Mangaung Metropolitan Municipalityame">
+                            Mangaung Metropolitan Municipality
+                          </Select.Option>
+                          <Select.Option value="Buffalo City Metropolitan Municipality">
+                            Buffalo City Metropolitan Municipality
+                          </Select.Option>
+                          <Select.Option value="Capricorn District Municipality">
+                            Capricorn District Municipality
+                          </Select.Option>
+                          <Select.Option value="City of Matlosana Local Municipality">
+                            City of Matlosana Local Municipality
+                          </Select.Option>
+                          <Select.Option value="Frances Baard District Municipality">
+                            Frances Baard District Municipality
+                          </Select.Option>
+                          <Select.Option value="City of Cape Town Metropolitan Municipality">
+                            City of Cape Town Metropolitan Municipality
+                          </Select.Option>
+                        </Select>
                       </Form.Item>
                     </div>
                   )}
