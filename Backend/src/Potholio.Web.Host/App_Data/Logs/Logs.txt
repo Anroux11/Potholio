@@ -1,141 +1,319 @@
-DEBUG 2025-07-17 12:04:22,630 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
-DEBUG 2025-07-17 12:04:22,848 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
-DEBUG 2025-07-17 12:04:22,856 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.Web.Host.Startup.PotholioWebHostModule, Potholio.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,858 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioWebCoreModule, Potholio.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,858 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioApplicationModule, Potholio.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,858 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioCoreModule, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,858 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,859 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,859 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,859 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.EntityFrameworkCore.PotholioEntityFrameworkModule, Potholio.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:22,861 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
-DEBUG 2025-07-17 12:04:22,902 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2025-07-17 12:04:22,902 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2025-07-17 12:04:22,902 [1    ] o.Configuration.LanguageManagementConfig - Converted Potholio (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2025-07-17 12:04:22,902 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
-DEBUG 2025-07-17 12:04:23,148 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Potholio.EntityFrameworkCore.PotholioDbContext, Potholio.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-DEBUG 2025-07-17 12:04:23,249 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
-DEBUG 2025-07-17 12:04:23,270 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
-DEBUG 2025-07-17 12:04:23,276 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
-DEBUG 2025-07-17 12:04:23,281 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Potholio
-DEBUG 2025-07-17 12:04:23,284 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
-DEBUG 2025-07-17 12:04:23,289 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
-DEBUG 2025-07-17 12:04:23,297 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Potholio.MultiTenancy.Tenant, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Potholio.Authorization.Users.User, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
-DEBUG 2025-07-17 12:04:23,308 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
-DEBUG 2025-07-17 12:04:23,308 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Users.Dto.CreateUserDto
-DEBUG 2025-07-17 12:04:23,309 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Users.Dto.UserDto
-DEBUG 2025-07-17 12:04:23,310 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Sessions.Dto.TenantLoginInfoDto
-DEBUG 2025-07-17 12:04:23,310 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Sessions.Dto.UserLoginInfoDto
-DEBUG 2025-07-17 12:04:23,310 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Roles.Dto.PermissionDto
-DEBUG 2025-07-17 12:04:23,310 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.MultiTenancy.Dto.CreateTenantDto
-DEBUG 2025-07-17 12:04:23,310 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.MultiTenancy.Dto.TenantDto
-DEBUG 2025-07-17 12:04:23,310 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Reports.DTo.IncidentDto
-DEBUG 2025-07-17 12:04:23,310 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Citizens.DTo.CitizenRegisterDto
-INFO  2025-07-17 12:04:34,917 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
-INFO  2025-07-17 12:04:35,345 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
-INFO  2025-07-17 12:04:35,405 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
-INFO  2025-07-17 12:04:35,409 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
-INFO  2025-07-17 12:04:35,414 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Potholio\Backend\src\Potholio.Web.Host
-INFO  2025-07-17 12:04:35,639 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host)'
-INFO  2025-07-17 12:04:35,710 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Potholio.Web.Host.Controllers.HomeController (Potholio.Web.Host).
-INFO  2025-07-17 12:04:36,715 [14   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
-INFO  2025-07-17 12:04:36,732 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host) in 1007.9236ms
-INFO  2025-07-17 12:04:36,734 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host)'
-INFO  2025-07-17 12:04:36,751 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
-INFO  2025-07-17 12:04:36,763 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 1428.8326ms
-INFO  2025-07-17 12:04:36,858 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 106.3845ms
-INFO  2025-07-17 12:04:36,866 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
-INFO  2025-07-17 12:04:36,872 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16519 application/javascript;+charset=utf-8 6.6342ms
-INFO  2025-07-17 12:04:36,884 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
-INFO  2025-07-17 12:04:36,930 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 46.4528ms
-INFO  2025-07-17 12:04:36,972 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
-INFO  2025-07-17 12:04:36,991 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
-INFO  2025-07-17 12:04:37,486 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
-INFO  2025-07-17 12:04:37,504 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Potholio.Web.Host.Controllers.AntiForgeryController (Potholio.Web.Host).
-INFO  2025-07-17 12:04:37,536 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 545.0131ms
-INFO  2025-07-17 12:04:38,678 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2025-07-17 12:04:38,697 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host) in 1189.4889ms
-INFO  2025-07-17 12:04:38,701 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
-INFO  2025-07-17 12:04:38,708 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1731.6561ms
-INFO  2025-07-17 12:04:45,845 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/api/services/app/Incident/GetAll - - -
-INFO  2025-07-17 12:04:45,853 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.GetAllAsync (Potholio.Application)'
-INFO  2025-07-17 12:04:45,889 [14   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "GetAll", controller = "Incident"}. Executing controller action with signature System.Threading.Tasks.Task`1[Abp.Application.Services.Dto.PagedResultDto`1[Potholio.CrudAppServiceses.Reports.DTo.IncidentDto]] GetAllAsync(Abp.Application.Services.Dto.PagedAndSortedResultRequestDto) on controller Potholio.CrudAppServiceses.Reports.IncidentAppService (Potholio.Application).
-INFO  2025-07-17 12:04:48,579 [14   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2025-07-17 12:04:48,614 [14   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Reports.IncidentAppService.GetAllAsync (Potholio.Application) in 2721.6401ms
-INFO  2025-07-17 12:04:48,617 [14   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.GetAllAsync (Potholio.Application)'
-INFO  2025-07-17 12:04:48,622 [14   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/api/services/app/Incident/GetAll - 200 - application/json;+charset=utf-8 2775.4724ms
-INFO  2025-07-17 12:07:50,291 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 PUT https://localhost:44311/api/services/app/Incident/Update - application/json 286
-INFO  2025-07-17 12:07:50,299 [27   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
-INFO  2025-07-17 12:07:50,306 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application)'
-INFO  2025-07-17 12:07:50,314 [27   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Update", controller = "Incident"}. Executing controller action with signature System.Threading.Tasks.Task`1[Potholio.CrudAppServiceses.Reports.DTo.IncidentDto] UpdateAsync(Potholio.CrudAppServiceses.Reports.DTo.IncidentDto) on controller Potholio.CrudAppServiceses.Reports.IncidentAppService (Potholio.Application).
-WARN  2025-07-17 12:07:51,255 [27   ] Mvc.ExceptionHandling.AbpExceptionFilter - Method arguments are not valid! See ValidationErrors for details.
-Abp.Runtime.Validation.AbpValidationException: Method arguments are not valid! See ValidationErrors for details.
-   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.ThrowValidationError()
-   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.Validate()
-   at Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+DEBUG 2025-07-17 13:03:35,988 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-07-17 13:03:37,860 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-07-17 13:03:37,878 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.Web.Host.Startup.PotholioWebHostModule, Potholio.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioWebCoreModule, Potholio.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioApplicationModule, Potholio.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioCoreModule, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,881 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,882 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,882 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.EntityFrameworkCore.PotholioEntityFrameworkModule, Potholio.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,882 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,883 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,883 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,883 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,883 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,884 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:37,885 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-07-17 13:03:38,098 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-17 13:03:38,098 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-17 13:03:38,098 [1    ] o.Configuration.LanguageManagementConfig - Converted Potholio (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-17 13:03:38,098 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-17 13:03:38,585 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Potholio.EntityFrameworkCore.PotholioDbContext, Potholio.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-17 13:03:38,822 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-07-17 13:03:38,878 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-07-17 13:03:38,893 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-07-17 13:03:38,906 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Potholio
+DEBUG 2025-07-17 13:03:38,913 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-07-17 13:03:38,925 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-07-17 13:03:38,933 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Potholio.MultiTenancy.Tenant, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Potholio.Authorization.Users.User, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-07-17 13:03:38,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 9 classes define auto mapping attributes
+DEBUG 2025-07-17 13:03:38,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Users.Dto.CreateUserDto
+DEBUG 2025-07-17 13:03:38,967 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Users.Dto.UserDto
+DEBUG 2025-07-17 13:03:38,967 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-07-17 13:03:38,968 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-07-17 13:03:38,968 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Roles.Dto.PermissionDto
+DEBUG 2025-07-17 13:03:38,968 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-07-17 13:03:38,968 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.MultiTenancy.Dto.TenantDto
+DEBUG 2025-07-17 13:03:38,968 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Reports.DTo.IncidentDto
+DEBUG 2025-07-17 13:03:38,968 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Citizens.DTo.CitizenRegisterDto
+INFO  2025-07-17 13:03:51,528 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-07-17 13:03:52,016 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-07-17 13:03:52,102 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-07-17 13:03:52,106 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-07-17 13:03:52,111 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Potholio\Backend\src\Potholio.Web.Host
+INFO  2025-07-17 13:03:52,333 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host)'
+INFO  2025-07-17 13:03:52,405 [15   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Potholio.Web.Host.Controllers.HomeController (Potholio.Web.Host).
+INFO  2025-07-17 13:03:53,554 [15   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-07-17 13:03:53,571 [15   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host) in 1152.6728ms
+INFO  2025-07-17 13:03:53,573 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host)'
+INFO  2025-07-17 13:03:53,592 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-07-17 13:03:53,606 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 1600.4740ms
+INFO  2025-07-17 13:03:53,686 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 95.2626ms
+INFO  2025-07-17 13:03:53,860 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-07-17 13:03:53,867 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-07-17 13:03:53,876 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16519 application/javascript;+charset=utf-8 12.7619ms
+INFO  2025-07-17 13:03:53,920 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 52.6553ms
+INFO  2025-07-17 13:03:54,037 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-07-17 13:03:54,107 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-07-17 13:03:54,549 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
+INFO  2025-07-17 13:03:54,564 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Potholio.Web.Host.Controllers.AntiForgeryController (Potholio.Web.Host).
+INFO  2025-07-17 13:03:54,589 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 482.4353ms
+INFO  2025-07-17 13:03:55,335 [17   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-17 13:03:55,345 [17   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host) in 778.1016ms
+INFO  2025-07-17 13:03:55,347 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
+INFO  2025-07-17 13:03:55,352 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1312.8227ms
+INFO  2025-07-17 13:05:27,758 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Incident/Create - application/json 204
+INFO  2025-07-17 13:05:27,767 [17   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2025-07-17 13:05:27,777 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.CreateAsync (Potholio.Application)'
+INFO  2025-07-17 13:05:27,792 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "Incident"}. Executing controller action with signature System.Threading.Tasks.Task`1[Potholio.CrudAppServiceses.Reports.DTo.IncidentDto] CreateAsync(Potholio.CrudAppServiceses.Reports.DTo.IncidentDto) on controller Potholio.CrudAppServiceses.Reports.IncidentAppService (Potholio.Application).
+ERROR 2025-07-17 13:05:29,411 [17   ] oft.EntityFrameworkCore.Database.Command - Failed executing DbCommand (679ms) [Parameters=[@p0='?' (DbType = Int64), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int64), @p3='?' (DbType = Int64), @p4='?' (DbType = DateTime), @p5='?', @p6='?', @p7='?' (DbType = Boolean), @p8='?' (DbType = DateTime), @p9='?' (DbType = Int64), @p10='?' (DbType = Decimal), @p11='?' (DbType = Decimal), @p12='?' (DbType = Guid), @p13='?' (DbType = Int64), @p14='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Incidents" ("Id", "CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "Description", "ImageUrl", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Latitude", "Longitude", "MunicipalityId", "ReportingUserId", "Status")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);
+ERROR 2025-07-17 13:05:30,072 [17   ] Microsoft.EntityFrameworkCore.Update     - An exception occurred in the database while saving changes for context type 'Potholio.EntityFrameworkCore.PotholioDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42804: column "Id" is of type uuid but expression is of type bigint
+
+POSITION: 265
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42804
+    MessageText: column "Id" is of type uuid but expression is of type bigint
+    Hint: You will need to rewrite or cast the expression.
+    Position: 265
+    File: parse_target.c
+    Line: 586
+    Routine: transformAssignedExpr
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42804: column "Id" is of type uuid but expression is of type bigint
+
+POSITION: 265
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42804
+    MessageText: column "Id" is of type uuid but expression is of type bigint
+    Hint: You will need to rewrite or cast the expression.
+    Position: 265
+    File: parse_target.c
+    Line: 586
+    Routine: transformAssignedExpr
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+ERROR 2025-07-17 13:05:31,357 [17   ] Mvc.ExceptionHandling.AbpExceptionFilter - An error occurred while saving the entity changes. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 42804: column "Id" is of type uuid but expression is of type bigint
+
+POSITION: 265
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42804
+    MessageText: column "Id" is of type uuid but expression is of type bigint
+    Hint: You will need to rewrite or cast the expression.
+    Position: 265
+    File: parse_target.c
+    Line: 586
+    Routine: transformAssignedExpr
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Abp.EntityFrameworkCore.AbpDbContext.SaveChangesAsync(CancellationToken cancellationToken)
+   at Abp.Zero.EntityFrameworkCore.AbpZeroCommonDbContext`3.SaveChangesAsync(CancellationToken cancellationToken)
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChangesAsync()
+   at Abp.Application.Services.AsyncCrudAppService`8.CreateAsync(TCreateInput input)
+   at Abp.Authorization.AuthorizationInterceptor.InternalInterceptAsynchronous[TResult](IInvocation invocation)
+   at lambda_method1719(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-WARN  2025-07-17 12:07:51,258 [27   ] Mvc.ExceptionHandling.AbpExceptionFilter - There are 1 validation errors:
-WARN  2025-07-17 12:07:51,258 [27   ] Mvc.ExceptionHandling.AbpExceptionFilter - ',' is an invalid start of a property name. Expected a '"'. Path: $ | LineNumber: 4 | BytePositionInLine: 23. ($)
-INFO  2025-07-17 12:07:51,773 [27   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2025-07-17 12:07:51,778 [27   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application) in 1461.4609ms
-INFO  2025-07-17 12:07:51,781 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application)'
-INFO  2025-07-17 12:07:51,783 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 PUT https://localhost:44311/api/services/app/Incident/Update - 400 - application/json;+charset=utf-8 1492.8631ms
-INFO  2025-07-17 12:08:16,123 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 PUT https://localhost:44311/api/services/app/Incident/Update - application/json 284
-INFO  2025-07-17 12:08:16,126 [28   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
-INFO  2025-07-17 12:08:16,130 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application)'
-INFO  2025-07-17 12:08:16,135 [28   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Update", controller = "Incident"}. Executing controller action with signature System.Threading.Tasks.Task`1[Potholio.CrudAppServiceses.Reports.DTo.IncidentDto] UpdateAsync(Potholio.CrudAppServiceses.Reports.DTo.IncidentDto) on controller Potholio.CrudAppServiceses.Reports.IncidentAppService (Potholio.Application).
-WARN  2025-07-17 12:08:17,037 [28   ] Mvc.ExceptionHandling.AbpExceptionFilter - Method arguments are not valid! See ValidationErrors for details.
-Abp.Runtime.Validation.AbpValidationException: Method arguments are not valid! See ValidationErrors for details.
-   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.ThrowValidationError()
-   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.Validate()
-   at Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+INFO  2025-07-17 13:05:31,780 [17   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-17 13:05:31,786 [17   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Reports.IncidentAppService.CreateAsync (Potholio.Application) in 3991.4895ms
+INFO  2025-07-17 13:05:31,788 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.CreateAsync (Potholio.Application)'
+INFO  2025-07-17 13:05:31,792 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Incident/Create - 500 - application/json;+charset=utf-8 4034.5596ms
+INFO  2025-07-17 13:05:40,564 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Incident/Create - application/json 193
+INFO  2025-07-17 13:05:40,569 [17   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
+INFO  2025-07-17 13:05:40,577 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.CreateAsync (Potholio.Application)'
+INFO  2025-07-17 13:05:40,584 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Create", controller = "Incident"}. Executing controller action with signature System.Threading.Tasks.Task`1[Potholio.CrudAppServiceses.Reports.DTo.IncidentDto] CreateAsync(Potholio.CrudAppServiceses.Reports.DTo.IncidentDto) on controller Potholio.CrudAppServiceses.Reports.IncidentAppService (Potholio.Application).
+ERROR 2025-07-17 13:05:41,079 [17   ] oft.EntityFrameworkCore.Database.Command - Failed executing DbCommand (207ms) [Parameters=[@p0='?' (DbType = DateTime), @p1='?' (DbType = Int64), @p2='?' (DbType = Int64), @p3='?' (DbType = DateTime), @p4='?', @p5='?', @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTime), @p8='?' (DbType = Int64), @p9='?' (DbType = Decimal), @p10='?' (DbType = Decimal), @p11='?' (DbType = Guid), @p12='?' (DbType = Int64), @p13='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Incidents" ("CreationTime", "CreatorUserId", "DeleterUserId", "DeletionTime", "Description", "ImageUrl", "IsDeleted", "LastModificationTime", "LastModifierUserId", "Latitude", "Longitude", "MunicipalityId", "ReportingUserId", "Status")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13)
+RETURNING "Id";
+ERROR 2025-07-17 13:05:41,504 [17   ] Microsoft.EntityFrameworkCore.Update     - An exception occurred in the database while saving changes for context type 'Potholio.EntityFrameworkCore.PotholioDbContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "Id" of relation "Incidents" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "Id" of relation "Incidents" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Incidents
+    ColumnName: Id
+    File: execMain.c
+    Line: 2006
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "Id" of relation "Incidents" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "Id" of relation "Incidents" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Incidents
+    ColumnName: Id
+    File: execMain.c
+    Line: 2006
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+ERROR 2025-07-17 13:05:42,611 [26   ] Mvc.ExceptionHandling.AbpExceptionFilter - An error occurred while saving the entity changes. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Npgsql.PostgresException (0x80004005): 23502: null value in column "Id" of relation "Incidents" violates not-null constraint
+
+DETAIL: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Exception data:
+    Severity: ERROR
+    SqlState: 23502
+    MessageText: null value in column "Id" of relation "Incidents" violates not-null constraint
+    Detail: Detail redacted as it may contain sensitive data. Specify 'Include Error Detail' in the connection string to include this information.
+    SchemaName: public
+    TableName: Incidents
+    ColumnName: Id
+    File: execMain.c
+    Line: 2006
+    Routine: ExecConstraints
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Abp.EntityFrameworkCore.AbpDbContext.SaveChangesAsync(CancellationToken cancellationToken)
+   at Abp.Zero.EntityFrameworkCore.AbpZeroCommonDbContext`3.SaveChangesAsync(CancellationToken cancellationToken)
+   at Abp.EntityFrameworkCore.Uow.EfCoreUnitOfWork.SaveChangesAsync()
+   at Abp.Application.Services.AsyncCrudAppService`8.CreateAsync(TCreateInput input)
+   at Abp.Authorization.AuthorizationInterceptor.InternalInterceptAsynchronous[TResult](IInvocation invocation)
+   at lambda_method1719(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-WARN  2025-07-17 12:08:17,038 [28   ] Mvc.ExceptionHandling.AbpExceptionFilter - There are 1 validation errors:
-WARN  2025-07-17 12:08:17,038 [28   ] Mvc.ExceptionHandling.AbpExceptionFilter - ',' is an invalid start of a property name. Expected a '"'. Path: $ | LineNumber: 5 | BytePositionInLine: 23. ($)
-INFO  2025-07-17 12:08:17,040 [28   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2025-07-17 12:08:17,046 [28   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application) in 906.2458ms
-INFO  2025-07-17 12:08:17,049 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application)'
-INFO  2025-07-17 12:08:17,052 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 PUT https://localhost:44311/api/services/app/Incident/Update - 400 - application/json;+charset=utf-8 928.4567ms
-INFO  2025-07-17 12:08:20,033 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 PUT https://localhost:44311/api/services/app/Incident/Update - application/json 283
-INFO  2025-07-17 12:08:20,037 [28   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
-INFO  2025-07-17 12:08:20,042 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application)'
-INFO  2025-07-17 12:08:20,047 [28   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Update", controller = "Incident"}. Executing controller action with signature System.Threading.Tasks.Task`1[Potholio.CrudAppServiceses.Reports.DTo.IncidentDto] UpdateAsync(Potholio.CrudAppServiceses.Reports.DTo.IncidentDto) on controller Potholio.CrudAppServiceses.Reports.IncidentAppService (Potholio.Application).
-WARN  2025-07-17 12:08:20,847 [28   ] Mvc.ExceptionHandling.AbpExceptionFilter - Method arguments are not valid! See ValidationErrors for details.
-Abp.Runtime.Validation.AbpValidationException: Method arguments are not valid! See ValidationErrors for details.
-   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.ThrowValidationError()
-   at Abp.Runtime.Validation.Interception.MethodInvocationValidator.Validate()
-   at Abp.AspNetCore.Mvc.Validation.AbpValidationActionFilter.OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-WARN  2025-07-17 12:08:20,847 [28   ] Mvc.ExceptionHandling.AbpExceptionFilter - There are 1 validation errors:
-WARN  2025-07-17 12:08:20,847 [28   ] Mvc.ExceptionHandling.AbpExceptionFilter - The JSON value could not be converted to System.Guid. Path: $.municipalityId | LineNumber: 6 | BytePositionInLine: 57. ($.municipalityId)
-INFO  2025-07-17 12:08:20,850 [28   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2025-07-17 12:08:20,852 [28   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application) in 803.1764ms
-INFO  2025-07-17 12:08:20,853 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application)'
-INFO  2025-07-17 12:08:20,854 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 PUT https://localhost:44311/api/services/app/Incident/Update - 400 - application/json;+charset=utf-8 823.6179ms
-INFO  2025-07-17 12:08:37,071 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 PUT https://localhost:44311/api/services/app/Incident/Update - application/json 284
-INFO  2025-07-17 12:08:37,073 [27   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution successful.
-INFO  2025-07-17 12:08:37,079 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application)'
-INFO  2025-07-17 12:08:37,085 [27   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Update", controller = "Incident"}. Executing controller action with signature System.Threading.Tasks.Task`1[Potholio.CrudAppServiceses.Reports.DTo.IncidentDto] UpdateAsync(Potholio.CrudAppServiceses.Reports.DTo.IncidentDto) on controller Potholio.CrudAppServiceses.Reports.IncidentAppService (Potholio.Application).
-INFO  2025-07-17 12:08:39,392 [18   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
-INFO  2025-07-17 12:08:39,398 [18   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application) in 2309.7471ms
-INFO  2025-07-17 12:08:39,400 [18   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.UpdateAsync (Potholio.Application)'
-INFO  2025-07-17 12:08:39,405 [18   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 PUT https://localhost:44311/api/services/app/Incident/Update - 200 - application/json;+charset=utf-8 2331.0436ms
+INFO  2025-07-17 13:05:42,621 [26   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-17 13:05:42,624 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Reports.IncidentAppService.CreateAsync (Potholio.Application) in 2038.082ms
+INFO  2025-07-17 13:05:42,627 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Reports.IncidentAppService.CreateAsync (Potholio.Application)'
+INFO  2025-07-17 13:05:42,629 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Incident/Create - 500 - application/json;+charset=utf-8 2066.9833ms
