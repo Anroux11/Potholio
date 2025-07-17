@@ -9,9 +9,9 @@ namespace Potholio.Domain.Incidents
 {
     public class Incident : FullAuditedEntity<Guid>
     {
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public Status Status { get; set; }
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
         public virtual decimal Latitude { get; set; }
         public virtual decimal Longitude { get; set; }
 
