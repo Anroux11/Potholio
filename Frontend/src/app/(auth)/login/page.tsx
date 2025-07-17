@@ -43,11 +43,12 @@ const Login = () => {
       await userLogin(payload);
       setLoading(false);
       const user = sessionStorage.getItem("role") || "";
-      const _user = JSON.parse(user);
-      if (_user.role === "municipality" || _user.role === "admin") {
-        router.push("/municipality");
-      } else if (_user.role === "citizen") {
-        router.push("/citizen");
+      console.log(user);
+      // const _user = JSON.parse(user);
+      if (user === "Municipality") {
+        router.push("/municipality/dashboard");
+      } else if (user === "Citizen") {
+        router.push("/citizen/dashboard");
       }
     } catch (error) {
       setLoading(false);

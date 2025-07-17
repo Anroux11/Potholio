@@ -4,7 +4,7 @@ export interface IMunicipalityRegister {
   name: string;
   email: string;
   password: string;
-  role: string;
+  roleName: string;
   contactNumber: number;
   address: string;
 }
@@ -34,7 +34,7 @@ export const MunicipalityRegisterActionContext = createContext<
 export interface ICitizenRegister {
   emailAddress: string;
   password: string;
-  role: string;
+  roleName: string;
   userName: string;
   name: string;
   surname: string;

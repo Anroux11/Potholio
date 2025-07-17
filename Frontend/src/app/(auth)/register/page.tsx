@@ -33,7 +33,7 @@ import {
 type FieldType = {
   email: string;
   password: string;
-  role: string;
+  roleName: string;
   name: string;
   address: string;
   contactNumber: number;
@@ -71,7 +71,7 @@ const RegistrationForm = () => {
         const payload = {
           email: values.email,
           password: values.password,
-          role: "admin",
+          roleName: "Municipality",
           name: values.name,
           address: values.address,
           contactNumber: values.contactNumber,
@@ -90,7 +90,7 @@ const RegistrationForm = () => {
         const payload = {
           emailAddress: values.email,
           password: values.password,
-          role: "citizen",
+          roleName: "Citizen",
           userName: values.username,
           name: values.firstName,
           surname: values.lastName,

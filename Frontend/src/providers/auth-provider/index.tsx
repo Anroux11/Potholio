@@ -38,6 +38,7 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
 } from "./actions";
+import { AbpTokenProperies, decodeToken } from "@/utils/jwt";
 
 export const MunicipalityRegisterProvider = ({
   children,
@@ -52,11 +53,15 @@ export const MunicipalityRegisterProvider = ({
 
   const registerMunicipality = async (payload: IMunicipalityRegister) => {
     dispatch(getRegisterMunicipalityPending());
-    const endpoint = `/users/register`;
+    const endpoint = `/services/app/CitizenRegister/Register`;
     await instance
       .post(endpoint, payload)
       .then((response) => {
-        dispatch(getRegisterMunicipalitySuccess(response.data.result.accesstoken));
+        const token = response.data.result.accessToken;
+        const decoded = jwtDecode(token);
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("role", JSON.stringify(decoded));
+        dispatch(getRegisterMunicipalitySuccess(token));
       })
       .catch((error) => {
         console.error(error);
@@ -114,7 +119,11 @@ export const CitizenRegisterProvider = ({
     await instance
       .post(endpoint, payload)
       .then((response) => {
-        dispatch(getRegisterCitizenSuccess(response.data.result.accesstoken));
+        const token = response.data.result.accessToken;
+        const decoded = jwtDecode(token);
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("role", JSON.stringify(decoded));
+        dispatch(getRegisterCitizenSuccess(token));
       })
       .catch((error) => {
         console.error(error);
@@ -163,23 +172,28 @@ export const UserLoginProvider = ({
   const [state, dispatch] = useReducer(UserLoginReducer, INITIAL_STATE_USER);
   const instance = getAxiosInstance();
 
-  const userLogin = async (payload: IUserLogin) => {
-    dispatch(getUserLoginPending());
-    const endpoint = `/TokenAuth/Authenticate`;
-    await instance
-      .post(endpoint, payload)
-      .then((response) => {
-        const token = response.data.result.accessToken;
-        const decoded = jwtDecode(token);
-        sessionStorage.setItem("token", token);
-        sessionStorage.setItem("role", JSON.stringify(decoded));
-        dispatch(getUserLoginSuccess(token));
-      })
-      .catch((error) => {
-        console.error(error);
-        dispatch(getUserLoginError());
-      });
-  };
+
+ const userLogin = async (payload: IUserLogin) => {
+  dispatch(getUserLoginPending());
+  const endpoint = `/TokenAuth/Authenticate`;
+  await instance
+    .post(endpoint, payload)
+    .then((response) => {
+      const token = response.data.result.accessToken;
+      
+      const decoded = decodeToken(token);
+      const userRole = decoded[AbpTokenProperies.role];
+      
+      sessionStorage.setItem("token", token);
+      sessionStorage.setItem("role", userRole);
+      
+      dispatch(getUserLoginSuccess(token));
+    })
+    .catch((error) => {
+      console.error(error);
+      dispatch(getUserLoginError());
+    });
+};
 
   return (
     <UserLoginStateContext.Provider value={state}>
