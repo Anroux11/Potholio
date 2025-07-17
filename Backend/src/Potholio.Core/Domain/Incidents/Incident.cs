@@ -1,19 +1,26 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using Potholio.Authorization.Users;
-using Potholio.Domain.Geolocations;
 using Potholio.Domain.Municipalities;
+using Potholio.Enums;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Potholio.Domain.Incidents
 {
     public class Incident : FullAuditedEntity<Guid>
     {
-        public virtual string? Description { get; set; }
-        public virtual string Status { get; set; }
-        public virtual Geolocation Geolocation { get; set; }
-        public virtual string ImageURL { get; set; }
-        public virtual User User { get; set; }
-        public virtual Municipality Municipality { get; set; }
+        public string Description { get; set; }
+        public Status Status { get; set; }
+        public string ImageUrl { get; set; }
+        public virtual decimal Latitude { get; set; }
+        public virtual decimal Longitude { get; set; }
 
+        public long ReportingUserId { get; set; }
+        [ForeignKey("ReportingUserId")]
+        public User ReportingUser { get; set; }
+
+        public Guid MunicipalityId { get; set; }
+        [ForeignKey("MunicipalityId")]
+        public Municipality Municipality { get; set; }
     }
 }

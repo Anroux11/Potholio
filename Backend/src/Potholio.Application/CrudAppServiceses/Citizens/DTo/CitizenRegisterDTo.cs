@@ -27,12 +27,6 @@ namespace Potholio.CrudAppServiceses.Citizens.DTo
         [Required]
         [PasswordPropertyText]
         public string Password { get; set; }
-        //public Role? role { get; set; } = new Role
-        //{
-        //    Name = "Citizen",
-        //    DisplayName = "Citizen",
-        //    IsStatic = true,
-        //    IsDefault = true
-        //};
+        //public Role role { get; set; } 
     }
 }

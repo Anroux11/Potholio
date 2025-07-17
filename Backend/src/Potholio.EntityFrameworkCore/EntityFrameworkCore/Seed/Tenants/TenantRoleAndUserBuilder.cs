@@ -84,6 +84,8 @@ namespace Potholio.EntityFrameworkCore.Seed.Tenants
                 _context.UserRoles.Add(new UserRole(_tenantId, adminUser.Id, adminRole.Id));
                 _context.SaveChanges();
             }
+
+
         }
     }
 }
