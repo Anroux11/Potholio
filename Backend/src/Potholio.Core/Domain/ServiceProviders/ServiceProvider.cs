@@ -1,10 +1,12 @@
-﻿using Abp.Domain.Entities;
+﻿using Abp.AutoMapper;
+using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using Potholio.Domain.Addresses;
 using Potholio.Domain.Technicians;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Potholio.Domain.ServiceProviders
 {
@@ -22,6 +24,8 @@ namespace Potholio.Domain.ServiceProviders
         public virtual int ContactNumber { get; set; }
         public virtual Address Address { get; set; }
 
+        public virtual Guid TechnicianId { get; set; }
+        [ForeignKey("TechnicianId")]
         public virtual Technician Technician { get; set; }
     }
 }
