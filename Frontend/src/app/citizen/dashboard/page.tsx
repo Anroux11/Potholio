@@ -8,7 +8,7 @@ import {
   Input,
   message,
   Modal,
-  Select,
+  // Select,
   Space,
   Spin,
   Upload,
@@ -165,6 +165,20 @@ const CitizenDashboard: React.FC = () => {
   };
 
   const handleCreateIncident = () => {
+    const storedMunicipality = sessionStorage.getItem("municipality") || "";
+    const storedLatitude = sessionStorage.getItem("latitude") || "";
+    const storedLongitude = sessionStorage.getItem("longitude") || "";
+    const storedCity = sessionStorage.getItem("city") || "";
+    const storedProvince = sessionStorage.getItem("province") || "";
+
+    form.setFieldsValue({
+      municipalityId: storedMunicipality,
+      latitude: storedLatitude,
+      longitude: storedLongitude,
+      city: storedCity,
+      province: storedProvince,
+    });
+
     setFullReportModalVisible(true);
   };
 
@@ -317,57 +331,25 @@ const CitizenDashboard: React.FC = () => {
             </Upload>
           </Form.Item>
 
-          <Form.Item
-            name="latitude"
-            label="Latitude"
-            rules={[{ required: true, message: "Please enter latitude" }]}
-          >
-            <Input />
+          <Form.Item name="province" label="Province">
+            <Input readOnly value={province} />
           </Form.Item>
-          <Form.Item
-            name="longitude"
-            label="Longitude"
-            rules={[{ required: true, message: "Please enter longitude" }]}
-          >
-            <Input />
+
+          <Form.Item name="city" label="City">
+            <Input readOnly value={city} />
           </Form.Item>
 
           <Form.Item
-            name="name"
-            label="Service Provider"
+            name="municipalityId"
+            label="Municipality"
             rules={[
               {
                 required: true,
-                message: "Please Select Municipality",
+                message: "Municipality is required",
               },
             ]}
           >
-            <Select>
-              <Select.Option value="City of Johannesburg Metropolitan Municipality">
-                City of Johannesburg Metropolitan Municipality
-              </Select.Option>
-              <Select.Option value="eThekwini Metropolitan Municipality">
-                eThekwini Metropolitan Municipality
-              </Select.Option>
-              <Select.Option value="Mangaung Metropolitan Municipalityame">
-                Mangaung Metropolitan Municipality
-              </Select.Option>
-              <Select.Option value="Buffalo City Metropolitan Municipality">
-                Buffalo City Metropolitan Municipality
-              </Select.Option>
-              <Select.Option value="Capricorn District Municipality">
-                Capricorn District Municipality
-              </Select.Option>
-              <Select.Option value="City of Matlosana Local Municipality">
-                City of Matlosana Local Municipality
-              </Select.Option>
-              <Select.Option value="Frances Baard District Municipality">
-                Frances Baard District Municipality
-              </Select.Option>
-              <Select.Option value="City of Cape Town Metropolitan Municipality">
-                City of Cape Town Metropolitan Municipality
-              </Select.Option>
-            </Select>
+            <Input readOnly value={municipality} />
           </Form.Item>
 
           {/* <Form.Item label="Select">

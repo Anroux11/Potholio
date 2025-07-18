@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { useRouter, usePathname } from "next/navigation";
 import {
     MenuFoldOutlined,
@@ -24,6 +24,7 @@ const CitizenLayout = ({ children }: { children: React.ReactNode }) => {
 
     const [collapsed, setCollapsed] = useState(false);
     const [logoutModalVisible, setLogoutModalVisible] = useState(false);
+    
     const { styles } = useStyles();
     const router = useRouter();
     const pathname = usePathname();
