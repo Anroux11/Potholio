@@ -1,8 +1,10 @@
 import { createContext } from "react";
 
 export interface IMunicipalityRegister {
+  userName: string;
   name: string;
-  email: string;
+  surname: string;
+  emailAddress: string;
   password: string;
   roleName: string;
   contactNumber: number;

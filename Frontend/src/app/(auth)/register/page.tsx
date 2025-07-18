@@ -31,13 +31,14 @@ import {
 } from "@/providers/auth-provider";
 
 type FieldType = {
-  email: string;
+  emailAddress: string;
   password: string;
   roleName: string;
   name: string;
+  surname: string;
   address: string;
   contactNumber: number;
-  username: string;
+  userName: string;
   firstName: string;
   lastName: string;
 };
@@ -69,10 +70,12 @@ const RegistrationForm = () => {
     if (isMunicipality) {
       try {
         const payload = {
-          email: values.email,
+          emailAddress: values.emailAddress,
           password: values.password,
           roleName: "Municipality",
           name: values.name,
+          userName: values.userName,
+          surname: values.surname,
           address: values.address,
           contactNumber: values.contactNumber,
         };
@@ -88,10 +91,10 @@ const RegistrationForm = () => {
     } else if (isCitizen) {
       try {
         const payload = {
-          emailAddress: values.email,
+          emailAddress: values.emailAddress,
           password: values.password,
           roleName: "Citizen",
-          userName: values.username,
+          userName: values.userName,
           name: values.firstName,
           surname: values.lastName,
         };
@@ -214,7 +217,7 @@ const RegistrationForm = () => {
                   {isMunicipality && (
                     <div>
                       <Form.Item
-                        name="name"
+                        name="userName"
                         // className={styles.select}
                         rules={[
                           {
@@ -259,6 +262,40 @@ const RegistrationForm = () => {
                             City of Cape Town Metropolitan Municipality
                           </Select.Option>
                         </Select>
+                      </Form.Item>
+
+                      <Form.Item
+                        name="name"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your name",
+                          },
+                        ]}
+                      >
+                        <Input
+                          size="large"
+                          placeholder="Name"
+                          prefix={<UserOutlined />}
+                          className={styles.input}
+                        />
+                      </Form.Item>
+
+                      <Form.Item
+                        name="surname"
+                        rules={[
+                          {
+                            required: true,
+                            message: "Please input your surname",
+                          },
+                        ]}
+                      >
+                        <Input
+                          size="large"
+                          placeholder="SUrname"
+                          prefix={<UserOutlined />}
+                          className={styles.input}
+                        />
                       </Form.Item>
                     </div>
                   )}

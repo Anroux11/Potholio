@@ -10,6 +10,7 @@ import { Button, Divider, Flex, Form, FormProps, Input, Spin } from "antd/es";
 // import Link from "next/link";
 // import Flex from "antd/es/flex";
 import message from "antd/es/message";
+import "@ant-design/v5-patch-for-react-19";
 import Image from "next/image";
 import {
   EyeInvisibleOutlined,
