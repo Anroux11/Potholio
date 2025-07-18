@@ -35,7 +35,7 @@ export const IncidentProvider = ({
 
   const getIncidentList = async () => {
     dispatch(getIncidentListPending());
-    const endpoint = `incident/`;
+    const endpoint = `/services/app/incident/GetAll`;
     await instance
       .get(endpoint)
       .then((response) => {
@@ -57,7 +57,7 @@ export const IncidentProvider = ({
 
   const getIncident = async (id: string) => {
     dispatch(getIncidentPending());
-    const endpoint = `/api/incident${id}`;
+    const endpoint = `/services/incident${id}`;
     await instance
       .get(endpoint)
       .then((response) => {
