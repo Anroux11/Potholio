@@ -39,8 +39,6 @@ type FieldType = {
   address: string;
   contactNumber: number;
   userName: string;
-  firstName: string;
-  lastName: string;
 };
 
 const RegistrationForm = () => {
@@ -95,8 +93,8 @@ const RegistrationForm = () => {
           password: values.password,
           roleName: "Citizen",
           userName: values.userName,
-          name: values.firstName,
-          surname: values.lastName,
+          name: values.name,
+          surname: values.surname,
         };
         await registerCitizen(payload);
         message.success("Registered successfully!");
@@ -264,35 +262,36 @@ const RegistrationForm = () => {
                         </Select>
                       </Form.Item>
 
-                      <Form.Item
-                        name="name"
+                       <Form.Item
+                        name="userName"
                         rules={[
                           {
                             required: true,
-                            message: "Please input your name",
+                            message: "Please input your name!",
                           },
                         ]}
                       >
                         <Input
                           size="large"
-                          placeholder="Name"
+                          placeholder="Username"
                           prefix={<UserOutlined />}
                           className={styles.input}
                         />
                       </Form.Item>
 
-                      <Form.Item
+<Form.Item
                         name="surname"
                         rules={[
                           {
                             required: true,
-                            message: "Please input your surname",
+
+                            message: "Please input your surname!",
                           },
                         ]}
                       >
                         <Input
                           size="large"
-                          placeholder="SUrname"
+                          placeholder="surname"
                           prefix={<UserOutlined />}
                           className={styles.input}
                         />
@@ -304,7 +303,7 @@ const RegistrationForm = () => {
                     <div>
                       {/* <Form form={form} name="register" scrollToFirstError> */}
                       <Form.Item
-                        name="username"
+                        name="userName"
                         rules={[
                           {
                             required: true,
@@ -321,7 +320,7 @@ const RegistrationForm = () => {
                       </Form.Item>
 
                       <Form.Item
-                        name="firstName"
+                        name="name"
                         rules={[
                           {
                             required: true,
@@ -338,7 +337,7 @@ const RegistrationForm = () => {
                       </Form.Item>
 
                       <Form.Item
-                        name="lastName"
+                        name="surname"
                         rules={[
                           {
                             required: true,
