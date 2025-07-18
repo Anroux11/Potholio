@@ -7,8 +7,8 @@ export interface IMunicipalityRegister {
   emailAddress: string;
   password: string;
   roleName: string;
-  contactNumber: number;
-  address: string;
+  contactNumber?: number;
+  address?: string;
 }
 export interface IMunicipalityRegisterStateContext {
   isPending: boolean;
