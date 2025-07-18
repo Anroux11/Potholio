@@ -146,7 +146,7 @@ const RegistrationForm = () => {
                 >
                   <h1 className={styles.heading}>Register</h1>
                   <Form.Item
-                    name="email"
+                    name="emailAddress"
                     rules={[
                       {
                         type: "email",
