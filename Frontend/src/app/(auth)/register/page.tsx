@@ -215,7 +215,7 @@ const RegistrationForm = () => {
                   {isMunicipality && (
                     <div>
                       <Form.Item
-                        name="userName"
+                        name="name"
                         // className={styles.select}
                         rules={[
                           {
