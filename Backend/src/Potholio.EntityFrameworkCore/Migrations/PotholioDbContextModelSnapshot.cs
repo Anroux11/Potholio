@@ -1768,7 +1768,7 @@ namespace Potholio.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TechnicianId")
+                    b.Property<Guid>("TechnicianId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
@@ -2150,7 +2150,9 @@ namespace Potholio.Migrations
 
                     b.HasOne("Potholio.Domain.Technicians.Technician", "Technician")
                         .WithMany()
-                        .HasForeignKey("TechnicianId");
+                        .HasForeignKey("TechnicianId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
 

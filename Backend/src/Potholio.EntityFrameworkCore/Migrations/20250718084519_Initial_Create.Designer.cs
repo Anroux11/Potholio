@@ -12,8 +12,8 @@ using Potholio.EntityFrameworkCore;
 namespace Potholio.Migrations
 {
     [DbContext(typeof(PotholioDbContext))]
-    [Migration("20250717144747_Updated_municipalityTable")]
-    partial class Updated_municipalityTable
+    [Migration("20250718084519_Initial_Create")]
+    partial class Initial_Create
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1771,7 +1771,7 @@ namespace Potholio.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("TechnicianId")
+                    b.Property<Guid>("TechnicianId")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
@@ -2153,7 +2153,9 @@ namespace Potholio.Migrations
 
                     b.HasOne("Potholio.Domain.Technicians.Technician", "Technician")
                         .WithMany()
-                        .HasForeignKey("TechnicianId");
+                        .HasForeignKey("TechnicianId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
 
