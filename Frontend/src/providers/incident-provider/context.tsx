@@ -9,12 +9,13 @@ export interface IIncident {
   longitude: number;
   municipalityName?: string;
   reportingUserId?: number;
-  serviceproviderName?: string; 
+  serviceproviderName?: string;
 }
 export interface Address {
   province: string;
   city: string;
 }
+
 export interface IIncidentStateContext {
   isPending: boolean;
   isSuccess: boolean;

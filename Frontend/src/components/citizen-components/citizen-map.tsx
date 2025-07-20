@@ -1,62 +1,125 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-
-const pinIcon = new L.DivIcon({
-  html: `<div style="font-size: 32px;">📍</div>`,
-  className: '',
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32],
-});
-
-const UpdateMapView = ({ coords }: { coords: [number, number] }) => {
-  const map = useMap();
-  useEffect(() => {
-    map.setView(coords, 15);
-  }, [coords, map]);
-  return null;
-};
-
+import React, { useCallback, useRef, useState } from 'react';
+import {
+  GoogleMap,
+  Marker,
+  useJsApiLoader,
+  Autocomplete
+} from '@react-google-maps/api';
 
 interface CitizenMapProps {
   position: [number, number];
   onMarkerDragEnd: (coords: [number, number]) => void;
 }
 
-const CitizenMap: React.FC<CitizenMapProps> = ({ position, onMarkerDragEnd }) => {
-  const markerRef = useRef<L.Marker>(null);
+const containerStyle = {
+  width: '100%',
+  height: '60vh',
+  borderRadius: '8px',
+};
 
-  const handleDragEnd = () => {
-    const marker = markerRef.current;
-    if (marker) {
-      const latLng = marker.getLatLng();
-      onMarkerDragEnd([latLng.lat, latLng.lng]);
+const libraries: ('places')[] = ['places']; // Load Places API
+
+const CitizenMap: React.FC<CitizenMapProps> = ({ position, onMarkerDragEnd }) => {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: 'AIzaSyBmVsTFT9oJY_S9qe7yoLGHGicVd1-7jdo', // 🔐 Replace with your API key
+    libraries,
+  });
+
+  const mapRef = useRef<google.maps.Map | null>(null);
+  const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
+
+  const [searchBoxValue, setSearchBoxValue] = useState('');
+  const [markerPosition, setMarkerPosition] = useState<google.maps.LatLngLiteral>({
+    lat: position[0],
+    lng: position[1],
+    
+  });
+
+  const onLoad = useCallback((map: google.maps.Map) => {
+    mapRef.current = map;
+  }, []);
+
+  const onUnmount = useCallback(() => {
+    mapRef.current = null;
+  }, []);
+
+  const handleDragEnd = (e: google.maps.MapMouseEvent) => {
+    const lat = e.latLng?.lat();
+    const lng = e.latLng?.lng();
+    if (lat && lng) {
+      const coords: [number, number] = [lat, lng];
+      setMarkerPosition({ lat, lng });
+      onMarkerDragEnd(coords);
     }
   };
 
-  return (
-    <MapContainer
-      center={position}
-      zoom={15}
-      style={{ height: '60vh', width: '100%', borderRadius: '8px' }}
-    >
-      <TileLayer
-        attribution="&copy; OpenStreetMap contributors"
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <UpdateMapView coords={position} />
-      <Marker
-        position={position}
-        draggable={true}
-        icon={pinIcon}
-        eventHandlers={{ dragend: handleDragEnd }}
-        ref={markerRef}
-      />
-    </MapContainer>
+  const handlePlaceChanged = () => {
+    if (autocompleteRef.current !== null) {
+      const place = autocompleteRef.current.getPlace();
+      if (place.geometry && place.geometry.location) {
+        const lat = place.geometry.location.lat();
+        const lng = place.geometry.location.lng();
+        setMarkerPosition({ lat, lng });
+        onMarkerDragEnd([lat, lng]);
+        mapRef.current?.panTo({ lat, lng });
+      }
+    }
+  };
+
+  return isLoaded ? (
+    <div style={{ position: 'relative' }}>
+      <div style={{
+        position: 'absolute',
+        zIndex: 10,
+        top: 10,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '80%',
+        maxWidth: '500px'
+      }}>
+        <Autocomplete
+          onLoad={(autocomplete) => (autocompleteRef.current = autocomplete)}
+          onPlaceChanged={handlePlaceChanged}
+        >
+          <input
+            type="text"
+            placeholder="Search by landmark, building, or address..."
+            value={searchBoxValue}
+            onChange={(e) => setSearchBoxValue(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '10px',
+              fontSize: '16px',
+              borderRadius: '4px',
+              border: '1px solid #ccc',
+            }}
+          />
+        </Autocomplete>
+      </div>
+
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={markerPosition}
+        zoom={15}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+      >
+        <Marker
+          position={markerPosition}
+          draggable={true}
+          onDragEnd={handleDragEnd}
+          icon={{
+            url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+            scaledSize: new window.google.maps.Size(32, 32),
+          }}
+        />
+      </GoogleMap>
+    </div>
+  ) : (
+    <div>Loading Map...</div>
   );
 };
 
