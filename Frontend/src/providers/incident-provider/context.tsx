@@ -1,13 +1,15 @@
 import { createContext } from "react";
 export interface IIncident {
-  id: string;
-  description: string;
+  id?: string;
+  description?: string;
   status: string;
   imageUrl?: string;
-  incidentAddress: Address[];
+  incidentAddress?: Address;
   latitude: number;
   longitude: number;
-  municipalityName: string;
+  municipalityName?: string;
+  reportingUserId?: number;
+  serviceproviderName?: string; 
 }
 export interface Address {
   province: string;

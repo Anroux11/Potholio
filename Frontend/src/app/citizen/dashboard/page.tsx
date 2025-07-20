@@ -13,18 +13,22 @@ import {
   Spin,
   Upload,
 } from "antd/es";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { PlusOutlined } from "@ant-design/icons";
+import {  useIncidentActions } from "@/providers/incident-provider";
+import { Address, IIncident } from "@/providers/incident-provider/context";
 
 type FullReport = {
   // key: string;
-  description: string;
+  description?: string;
   status: string;
-  imageUrl: string;
-  latitude: string;
-  longitude: string;
-  municipalityId: string;
+  imageUrl?: string;
+  address?: Address;
+  latitude: number;
+  longitude: number;
+  reportingUserId: number;
+  municipalityName: string;
 };
 
 const CitizenMap = dynamic(
@@ -35,7 +39,7 @@ const CitizenMap = dynamic(
 );
 
 const CitizenDashboard: React.FC = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [position, setPosition] = useState<[number, number] | null>(null);
   const [searchValue, setSearchValue] = useState("");
   const [address, setAddress] = useState("");
@@ -45,6 +49,8 @@ const CitizenDashboard: React.FC = () => {
   const [quickReportModalVisible, setQuickReportModalVisible] = useState(false);
   const [fullReportModalVisible, setFullReportModalVisible] = useState(false);
 
+  const { createIncident } = useIncidentActions();
+
   const [form] = Form.useForm();
 
   const [fullReport, setFullReport] = useState<FullReport[]>([
@@ -52,17 +58,19 @@ const CitizenDashboard: React.FC = () => {
       description: "Pothole on main reef road",
       status: "Submitted",
       imageUrl: "",
-      latitude: "-26.027636",
-      longitude: "28.071350",
-      municipalityId: "Johannesburg Municipality",
+      latitude: -26.027636,
+      longitude: 28.071350,
+      reportingUserId: 3,
+      municipalityName: "Johannesburg Municipality",
     },
     {
       description: "Pothole on main reef road",
       status: "Submitted",
       imageUrl: "",
-      latitude: "-26.027636",
-      longitude: "28.071350",
-      municipalityId: "Johannesburg Municipality",
+      latitude: -26.027636,
+      longitude: 28.071350,
+      reportingUserId: 4,
+      municipalityName: "Johannesburg Municipality",
     },
   ]);
 
@@ -74,7 +82,8 @@ const CitizenDashboard: React.FC = () => {
         imageUrl: values.imageUrl,
         latitude: values.latitude,
         longitude: values.longitude,
-        municipalityId: values.municipalityId,
+        reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
+        municipalityName: values.municipalityId,
       };
       setFullReport([...fullReport, newFull]);
       setFullReportModalVisible(false);
@@ -103,8 +112,19 @@ const CitizenDashboard: React.FC = () => {
   }, []);
 
   const confirmQuickReport = () => {
+    const payload: IIncident = {
+      description: "Quick Report",
+      status: "Submitted",
+      // imageUrl: "",
+      latitude: position ? position[0] : 0,
+      longitude: position ? position[1] : 0,
+      incidentAddress: {city: city, province: province},
+      reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
+      municipalityName: sessionStorage.getItem("municipality") || "",
+    }
+    createIncident(payload);
     setQuickReportModalVisible(false);
-    router.push("/citizen/report");
+    // router.push("/citizen/report");
   };
 
   const reverseGeocode = async (lat: number, lon: number) => {
