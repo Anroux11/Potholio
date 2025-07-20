@@ -13,10 +13,10 @@ import {
   Spin,
   Upload,
 } from "antd/es";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { PlusOutlined } from "@ant-design/icons";
-import { useIncidentState, useIncidentActions } from "@/providers/incident-provider";
+import {  useIncidentActions } from "@/providers/incident-provider";
 import { Address, IIncident } from "@/providers/incident-provider/context";
 
 type FullReport = {
@@ -27,7 +27,7 @@ type FullReport = {
   address?: Address;
   latitude: number;
   longitude: number;
-  reportingUserId: Number;
+  reportingUserId: number;
   municipalityName: string;
 };
 
@@ -39,7 +39,7 @@ const CitizenMap = dynamic(
 );
 
 const CitizenDashboard: React.FC = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [position, setPosition] = useState<[number, number] | null>(null);
   const [searchValue, setSearchValue] = useState("");
   const [address, setAddress] = useState("");
