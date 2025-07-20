@@ -35,7 +35,7 @@ export const IncidentProvider = ({
 
   const getIncidentList = async () => {
     dispatch(getIncidentListPending());
-    const endpoint = `/services/app/incident/GetAll`;
+    const endpoint = `/services/app/Incident/GetAll`;
     await instance
       .get(endpoint)
       .then((response) => {
@@ -45,10 +45,8 @@ export const IncidentProvider = ({
           imageUrl: incident.imageUrl ?? "",
           latitude: incident.latitude ?? "",
           longitude: incident.longitude ?? "",
-          city: incident.city ?? "",
-          province: incident.province ?? "",
-          municipality: incident.municipality ?? "",
-          //   reportingUser: ;
+          incidentAddress: incident.incidentAddress ?? "",
+          municipalityName: incident.municipalityName ?? "",
         }));
         dispatch(getIncidentListSuccess(filteredData));
         console.log("incident list", filteredData);
@@ -75,7 +73,7 @@ export const IncidentProvider = ({
 
   const createIncident = async (incident: IIncident) => {
     dispatch(createIncidentPending());
-    const endpoint = `incident`;
+    const endpoint = `/services/app/Incident/Create`;
     await instance
       .post(endpoint, incident)
       .then((response) => {

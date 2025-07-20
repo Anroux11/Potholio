@@ -35,16 +35,15 @@ export const MunicipalityProvider = ({
 
   const getMunicipalityList = async () => {
       dispatch(getMunicipalityListPending());
-      const endpoint = `municipality/`;
+      const endpoint = `/services/app/Municipality/GetAll`;
       await instance
         .get(endpoint)
         .then((response) => {
           const filteredData = response.data.data.map((municipality: IMunicipality) => ({
             name: municipality.name ?? "",
-            email: municipality.email ?? "",
-            contactNumber: municipality.contactNumber ?? "",
-            address: municipality.address ?? "",
-            //   reportingUser: ;
+            buildingAddress: municipality.buildingAddress ?? "",
+            latitude: municipality.latitude ?? "",
+            longitude: municipality.longitude ?? "",
           }));
           dispatch(getMunicipalityListSuccess(filteredData));
           console.log("food items", filteredData);

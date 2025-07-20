@@ -53,7 +53,7 @@ export const MunicipalityRegisterProvider = ({
 
   const registerMunicipality = async (payload: IMunicipalityRegister) => {
     dispatch(getRegisterMunicipalityPending());
-    const endpoint = `/services/app/CitizenRegister/Register`;
+    const endpoint = `/services/app/Register/Register`;
     await instance
       .post(endpoint, payload)
       .then((response) => {
@@ -115,7 +115,7 @@ export const CitizenRegisterProvider = ({
 
   const registerCitizen = async (payload: ICitizenRegister) => {
     dispatch(getRegisterCitizenPending());
-    const endpoint = `/services/app/CitizenRegister/Register`;
+    const endpoint = `/services/app/Register/Register`;
     await instance
       .post(endpoint, payload)
       .then((response) => {

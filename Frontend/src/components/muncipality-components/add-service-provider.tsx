@@ -23,11 +23,12 @@ const CreateServiceProvider: React.FC = () => {
   type FieldType = {
     id: string;
     name: string;
-    email: string;
-    address: string;
-    contactNumber: number;
+    emailAddress: string;
+    buildingAddress: [];
     password: string;
-    role: string;
+    latitude: string;
+    longitude: string;
+    municipalityId: string;
   };
 
   const handleCreate: FormProps<FieldType>["onFinish"] = async (values) => {
@@ -36,11 +37,13 @@ const CreateServiceProvider: React.FC = () => {
       const payload = {
         id: values.id,
         name: values.name,
-        email: values.email,
-        address: values.address,
-        contactNumber: values.contactNumber,
+        emailAddress: values.emailAddress,
+        buildingAddress: values.buildingAddress,
         password: values.password,
-        role: values.role,
+        latitude: values.latitude,
+        longitude: values.longitude,
+        municipalityId: values.municipalityId,
+
       };
 
       await createServiceProvider(payload);

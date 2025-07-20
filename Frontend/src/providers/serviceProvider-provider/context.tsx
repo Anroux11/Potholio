@@ -2,11 +2,16 @@ import { createContext } from "react";
 export interface IServiceProvider {
     id: string;
     name: string;
-    email: string;
-    address: string;
-    contactNumber: number;
+    emailAddress: string;
+    buildingAddress: Address[];
     password: string;
-    role: string;
+    latitude: string;
+    longitude: string;
+    municipalityId: string //might chnge
+}
+export interface Address {
+    province: string;
+    city: string;
 }
 
 export interface IServiceProviderStateContext {
