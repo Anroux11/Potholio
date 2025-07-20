@@ -4,20 +4,15 @@ export interface IIncident {
     description: string;
     status?: string;
     imageUrl?: string;
+    incidentAddress: Address[];
     latitude: number;
     longitude: number
-    city?: string;
-    province?: string;
-    municipality?: string;
-  // geolocation: IGeolocation;
-//   reportingUser: ;
+    municipalityName: string;
 }
-
-// export interface IGeolocation {
-//     latitude: number;
-//     longitude: number;
-// }
-
+export interface Address {
+  province: string;
+  city: string;
+}
 export interface IIncidentStateContext {
   isPending: boolean;
   isSuccess: boolean;
