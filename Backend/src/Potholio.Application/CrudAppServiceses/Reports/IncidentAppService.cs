@@ -4,6 +4,7 @@ using Abp.Domain.Repositories;
 using Potholio.CrudAppServiceses.Reports.DTo;
 using Potholio.Domain.Incidents;
 using Potholio.Domain.Municipalities;
+using Potholio.Domain.ServiceProviders;
 using System;
 using System.Threading.Tasks;
 
@@ -15,11 +16,14 @@ namespace Potholio.CrudAppServiceses.Reports
     {
         private readonly IRepository<Incident, Guid> _incidentRepository;
         private readonly IRepository<Municipality, Guid> _municipalityRepository;
+        private readonly IRepository<ServiceProvider, Guid> _serviceProviderRepository;
 
-        public IncidentAppService(IRepository<Incident, Guid> incidentRepository)
+        public IncidentAppService(IRepository<Incident, Guid> incidentRepository, IRepository<Municipality, Guid> municipality, IRepository<ServiceProvider, Guid> serviceProvider)
             : base(incidentRepository)
         {
             _incidentRepository = incidentRepository;
+            _municipalityRepository = municipality;
+            _serviceProviderRepository = serviceProvider;
         }
 
         public async Task<Guid> GetMunicipalityIdByNameAsync(string name)
@@ -35,6 +39,32 @@ namespace Potholio.CrudAppServiceses.Reports
             }
 
             return municipality.Id;
+        }
+
+        public async Task<Guid> GetServiceProviderIdByNameAsync(string name)
+        {
+            var serviceprovider = await _serviceProviderRepository.FirstOrDefaultAsync(
+                m => m.Name.ToLower() == name.ToLower()
+            );
+
+            if (serviceprovider == null)
+            {
+                Logger.Error($"Service provider with name '{name}' not found.");
+                throw new Exception("Service provider not found");
+            }
+
+            return serviceprovider.Id;
+        }
+
+        public override async Task<IncidentDto> CreateAsync(IncidentDto input)
+        {
+            var municipalityId = await GetMunicipalityIdByNameAsync(input.MunicipalityName);
+            input.MunicipalityId = municipalityId;
+
+            var serviceproviderId = await GetServiceProviderIdByNameAsync(input.ServiceProviderName);
+            input.ServiceProviderId = serviceproviderId;
+
+            return await base.CreateAsync(input);
         }
     }
 }

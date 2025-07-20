@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 namespace Potholio.CrudAppServiceses.Citizens
 {
     [AbpAllowAnonymous]
-    public class CitizenRegisterAppService : ApplicationService
+    public class RegisterAppService : ApplicationService
     {
         private readonly UserManager _userManager;
 
-        public CitizenRegisterAppService(UserManager userManager)
+        public RegisterAppService(UserManager userManager)
         {
             _userManager = userManager;
         }
 
-        public async Task RegisterAsync(CitizenRegisterDto input)
+        public async Task RegisterAsync(RegisterDTo input)
         {
             var user = ObjectMapper.Map<User>(input);
             user.IsActive = true;
