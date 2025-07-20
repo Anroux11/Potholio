@@ -4,9 +4,14 @@ import "./globals.css";
 import AntdApp from "antd/es/app";
 import { theme } from "antd/es";
 import ConfigProvider from "antd/es/config-provider";
-import { CitizenRegisterProvider, UserLoginProvider } from "@/providers/auth-provider";
-import { MunicipalityRegisterProvider} from "@/providers/auth-provider"
+import {
+  CitizenRegisterProvider,
+  UserLoginProvider,
+} from "@/providers/auth-provider";
+import { MunicipalityRegisterProvider } from "@/providers/auth-provider";
 import { ServiceProviderProvider } from "@/providers/serviceProvider-provider";
+import { IncidentProvider } from "@/providers/incident-provider";
+import { TechnicianProvider } from "@/providers/technition-providers";
 
 export default function RootLayout({
   children,
@@ -34,19 +39,21 @@ export default function RootLayout({
         }}
       >
         <body
-          // style={{ display: "inline-flex", width: "100vw", height: "100vh" }}
+        // style={{ display: "inline-flex", width: "100vw", height: "100vh" }}
         >
-        <ServiceProviderProvider>
-        <MunicipalityRegisterProvider>
-        <CitizenRegisterProvider>
-          <UserLoginProvider>
-            <AntdApp>
-              {children}
-            </AntdApp>
-          </UserLoginProvider>
-          </CitizenRegisterProvider>
-        </ MunicipalityRegisterProvider>
-        </ServiceProviderProvider>
+          <TechnicianProvider>
+            <IncidentProvider>
+              <ServiceProviderProvider>
+                <MunicipalityRegisterProvider>
+                  <CitizenRegisterProvider>
+                    <UserLoginProvider>
+                      <AntdApp>{children}</AntdApp>
+                    </UserLoginProvider>
+                  </CitizenRegisterProvider>
+                </MunicipalityRegisterProvider>
+              </ServiceProviderProvider>
+            </IncidentProvider>
+          </TechnicianProvider>
         </body>
       </ConfigProvider>
     </html>

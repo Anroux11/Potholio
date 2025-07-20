@@ -1,17 +1,22 @@
 import { createContext } from "react";
 export interface IIncident {
   id?: string;
-  description: string;
-  status: string;
-  imageUrl: string;
-  geolocation: IGeolocation;
+    description: string;
+    status?: string;
+    imageUrl?: string;
+    latitude: number;
+    longitude: number
+    city?: string;
+    province?: string;
+    municipality?: string;
+  // geolocation: IGeolocation;
 //   reportingUser: ;
 }
 
-export interface IGeolocation {
-    latitude: number;
-    longitude: number;
-}
+// export interface IGeolocation {
+//     latitude: number;
+//     longitude: number;
+// }
 
 export interface IIncidentStateContext {
   isPending: boolean;
