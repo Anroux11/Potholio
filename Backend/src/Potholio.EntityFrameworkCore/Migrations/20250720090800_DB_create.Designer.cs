@@ -12,8 +12,8 @@ using Potholio.EntityFrameworkCore;
 namespace Potholio.Migrations
 {
     [DbContext(typeof(PotholioDbContext))]
-    [Migration("20250718084519_Initial_Create")]
-    partial class Initial_Create
+    [Migration("20250720090800_DB_create")]
+    partial class DB_create
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1627,6 +1627,9 @@ namespace Potholio.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("AddressId")
+                        .HasColumnType("uuid");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -1666,14 +1669,21 @@ namespace Potholio.Migrations
                     b.Property<long>("ReportingUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
+                    b.Property<Guid?>("ServiceProviderId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AddressId");
 
                     b.HasIndex("MunicipalityId");
 
                     b.HasIndex("ReportingUserId");
+
+                    b.HasIndex("ServiceProviderId");
 
                     b.ToTable("Incidents");
                 });
@@ -1687,9 +1697,6 @@ namespace Potholio.Migrations
                     b.Property<Guid?>("AddressId")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("ContactNumber")
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -1702,9 +1709,6 @@ namespace Potholio.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("EmailAdress")
-                        .HasColumnType("text");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
@@ -1714,17 +1718,18 @@ namespace Potholio.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<decimal>("Latitude")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Longitude")
+                        .HasColumnType("numeric");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
-
-                    b.Property<Guid>("ServiceProviderId")
-                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
-
-                    b.HasIndex("ServiceProviderId");
 
                     b.ToTable("Municipalities");
                 });
@@ -1737,9 +1742,6 @@ namespace Potholio.Migrations
 
                     b.Property<Guid?>("AddressId")
                         .HasColumnType("uuid");
-
-                    b.Property<int>("ContactNumber")
-                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
@@ -1765,20 +1767,26 @@ namespace Potholio.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<decimal>("Latitude")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Longitude")
+                        .HasColumnType("numeric");
+
+                    b.Property<Guid>("MunicipalityId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("TechnicianId")
-                        .HasColumnType("uuid");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
 
-                    b.HasIndex("TechnicianId");
+                    b.HasIndex("MunicipalityId");
 
                     b.ToTable("ServiceProviders");
                 });
@@ -1822,7 +1830,12 @@ namespace Potholio.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("text");
 
+                    b.Property<Guid>("ServiceProviderId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ServiceProviderId");
 
                     b.ToTable("Technicians");
                 });
@@ -2111,6 +2124,10 @@ namespace Potholio.Migrations
 
             modelBuilder.Entity("Potholio.Domain.Incidents.Incident", b =>
                 {
+                    b.HasOne("Potholio.Domain.Addresses.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
                     b.HasOne("Potholio.Domain.Municipalities.Municipality", "Municipality")
                         .WithMany()
                         .HasForeignKey("MunicipalityId")
@@ -2123,9 +2140,17 @@ namespace Potholio.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Potholio.Domain.ServiceProviders.ServiceProvider", "serviceProvider")
+                        .WithMany()
+                        .HasForeignKey("ServiceProviderId");
+
+                    b.Navigation("Address");
+
                     b.Navigation("Municipality");
 
                     b.Navigation("ReportingUser");
+
+                    b.Navigation("serviceProvider");
                 });
 
             modelBuilder.Entity("Potholio.Domain.Municipalities.Municipality", b =>
@@ -2134,15 +2159,7 @@ namespace Potholio.Migrations
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("Potholio.Domain.ServiceProviders.ServiceProvider", "ServiceProvider")
-                        .WithMany()
-                        .HasForeignKey("ServiceProviderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Address");
-
-                    b.Navigation("ServiceProvider");
                 });
 
             modelBuilder.Entity("Potholio.Domain.ServiceProviders.ServiceProvider", b =>
@@ -2151,15 +2168,26 @@ namespace Potholio.Migrations
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("Potholio.Domain.Technicians.Technician", "Technician")
+                    b.HasOne("Potholio.Domain.Municipalities.Municipality", "Municipality")
                         .WithMany()
-                        .HasForeignKey("TechnicianId")
+                        .HasForeignKey("MunicipalityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Address");
 
-                    b.Navigation("Technician");
+                    b.Navigation("Municipality");
+                });
+
+            modelBuilder.Entity("Potholio.Domain.Technicians.Technician", b =>
+                {
+                    b.HasOne("Potholio.Domain.ServiceProviders.ServiceProvider", "ServiceProvider")
+                        .WithMany()
+                        .HasForeignKey("ServiceProviderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ServiceProvider");
                 });
 
             modelBuilder.Entity("Potholio.MultiTenancy.Tenant", b =>

@@ -1,11 +1,9 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using Potholio.Domain.ServiceProviders;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Potholio.Domain.Technicians
 {
@@ -21,5 +19,10 @@ namespace Potholio.Domain.Technicians
 
         [Phone]
         public virtual int ContactNumber { get; set; }
+
+        // connect service provider
+        public Guid ServiceProviderId { get; set; }
+        [ForeignKey("ServiceProviderId")]
+        public virtual ServiceProvider ServiceProvider { get; set; }
     }
 }

@@ -12,15 +12,10 @@ namespace Potholio.CrudAppServiceses.MunicipalityAdmin.Dto
     public class MunicipalityDto : EntityDto<Guid>
     {
         public string Name { get; set; }
-        [Phone]
-        public string ContactNumber { get; set; }
+
         public Address Address { get; set; }
-        public Guid ServiceProviderId { get; set; }
 
-        [EmailAddress]
-        public string Email { get; set; }
-
-        [PasswordPropertyText]
-        public string Password { get; set; }
+        public virtual decimal Latitude { get; set; }
+        public virtual decimal Longitude { get; set; }
     }
 }

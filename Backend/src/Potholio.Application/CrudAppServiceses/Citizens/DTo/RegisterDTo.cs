@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Potholio.CrudAppServiceses.Citizens.DTo
 {
     [AutoMap(typeof(User))]
-    public class CitizenRegisterDto
+    public class RegisterDTo
     {
         [Required]
         public string UserName { get; set; }

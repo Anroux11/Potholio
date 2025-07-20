@@ -23,9 +23,12 @@ namespace Potholio.CrudAppServiceses.ServiceProviders.Dto
         [PasswordPropertyText]
         public string Password { get; set; }
 
-        [Phone]
-        public string ContactNumber { get; set; }
         public Address Address { get; set; }
-        public Guid TechnicianId { get; set; }
+
+        public virtual decimal Latitude { get; set; }
+        public virtual decimal Longitude { get; set; }
+
+        public Guid MunicipalityId { get; set; }
+        public string MunicipalityName { get; set; }
     }
 }

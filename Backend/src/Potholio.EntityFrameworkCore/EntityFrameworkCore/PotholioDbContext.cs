@@ -34,8 +34,8 @@ namespace Potholio.EntityFrameworkCore
             base.OnModelCreating(modelBuilder);
 
             var dateTimeConverter = new ValueConverter<DateTime, DateTime>(
-                v => v.ToUniversalTime(),           // Convert to UTC when saving
-                v => DateTime.SpecifyKind(v, DateTimeKind.Utc)); // Specify UTC kind when reading
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {

@@ -2,6 +2,7 @@
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using Potholio.Domain.Addresses;
+using Potholio.Domain.Municipalities;
 using Potholio.Domain.Technicians;
 using System;
 using System.ComponentModel;
@@ -20,12 +21,14 @@ namespace Potholio.Domain.ServiceProviders
         [PasswordPropertyText]
         public virtual string Password { get; set; }
 
-        [Phone]
-        public virtual int ContactNumber { get; set; }
         public virtual Address Address { get; set; }
 
-        public virtual Guid TechnicianId { get; set; }
-        [ForeignKey("TechnicianId")]
-        public virtual Technician Technician { get; set; }
+        public virtual decimal Latitude { get; set; }
+        public virtual decimal Longitude { get; set; }
+
+        public Guid MunicipalityId { get; set; }
+        [ForeignKey("MunicipalityId")]
+        public virtual Municipality Municipality { get; set; }
+
     }
 }
