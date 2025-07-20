@@ -53,7 +53,7 @@ export const MunicipalityRegisterProvider = ({
 
   const registerMunicipality = async (payload: IMunicipalityRegister) => {
     dispatch(getRegisterMunicipalityPending());
-    const endpoint = `/services/app/CitizenRegister/Register`;
+    const endpoint = `/services/app/Register/Register`;
     await instance
       .post(endpoint, payload)
       .then((response) => {
@@ -115,7 +115,7 @@ export const CitizenRegisterProvider = ({
 
   const registerCitizen = async (payload: ICitizenRegister) => {
     dispatch(getRegisterCitizenPending());
-    const endpoint = `/services/app/CitizenRegister/Register`;
+    const endpoint = `/services/app/Register/Register`;
     await instance
       .post(endpoint, payload)
       .then((response) => {
@@ -180,12 +180,14 @@ export const UserLoginProvider = ({
     .post(endpoint, payload)
     .then((response) => {
       const token = response.data.result.accessToken;
-      
+      console.log("Token:", response.data.result);
       const decoded = decodeToken(token);
       const userRole = decoded[AbpTokenProperies.role];
+      const userId = decoded[AbpTokenProperies.nameidentifier];
       
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("role", userRole);
+      sessionStorage.setItem("userId", userId);
       
       dispatch(getUserLoginSuccess(token));
     })

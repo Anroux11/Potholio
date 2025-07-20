@@ -11,7 +11,7 @@ import {
 import { MunicipalityRegisterProvider } from "@/providers/auth-provider";
 import { ServiceProviderProvider } from "@/providers/serviceProvider-provider";
 import { IncidentProvider } from "@/providers/incident-provider";
-import { TechnicianProvider } from "@/providers/technition-providers";
+import { TechnicianProvider } from "@/providers/technician-providers";
 
 export default function RootLayout({
   children,

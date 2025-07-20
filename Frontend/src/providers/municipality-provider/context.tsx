@@ -2,13 +2,14 @@ import { createContext } from "react";
 export interface IMunicipality {
   id: string;
   name: string;
-  email: string;
-  contactNumber: number;
-  address: string;
-  role: string
-  activeState: boolean;
+  buildingAddress: Address[];
+  latitude: string;
+  longitude: string;
 }
-
+export interface Address {
+  province: string;
+  city: string;
+}
 export interface IMunicipalityStateContext {
   isPending: boolean; 
   isSuccess: boolean; 
