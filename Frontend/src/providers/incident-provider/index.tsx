@@ -43,7 +43,11 @@ export const IncidentProvider = ({
           description: incident.description ?? "",
           status: incident.status ?? "",
           imageUrl: incident.imageUrl ?? "",
-          geolocation: incident.geolocation ?? "",
+          latitude: incident.latitude ?? "",
+          longitude: incident.longitude ?? "",
+          city: incident.city ?? "",
+          province: incident.province ?? "",
+          municipality: incident.municipality ?? "",
           //   reportingUser: ;
         }));
         dispatch(getIncidentListSuccess(filteredData));
