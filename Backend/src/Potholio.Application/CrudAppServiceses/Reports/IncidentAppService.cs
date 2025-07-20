@@ -66,5 +66,16 @@ namespace Potholio.CrudAppServiceses.Reports
 
             return await base.CreateAsync(input);
         }
+
+        public override async Task<IncidentDto> UpdateAsync(IncidentDto input)
+        {
+            var municipalityId = await GetMunicipalityIdByNameAsync(input.MunicipalityName);
+            input.MunicipalityId = municipalityId;
+
+            var serviceproviderId = await GetServiceProviderIdByNameAsync(input.ServiceProviderName);
+            input.ServiceProviderId = serviceproviderId;
+
+            return await base.UpdateAsync(input);
+        }
     }
 }

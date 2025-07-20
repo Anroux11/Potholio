@@ -73,7 +73,7 @@ export const IncidentProvider = ({
 
   const createIncident = async (incident: IIncident) => {
     dispatch(createIncidentPending());
-    const endpoint = `/services/app/Incident/Create`;
+    const endpoint = `services/app/Incident/Create`;
     await instance
       .post(endpoint, incident)
       .then((response) => {
