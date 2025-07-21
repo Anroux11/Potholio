@@ -32,7 +32,7 @@ import {
   buttonStyles,
   modalStyles,
 } from './style/styles';
-import { Address, IIncident } from '@/providers/incident-provider/context';
+import { IIncident } from '@/providers/incident-provider/context';
 import {  useIncidentActions } from "@/providers/incident-provider";
  
 const { Text } = Typography;
@@ -40,18 +40,6 @@ const { Text } = Typography;
 const CitizenMap = dynamic(() => import('@/components/citizen-components/citizen-map'), {
   ssr: false,
 });
- 
-type FullReport = {
-  // key: string;
-  description?: string;
-  status: string;
-  imageUrl?: string;
-  address?: Address;
-  latitude: number;
-  longitude: number;
-  reportingUserId: number;
-  municipalityName: string;
-};
  
 const CitizenDashboard: React.FC = () => {
   const router = useRouter();
@@ -63,7 +51,7 @@ const CitizenDashboard: React.FC = () => {
   const [municipality, setMunicipality] = useState('');
   const [quickReportModalVisible, setQuickReportModalVisible] = useState(false);
   const [fullReportModalVisible, setFullReportModalVisible] = useState(false);
-  const [fullReport, setFullReport] = useState<FullReport[]>([]);
+  const [fullReport, setFullReport] = useState<IIncident[]>([]);
   const { createIncident } = useIncidentActions();
  
   useEffect(() => {
@@ -172,19 +160,24 @@ const confirmQuickReport = () => {
  
   const handleAddFullReport = () => {
     form.validateFields().then((values) => {
-      const newReport: FullReport = {
-        description: values.description,
-        status: values.status,
-        imageUrl: values.imageUrl,
-        latitude: values.latitude,
-        longitude: values.longitude,
-        reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
-        municipalityName: values.municipalityId,
-      };
-      setFullReport([...fullReport, newReport]);
+      const payload: IIncident = {
+      description: values.description,
+      status: "Submitted",
+     // imageUrl: values.imageUrl,
+      latitude: position ? position[0] : 0,
+      longitude: position ? position[1] : 0,
+      incidentAddress: { city: city, province: province },
+      reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
+      municipalityName: sessionStorage.getItem("municipality") || "",
+      serviceProviderName: "Unallocated"
+      //change serviceProviderName as needed
+    }
+      setFullReport([...fullReport, payload]);
+      createIncident(payload);
       setFullReportModalVisible(false);
       form.resetFields();
       message.success('Full report submitted successfully!');
+      router.push("/citizen/incidents");
     });
   };
  
