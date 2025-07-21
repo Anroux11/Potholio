@@ -1,14 +1,18 @@
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using Abp.Authorization;
 using Abp.Authorization.Roles;
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Potholio.Authorization;
 using Potholio.Authorization.Roles;
 using Potholio.Authorization.Users;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
+using Potholio.Domain.Addresses;
+using Potholio.Domain.Municipalities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Potholio.EntityFrameworkCore.Seed.Host
 {
@@ -119,6 +123,25 @@ namespace Potholio.EntityFrameworkCore.Seed.Host
                 _context.UserRoles.Add(new UserRole(null, adminUserForHost.Id, adminRoleForHost.Id));
                 _context.SaveChanges();
 
+                // Seeding municipalities
+                var gautengMunicipalities = new List<Municipality>
+                {
+                    new Municipality { Name = "City of Johannesburg Metropolitan Municipality", Address = new Address { City = "Johannesburg", Province = "Gauteng" }, Latitude = -26.1767M, Longitude = 27.9635M }, 
+                    new Municipality { Name = "City of Tshwane Metropolitan Municipality", Address = new Address { City = "Pretoria", Province = "Gauteng" }, Latitude = -25.7479M, Longitude = 28.2293M }, 
+                    new Municipality { Name = "City of Ekurhuleni Metropolitan Municipality", Address = new Address { City = "Germiston", Province = "Gauteng" }, Latitude = -26.2361M, Longitude = 28.1825M }, 
+                    new Municipality { Name = "Sedibeng District Municipality", Address = new Address { City = "Vanderbijlpark", Province = "Gauteng" }, Latitude = -26.7066M, Longitude = 27.8272M }, 
+                    new Municipality { Name = "West Rand District Municipality", Address = new Address { City = "Krugersdorp", Province = "Gauteng" }, Latitude = -26.1043M, Longitude = 27.7134M }
+
+                };
+
+                foreach (var municipality in gautengMunicipalities)
+                {
+                    if (!_context.Municipalities.Any(m => m.Name == municipality.Name))
+                    {
+                        Console.WriteLine($"Seeding municipality: {municipality.Name}");
+                        _context.Municipalities.Add(municipality);
+                    }
+                }
                 _context.SaveChanges();
             }
         }

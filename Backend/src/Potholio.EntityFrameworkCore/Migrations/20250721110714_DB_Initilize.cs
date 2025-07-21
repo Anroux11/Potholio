@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Potholio.Migrations
 {
     /// <inheritdoc />
-    public partial class DB_create : Migration
+    public partial class DB_Initilize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -965,7 +965,7 @@ namespace Potholio.Migrations
                     ImageUrl = table.Column<string>(type: "text", nullable: true),
                     Latitude = table.Column<decimal>(type: "numeric", nullable: false),
                     Longitude = table.Column<decimal>(type: "numeric", nullable: false),
-                    AddressId = table.Column<Guid>(type: "uuid", nullable: true),
+                    incidentAddressId = table.Column<Guid>(type: "uuid", nullable: true),
                     ReportingUserId = table.Column<long>(type: "bigint", nullable: false),
                     MunicipalityId = table.Column<Guid>(type: "uuid", nullable: false),
                     ServiceProviderId = table.Column<Guid>(type: "uuid", nullable: true),
@@ -987,8 +987,8 @@ namespace Potholio.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Incidents_Addresses_AddressId",
-                        column: x => x.AddressId,
+                        name: "FK_Incidents_Addresses_incidentAddressId",
+                        column: x => x.incidentAddressId,
                         principalTable: "Addresses",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -1383,9 +1383,9 @@ namespace Potholio.Migrations
                 column: "WebhookEventId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Incidents_AddressId",
+                name: "IX_Incidents_incidentAddressId",
                 table: "Incidents",
-                column: "AddressId");
+                column: "incidentAddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Incidents_MunicipalityId",
