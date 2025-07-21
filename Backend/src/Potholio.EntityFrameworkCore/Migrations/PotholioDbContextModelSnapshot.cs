@@ -1624,9 +1624,6 @@ namespace Potholio.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("AddressId")
-                        .HasColumnType("uuid");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp with time zone");
 
@@ -1672,15 +1669,18 @@ namespace Potholio.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("text");
 
-                    b.HasKey("Id");
+                    b.Property<Guid?>("incidentAddressId")
+                        .HasColumnType("uuid");
 
-                    b.HasIndex("AddressId");
+                    b.HasKey("Id");
 
                     b.HasIndex("MunicipalityId");
 
                     b.HasIndex("ReportingUserId");
 
                     b.HasIndex("ServiceProviderId");
+
+                    b.HasIndex("incidentAddressId");
 
                     b.ToTable("Incidents");
                 });
@@ -2121,10 +2121,6 @@ namespace Potholio.Migrations
 
             modelBuilder.Entity("Potholio.Domain.Incidents.Incident", b =>
                 {
-                    b.HasOne("Potholio.Domain.Addresses.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
                     b.HasOne("Potholio.Domain.Municipalities.Municipality", "Municipality")
                         .WithMany()
                         .HasForeignKey("MunicipalityId")
@@ -2141,11 +2137,15 @@ namespace Potholio.Migrations
                         .WithMany()
                         .HasForeignKey("ServiceProviderId");
 
-                    b.Navigation("Address");
+                    b.HasOne("Potholio.Domain.Addresses.Address", "incidentAddress")
+                        .WithMany()
+                        .HasForeignKey("incidentAddressId");
 
                     b.Navigation("Municipality");
 
                     b.Navigation("ReportingUser");
+
+                    b.Navigation("incidentAddress");
 
                     b.Navigation("serviceProvider");
                 });

@@ -17,7 +17,7 @@ namespace Potholio.Domain.Incidents
         public virtual decimal Latitude { get; set; }
         public virtual decimal Longitude { get; set; }
 
-        public virtual Address Address { get; set; }
+        public virtual Address incidentAddress { get; set; }
 
         // Connect reporting uder
         public long ReportingUserId { get; set; }
