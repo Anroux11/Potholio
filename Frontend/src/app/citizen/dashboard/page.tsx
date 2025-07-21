@@ -32,7 +32,7 @@ import {
   buttonStyles,
   modalStyles,
 } from './style/styles';
-import { Address, IIncident } from '@/providers/incident-provider/context';
+import { IIncident } from '@/providers/incident-provider/context';
 import {  useIncidentActions } from "@/providers/incident-provider";
  
 const { Text } = Typography;
