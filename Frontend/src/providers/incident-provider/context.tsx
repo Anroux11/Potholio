@@ -15,6 +15,7 @@ export interface Address {
   province: string;
   city: string;
 }
+
 export interface IIncidentStateContext {
   isPending: boolean;
   isSuccess: boolean;
