@@ -1,5 +1,5 @@
 'use client';
-
+ 
 import { useEffect, useState } from 'react';
 import {
   Button,
@@ -34,13 +34,13 @@ import {
 } from './style/styles';
 import { Address, IIncident } from '@/providers/incident-provider/context';
 import {  useIncidentActions } from "@/providers/incident-provider";
-
+ 
 const { Text } = Typography;
-
+ 
 const CitizenMap = dynamic(() => import('@/components/citizen-components/citizen-map'), {
   ssr: false,
 });
-
+ 
 type FullReport = {
   // key: string;
   description?: string;
@@ -52,7 +52,7 @@ type FullReport = {
   reportingUserId: number;
   municipalityName: string;
 };
-
+ 
 const CitizenDashboard: React.FC = () => {
   const router = useRouter();
   const [form] = Form.useForm();
@@ -65,7 +65,7 @@ const CitizenDashboard: React.FC = () => {
   const [fullReportModalVisible, setFullReportModalVisible] = useState(false);
   const [fullReport, setFullReport] = useState<FullReport[]>([]);
   const { createIncident } = useIncidentActions();
-
+ 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
@@ -83,7 +83,7 @@ const CitizenDashboard: React.FC = () => {
       }
     );
   }, []);
-
+ 
 const confirmQuickReport = () => {
     const payload: IIncident = {
       description: "Quick Report",
@@ -94,16 +94,18 @@ const confirmQuickReport = () => {
       incidentAddress: { city: city, province: province },
       reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
       municipalityName: sessionStorage.getItem("municipality") || "",
+      serviceProviderName: "ABC Services"
+      //change serviceProviderName as needed
     }
     createIncident(payload);
     setQuickReportModalVisible(false);
-    router.push("/citizen/report");
+    router.push("/citizen/incidents");
   };
   const updateMemoryStorage = (coords: [number, number]) => {
     sessionStorage.setItem('lat', coords[0].toString());
     sessionStorage.setItem('lng', coords[1].toString());
   };
-
+ 
   const reverseGeocode = async (lat: number, lon: number) => {
     try {
       const res = await fetch(
@@ -111,23 +113,23 @@ const confirmQuickReport = () => {
       );
       const data = await res.json();
       const addr = data.address || {};
-
+ 
       const newAddress = data.display_name || '';
       const newProvince = addr.state || '';
       const newCity = addr.city || addr.town || addr.village || '';
       const newMunicipality = addr.county || addr.municipality || '';
-
+ 
       setAddress(newAddress);
       setProvince(newProvince);
       setCity(newCity);
       setMunicipality(newMunicipality);
-
+ 
       form.setFieldsValue({
         province: newProvince,
         city: newCity,
         municipalityId: newMunicipality,
       });
-
+ 
       sessionStorage.setItem('address', newAddress);
       sessionStorage.setItem('province', newProvince);
       sessionStorage.setItem('city', newCity);
@@ -144,7 +146,7 @@ const confirmQuickReport = () => {
       });
     }
   };
-
+ 
   const handleMarkerDragEnd = (coords: [number, number]) => {
     setPosition(coords);
     form.setFieldsValue({
@@ -154,9 +156,9 @@ const confirmQuickReport = () => {
     updateMemoryStorage(coords);
     reverseGeocode(coords[0], coords[1]);
   };
-
+ 
   const handleQuickReport = () => setQuickReportModalVisible(true);
-
+ 
   const handleCreateIncident = () => {
     form.setFieldsValue({
       municipalityId: municipality,
@@ -167,7 +169,7 @@ const confirmQuickReport = () => {
     });
     setFullReportModalVisible(true);
   };
-
+ 
   const handleAddFullReport = () => {
     form.validateFields().then((values) => {
       const newReport: FullReport = {
@@ -185,10 +187,10 @@ const confirmQuickReport = () => {
       message.success('Full report submitted successfully!');
     });
   };
-
+ 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const normFile = (e: any) => (Array.isArray(e) ? e : e?.fileList);
-
+ 
   if (!position) {
     return (
       <Flex justify="center" align="center" style={dashboardStyles.loadingContainer}>
@@ -199,7 +201,7 @@ const confirmQuickReport = () => {
       </Flex>
     );
   }
-
+ 
   return (
     <div style={dashboardStyles.container}>
       <Row gutter={[24, 24]}>
@@ -216,7 +218,7 @@ const confirmQuickReport = () => {
             <CitizenMap position={position} onMarkerDragEnd={handleMarkerDragEnd} />
           </Card>
         </Col>
-
+ 
         <Col xs={24} lg={12}>
           <Card
             title={
@@ -240,7 +242,7 @@ const confirmQuickReport = () => {
             </Descriptions>
           </Card>
         </Col>
-
+ 
         <Col xs={24} lg={12}>
           <Card
             title={
@@ -267,7 +269,7 @@ const confirmQuickReport = () => {
                   Submit a quick incident report
                 </Text>
               </Col>
-
+ 
               <Col span={12}>
                 <Button
                   type="default"
@@ -286,7 +288,7 @@ const confirmQuickReport = () => {
             </Row>
           </Card>
         </Col>
-
+ 
         {fullReport.length > 0 && (
           <Col span={24}>
             <Card title="Recent Reports" style={cardStyles.standard}>
@@ -305,7 +307,7 @@ const confirmQuickReport = () => {
           </Col>
         )}
       </Row>
-
+ 
       {/* Quick Report Modal */}
       <Modal
         open={quickReportModalVisible}
@@ -335,7 +337,7 @@ const confirmQuickReport = () => {
           </Descriptions>
         </div>
       </Modal>
-
+ 
       {/* Full Report Modal */}
       <Modal
         title={
@@ -368,11 +370,11 @@ const confirmQuickReport = () => {
               >
                 <Input.TextArea rows={4} placeholder="Describe the incident..." />
               </Form.Item>
-
+ 
               <Form.Item name="status" label="Status" initialValue="Submitted">
                 <Input readOnly />
               </Form.Item>
-
+ 
               <Form.Item
                 label="Upload Image"
                 name="imageUrl"
@@ -387,7 +389,7 @@ const confirmQuickReport = () => {
                 </Upload>
               </Form.Item>
             </Col>
-
+ 
             <Col xs={24} lg={12}>
               <Form.Item label="Adjust Your Location">
                 <Space direction="vertical" style={{ width: '100%' }}>
@@ -396,7 +398,7 @@ const confirmQuickReport = () => {
                   </div>
                 </Space>
               </Form.Item>
-
+ 
               <Row gutter={[16, 8]}>
                 <Col span={12}>
                   <Form.Item name="latitude" label="Latitude">
@@ -411,9 +413,9 @@ const confirmQuickReport = () => {
               </Row>
             </Col>
           </Row>
-
+ 
           <Divider />
-
+ 
           <Row gutter={[16, 8]}>
             <Col xs={24} md={8}>
               <Form.Item name="province" label="Province">
@@ -440,6 +442,8 @@ const confirmQuickReport = () => {
     </div>
   );
 };
-
+ 
 export default CitizenDashboard;
-
+ 
+ 
+ 
