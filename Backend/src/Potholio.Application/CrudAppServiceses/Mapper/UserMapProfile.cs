@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
-using Potholio.Authorization.Users;
-using Potholio.CrudAppServiceses.Citizens.DTo;
+using Potholio.CrudAppServiceses.Addresses.Dto;
 using Potholio.CrudAppServiceses.Reports.DTo;
+using Potholio.Domain.Addresses;
 using Potholio.Domain.Incidents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Potholio.CrudAppServiceses.Mapper
 {
@@ -15,8 +10,12 @@ namespace Potholio.CrudAppServiceses.Mapper
     {
         public UserMapProfile()
         {
-            //CreateMap<CitizenRegisterDto, User>().ForMember(u => u.Id, opt => opt.Ignore());
             CreateMap<IncidentDto, Incident>();
+            CreateMap<Incident, IncidentDto>()
+                .ForMember(dto => dto.incidentAddress, opt => opt.MapFrom(src => src.incidentAddress));
+
+            CreateMap<Address, AddressDto>();
+            CreateMap<AddressDto, Address>();
         }
     }
 }

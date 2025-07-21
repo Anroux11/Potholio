@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Potholio.CrudAppServiceses.Reports.DTo;
 using Potholio.Domain.Incidents;
 using Potholio.Domain.Municipalities;
@@ -76,6 +78,13 @@ namespace Potholio.CrudAppServiceses.Reports
             input.ServiceProviderId = serviceproviderId;
 
             return await base.UpdateAsync(input);
+        }
+
+        public override async Task<PagedResultDto<IncidentDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
+        {
+            var incidents = await _incidentRepository
+                .GetAllIncluding(i => i.incidentAddress).ToListAsync();
+            return await base.GetAllAsync(input);
         }
     }
 }
