@@ -1,11 +1,14 @@
 ﻿using Abp.Application.Services;
 using Abp.Domain.Repositories;
-using Potholio.CrudAppServiceses.ServiceProviders.Dto;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Potholio.Authorization.Users;
 using Potholio.CrudAppServiceses.Reports;
+using Potholio.CrudAppServiceses.ServiceProviders.Dto;
+using Potholio.Domain.Municipalities;
 using Potholio.Domain.ServiceProviders;
 using System;
 using System.Threading.Tasks;
-using Potholio.Domain.Municipalities;
 
 namespace Potholio.CrudAppServiceses.ServiceProviders
 {
@@ -39,6 +42,8 @@ namespace Potholio.CrudAppServiceses.ServiceProviders
         {
             var municipalityId = await GetMunicipalityIdByNameAsync(input.MunicipalityName);
             input.MunicipalityId = municipalityId;
+
+            input.Password = new PasswordHasher<ServiceProviderDto>(new OptionsWrapper<PasswordHasherOptions>(new PasswordHasherOptions())).HashPassword(input, input.Password);
 
             return await base.CreateAsync(input);
         }
