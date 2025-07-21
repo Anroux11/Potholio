@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Potholio.Authorization.Users;
 using Potholio.CrudAppServiceses.Reports;
@@ -46,6 +48,13 @@ namespace Potholio.CrudAppServiceses.ServiceProviders
             input.Password = new PasswordHasher<ServiceProviderDto>(new OptionsWrapper<PasswordHasherOptions>(new PasswordHasherOptions())).HashPassword(input, input.Password);
 
             return await base.CreateAsync(input);
+        }
+
+        public override async Task<PagedResultDto<ServiceProviderDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
+        {
+            var incidents = await _serviceProviderRepository
+                .GetAllIncluding(i => i.Address, i => i.Municipality).ToListAsync();
+            return await base.GetAllAsync(input);
         }
     }
 }
