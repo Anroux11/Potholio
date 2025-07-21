@@ -9,7 +9,7 @@ export interface IIncident {
   longitude: number;
   municipalityName?: string;
   reportingUserId?: number;
-  serviceproviderName?: string;
+  serviceProviderName?: string; 
 }
 export interface Address {
   province: string;

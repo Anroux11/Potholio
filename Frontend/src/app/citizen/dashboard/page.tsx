@@ -66,6 +66,7 @@ const CitizenDashboard: React.FC = () => {
   const [fullReport, setFullReport] = useState<FullReport[]>([]);
   const { createIncident } = useIncidentActions();
 
+  const [fullReport, setFullReport] = useState<FullReport[]>([]);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
@@ -84,6 +85,21 @@ const CitizenDashboard: React.FC = () => {
     );
   }, []);
 
+const confirmQuickReport = () => {
+    const payload: IIncident = {
+      description: "Quick Report",
+      status: "Submitted",
+      // imageUrl: "",
+      latitude: position ? position[0] : 0,
+      longitude: position ? position[1] : 0,
+      incidentAddress: { city: city, province: province },
+      reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
+      municipalityName: sessionStorage.getItem("municipality") || "",
+    }
+    createIncident(payload);
+    setQuickReportModalVisible(false);
+    router.push("/citizen/report");
+  };
   const updateMemoryStorage = (coords: [number, number]) => {
     sessionStorage.setItem('lat', coords[0].toString());
     sessionStorage.setItem('lng', coords[1].toString());
