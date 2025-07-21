@@ -16,7 +16,7 @@ import {
 // import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { PlusOutlined } from "@ant-design/icons";
-import {  useIncidentActions } from "@/providers/incident-provider";
+import { useIncidentActions } from "@/providers/incident-provider";
 import { Address, IIncident } from "@/providers/incident-provider/context";
 
 type FullReport = {
@@ -59,7 +59,7 @@ const CitizenDashboard: React.FC = () => {
       status: "Submitted",
       imageUrl: "",
       latitude: -26.027636,
-      longitude: 28.071350,
+      longitude: 28.07135,
       reportingUserId: 3,
       municipalityName: "Johannesburg Municipality",
     },
@@ -68,7 +68,7 @@ const CitizenDashboard: React.FC = () => {
       status: "Submitted",
       imageUrl: "",
       latitude: -26.027636,
-      longitude: 28.071350,
+      longitude: 28.07135,
       reportingUserId: 4,
       municipalityName: "Johannesburg Municipality",
     },
@@ -115,16 +115,33 @@ const CitizenDashboard: React.FC = () => {
     const payload: IIncident = {
       description: "Quick Report",
       status: "Submitted",
-      // imageUrl: "",
       latitude: position ? position[0] : 0,
       longitude: position ? position[1] : 0,
-      incidentAddress: {city: city, province: province},
+      incidentAddress: {
+        city: city, province: province
+      },
+      municipalityName: "Nkangala",
       reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
-      municipalityName: sessionStorage.getItem("municipality") || "",
-    }
+      serviceProviderName: "ABC Services", // todo - remove this field when backend is updated.
+    };
     createIncident(payload);
     setQuickReportModalVisible(false);
     // router.push("/citizen/report");
+    // const payload: IIncident = {
+    //   description: "Quick Report",
+    //   status: "Submitted",
+    //   latitude: position ? position[0] : 0,
+    //   longitude: position ? position[1] : 0,
+    //   incidentAddress: {
+    //     city: city, province: province
+    //   },
+    //   municipalityName: sessionStorage.getItem("municipality") || "",
+    //   reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
+    //   serviceProviderName: "ABC Services", // todo - remove this field when backend is updated.
+    // };
+    // createIncident(payload);
+    // setQuickReportModalVisible(false);
+    // // router.push("/citizen/report");
   };
 
   const reverseGeocode = async (lat: number, lon: number) => {

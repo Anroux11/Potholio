@@ -235,29 +235,20 @@ const RegistrationForm = () => {
                           prefix={<UserOutlined />}
                           className={styles.municipalitySelect}
                         >
+                          <Select.Option value="City of Ekurhuleni Metropolitan Municipality">
+                            City of Ekurhuleni Metropolitan Municipality
+                          </Select.Option>
                           <Select.Option value="City of Johannesburg Metropolitan Municipality">
                             City of Johannesburg Metropolitan Municipality
                           </Select.Option>
-                          <Select.Option value="eThekwini Metropolitan Municipality">
-                            eThekwini Metropolitan Municipality
+                          <Select.Option value="City of Tshwane Metropolitan Municipality">
+                            City of Tshwane Metropolitan Municipality
                           </Select.Option>
-                          <Select.Option value="Mangaung Metropolitan Municipalityame">
-                            Mangaung Metropolitan Municipality
+                          <Select.Option value="Sedibeng District Municipality">
+                            Sedibeng District Municipality
                           </Select.Option>
-                          <Select.Option value="Buffalo City Metropolitan Municipality">
-                            Buffalo City Metropolitan Municipality
-                          </Select.Option>
-                          <Select.Option value="Capricorn District Municipality">
-                            Capricorn District Municipality
-                          </Select.Option>
-                          <Select.Option value="City of Matlosana Local Municipality">
-                            City of Matlosana Local Municipality
-                          </Select.Option>
-                          <Select.Option value="Frances Baard District Municipality">
-                            Frances Baard District Municipality
-                          </Select.Option>
-                          <Select.Option value="City of Cape Town Metropolitan Municipality">
-                            City of Cape Town Metropolitan Municipality
+                          <Select.Option value="West Rand District Municipality">
+                            West Rand District Municipality
                           </Select.Option>
                         </Select>
                       </Form.Item>
