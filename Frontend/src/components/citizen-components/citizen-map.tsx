@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from "react";
 import {
   GoogleMap,
   Marker,
   useJsApiLoader,
-  Autocomplete
-} from '@react-google-maps/api';
+  Autocomplete,
+} from "@react-google-maps/api";
 
 interface CitizenMapProps {
   position: [number, number];
@@ -14,29 +14,34 @@ interface CitizenMapProps {
 }
 
 const containerStyle = {
-  width: '100%',
-  height: '60vh',
-  borderRadius: '8px',
+  width: "100%",
+  height: "60vh",
+  borderRadius: "8px",
 };
 
-const libraries: ('places')[] = ['places']; // Load Places API
+const libraries: "places"[] = ["places"];
 
-const CitizenMap: React.FC<CitizenMapProps> = ({ position, onMarkerDragEnd }) => {
+const mapApi = process.env.NEXT_PUBLIC_GOOGLE_CLOUD_API;
+
+const CitizenMap: React.FC<CitizenMapProps> = ({
+  position,
+  onMarkerDragEnd,
+}) => {
   const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: 'AIzaSyBmVsTFT9oJY_S9qe7yoLGHGicVd1-7jdo', // 🔐 Replace with your API key
+    id: "google-map-script",
+    googleMapsApiKey: `${mapApi}`,
     libraries,
   });
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(null);
 
-  const [searchBoxValue, setSearchBoxValue] = useState('');
-  const [markerPosition, setMarkerPosition] = useState<google.maps.LatLngLiteral>({
-    lat: position[0],
-    lng: position[1],
-    
-  });
+  const [searchBoxValue, setSearchBoxValue] = useState("");
+  const [markerPosition, setMarkerPosition] =
+    useState<google.maps.LatLngLiteral>({
+      lat: position[0],
+      lng: position[1],
+    });
 
   const onLoad = useCallback((map: google.maps.Map) => {
     mapRef.current = map;
@@ -70,16 +75,18 @@ const CitizenMap: React.FC<CitizenMapProps> = ({ position, onMarkerDragEnd }) =>
   };
 
   return isLoaded ? (
-    <div style={{ position: 'relative' }}>
-      <div style={{
-        position: 'absolute',
-        zIndex: 10,
-        top: 10,
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: '80%',
-        maxWidth: '500px'
-      }}>
+    <div style={{ position: "relative" }}>
+      <div
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          top: 10,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "80%",
+          maxWidth: "500px",
+        }}
+      >
         <Autocomplete
           onLoad={(autocomplete) => (autocompleteRef.current = autocomplete)}
           onPlaceChanged={handlePlaceChanged}
@@ -90,11 +97,11 @@ const CitizenMap: React.FC<CitizenMapProps> = ({ position, onMarkerDragEnd }) =>
             value={searchBoxValue}
             onChange={(e) => setSearchBoxValue(e.target.value)}
             style={{
-              width: '100%',
-              padding: '10px',
-              fontSize: '16px',
-              borderRadius: '4px',
-              border: '1px solid #ccc',
+              width: "100%",
+              padding: "10px",
+              fontSize: "16px",
+              borderRadius: "4px",
+              border: "1px solid #ccc",
             }}
           />
         </Autocomplete>
@@ -112,7 +119,7 @@ const CitizenMap: React.FC<CitizenMapProps> = ({ position, onMarkerDragEnd }) =>
           draggable={true}
           onDragEnd={handleDragEnd}
           icon={{
-            url: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
+            url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
             scaledSize: new window.google.maps.Size(32, 32),
           }}
         />
