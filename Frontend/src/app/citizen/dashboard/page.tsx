@@ -41,19 +41,6 @@ const CitizenMap = dynamic(() => import('@/components/citizen-components/citizen
   ssr: false,
 });
  
-type FullReport = {
-  // key: string;
-  description?: string;
-  status: string;
-  imageUrl?: string;
-  incidentAddress?: Address;
-  latitude: number;
-  longitude: number;
-  reportingUserId: number;
-  municipalityName: string;
-  serviceProviderName: string;
-};
- 
 const CitizenDashboard: React.FC = () => {
   const router = useRouter();
   const [form] = Form.useForm();
