@@ -1,37 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Table, Button, Modal, Select, Space, Tag, message } from "antd/es";
 import type { ColumnsType } from "antd/es/table";
 import { useStyles } from "./style/styles";
+import {
+  useIncidentActions,
+  useIncidentState,
+} from "@/providers/incident-provider";
+import { IIncident } from "@/providers/incident-provider/context";
 
 const { Option } = Select;
 
-type Incident = {
-  key: string;
-  id: string;
-  description: string;
-  status: string;
-  serviceProvider?: string;
-};
-
 const IncidentListPage = () => {
   const { styles } = useStyles();
+  const { incidents, isPending } = useIncidentState();
+  const { getIncidentList, updateIncident } = useIncidentActions();
 
-  const [incidents, setIncidents] = useState<Incident[]>([
-    { key: "1", id: "INC001", description: "Pothole on Black Reef Rd", status: "Pending" },
-    { key: "2", id: "INC002", description: "Big Pothole on Grey Ave", status: "Pending" },
-    { key: "3", id: "INC003", description: "Pothole on Oak Ave.", status: "Pending" },
-  ]);
-
+  const [selectedIncident, setSelectedIncident] = useState<IIncident | null>(
+    null
+  );
   const serviceProvider = ["John Doe Construction", "BAW Roadworks", "Boxfusion Road Repair"];
-
-  const [selectedIncident, setSelectedIncident] = useState<Incident | null>(null);
   const [assignMode, setAssignMode] = useState(false);
   const [selectedServiceProvider, setSelectedServiceProvider] = useState<string>();
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handleView = (incident: Incident) => {
+  useEffect(() => {
+    getIncidentList();
+  }, []);
+
+  const handleView = (incident: IIncident) => {
     setSelectedIncident(incident);
     setAssignMode(false);
     setSelectedServiceProvider(undefined);
@@ -45,13 +43,19 @@ const IncidentListPage = () => {
   const handleConfirmAssign = () => {
     if (!selectedIncident || !selectedServiceProvider) return;
 
-    const updatedIncidents = incidents.map((inc) =>
-      inc.id === selectedIncident.id
-        ? { ...inc, status: "Assigned", ServiceProvider: selectedServiceProvider }
-        : inc
-    );
+    // const updatedIncidents = incidents?.map((inc) =>
+    //   inc.id === selectedIncident.id
+    //     ? { ...inc, status: "Assigned", ServiceProvider: selectedServiceProvider }
+    //     : inc
+    // );
 
-    setIncidents(updatedIncidents);
+    const payload: IIncident = {
+      ...selectedIncident,
+      status: "Assigned",
+      serviceProviderName: selectedServiceProvider,
+    } 
+
+    updateIncident(payload);
     setModalVisible(false);
     message.success(`Assigned to ${selectedServiceProvider}`);
   };
@@ -59,13 +63,18 @@ const IncidentListPage = () => {
   const handleComplete = () => {
     if (!selectedIncident) return;
 
-    const updatedIncidents = incidents.map((svrp) =>
-      svrp.id === selectedIncident.id
-        ? { ...svrp, status: "Completed" }
-        : svrp
-    );
+    // const updatedIncidents = incidents?.map((svrp) =>
+    //   svrp.id === selectedIncident.id
+    //     ? { ...svrp, status: "Completed" }
+    //     : svrp
+    // );
 
-    setIncidents(updatedIncidents);
+    const payload: IIncident = {
+      ...selectedIncident,
+      status: "Completed",
+    }
+
+    updateIncident(payload);
     setModalVisible(false);
     message.success(`Marked incident ${selectedIncident.id} as Completed`);
   };
@@ -74,12 +83,7 @@ const IncidentListPage = () => {
     setModalVisible(false);
   };
 
-  const columns: ColumnsType<Incident> = [
-    {
-      title: "Incident ID",
-      dataIndex: "id",
-      key: "id",
-    },
+  const columns: ColumnsType<IIncident> = [
     {
       title: "Description",
       dataIndex: "description",
@@ -155,7 +159,7 @@ const IncidentListPage = () => {
           <>
             <p><strong>Description:</strong> {selectedIncident.description}</p>
             <p><strong>Status:</strong> {selectedIncident.status}</p>
-            <p><strong>Service Provider:</strong> {selectedIncident.serviceProvider || "-"}</p>
+            <p><strong>Service Provider:</strong> {selectedIncident.serviceProviderName || "-"}</p>
           </>
         )}
 
