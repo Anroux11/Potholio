@@ -14,7 +14,7 @@ const { Option } = Select;
 
 const IncidentListPage = () => {
   const { styles } = useStyles();
-  const { incidents, isPending } = useIncidentState();
+  const { incidents } = useIncidentState();
   const { getIncidentList, updateIncident } = useIncidentActions();
 
   const [selectedIncident, setSelectedIncident] = useState<IIncident | null>(
