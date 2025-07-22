@@ -1,11 +1,23 @@
 import { createContext } from "react";
 export interface ICitizen {
-  id?: string;
-  username: string;
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  activeState?: boolean;
+  // id?: string;
+  // username: string;
+  // firstName?: string;
+  // lastName?: string;
+  // email?: string;
+  // activeState?: boolean;
+  key?: string;
+  userName?: string;
+  name?: string;
+  surname?: string;
+  emailAddress?: string;
+  isActive?: boolean;
+  fullName?: string;
+  lastLoginTime?: Date;
+  creationTime?: Date;
+  roleNames: [string];
+  roleName: string;
+  password?: string
 }
 export interface ICitizenStateContext {
   isPending: boolean;
@@ -15,8 +27,9 @@ export interface ICitizenStateContext {
   citizens?: ICitizen[];
 }
 export interface ICitizenActionContext {
-  // getCitizens: (trainerId: string) => ICitizen[];
-  getCitizenList: (citizenId: string) => void;
+  getCitizenList: () => void;
+  // getCitizenList: () => Promise<void>;
+  // getCitizenList: () => void;
   getCitizen: (id: string) => void;
   createCitizen: (citizen: ICitizen) => void;
   updateCitizen: (citizen: ICitizen) => void;

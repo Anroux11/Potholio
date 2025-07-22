@@ -45,12 +45,15 @@ const Login = () => {
       setLoading(false);
       const user = sessionStorage.getItem("role") || "";
       
-      if (user === "Municipality") {
+      if (user === "Admin") {
         message.success("Login successfully!");
-        router.push("/municipality/dashboard");
+        router.push("/admin/dashboard");
       } else if (user === "Citizen") {
         message.success("Login successfully!");
         router.push("/citizen/dashboard");
+      } else if (user === "Municipality") {
+        message.success("Login successfully!");
+        router.push("/municipality/dashboard");
       } else {
         message.success("Could not find user");
         router.push("/login");
