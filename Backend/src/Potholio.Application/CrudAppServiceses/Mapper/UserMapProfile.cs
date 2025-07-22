@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Potholio.CrudAppServiceses.Addresses.Dto;
+using Potholio.CrudAppServiceses.MunicipalityAdmin.Dto;
 using Potholio.CrudAppServiceses.Reports.DTo;
 using Potholio.Domain.Addresses;
 using Potholio.Domain.Incidents;
+using Potholio.Domain.Municipalities;
 
 namespace Potholio.CrudAppServiceses.Mapper
 {
@@ -16,6 +18,9 @@ namespace Potholio.CrudAppServiceses.Mapper
 
             CreateMap<Address, AddressDto>();
             CreateMap<AddressDto, Address>();
+
+            CreateMap<Municipality, MunicipalityDto>()
+                .ForMember(dto => dto.Address, opt => opt.MapFrom(src => src.Address));
         }
     }
 }
