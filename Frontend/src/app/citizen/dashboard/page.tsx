@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -17,48 +17,56 @@ import {
   Spin,
   Typography,
   Upload,
-} from 'antd/es';
+} from "antd/es";
 import {
   PlusOutlined,
   EnvironmentOutlined,
   FileTextOutlined,
   ClockCircleOutlined,
-} from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
-import dynamic from 'next/dynamic';
+} from "@ant-design/icons";
+import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import {
   dashboardStyles,
   cardStyles,
   buttonStyles,
   modalStyles,
-} from './style/styles';
-import { IIncident } from '@/providers/incident-provider/context';
+} from "./style/styles";
+import { IIncident } from "@/providers/incident-provider/context";
 import { useIncidentActions } from "@/providers/incident-provider";
-import { Address } from '@/providers/municipality-provider/context';
+import { Address } from "@/providers/municipality-provider/context";
+import { useImageActions } from "@/providers/image-provider";
 
 const { Text } = Typography;
 
-const CitizenMap = dynamic(() => import('@/components/citizen-components/citizen-map'), {
-  ssr: false,
-});
+const CitizenMap = dynamic(
+  () => import("@/components/citizen-components/citizen-map"),
+  {
+    ssr: false,
+  }
+);
 
 const CitizenDashboard: React.FC = () => {
   const router = useRouter();
   const [form] = Form.useForm();
   const [position, setPosition] = useState<[number, number] | null>(null);
-  const [address, setAddress] = useState('');
-  const [province, setProvince] = useState('');
-  const [city, setCity] = useState('');
-  const [municipality, setMunicipality] = useState('');
+  const [address, setAddress] = useState("");
+  const [province, setProvince] = useState("");
+  const [city, setCity] = useState("");
+  const [municipality, setMunicipality] = useState("");
   const [quickReportModalVisible, setQuickReportModalVisible] = useState(false);
   const [fullReportModalVisible, setFullReportModalVisible] = useState(false);
   const [fullReport, setFullReport] = useState<IIncident[]>([]);
   const { createIncident } = useIncidentActions();
+  const { uploadImage } = useImageActions();
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const coords: [number, number] = [pos.coords.latitude, pos.coords.longitude];
+        const coords: [number, number] = [
+          pos.coords.latitude,
+          pos.coords.longitude,
+        ];
         setPosition(coords);
         updateMemoryStorage(coords);
         reverseGeocode(coords[0], coords[1]);
@@ -68,13 +76,16 @@ const CitizenDashboard: React.FC = () => {
         setPosition(defaultCoords);
         updateMemoryStorage(defaultCoords);
         reverseGeocode(defaultCoords[0], defaultCoords[1]);
-        message.error('Failed to retrieve your location. Using default.');
+        message.error("Failed to retrieve your location. Using default.");
       }
     );
   }, []);
 
   const confirmQuickReport = () => {
-    const addressPayload: Address = { city: sessionStorage.getItem("city") || "", province: sessionStorage.getItem("province") || "" }
+    const addressPayload: Address = {
+      city: sessionStorage.getItem("city") || "",
+      province: sessionStorage.getItem("province") || "",
+    };
     const payload: IIncident = {
       description: "Quick Report",
       status: "Submitted",
@@ -84,16 +95,16 @@ const CitizenDashboard: React.FC = () => {
       incidentAddress: addressPayload,
       reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
       municipalityName: sessionStorage.getItem("municipality") || "",
-      serviceProviderName: "Unallocated"
+      serviceProviderName: "Unallocated",
       //change serviceProviderName as needed
-    }
+    };
     createIncident(payload);
     setQuickReportModalVisible(false);
     router.push("/citizen/incidents");
   };
   const updateMemoryStorage = (coords: [number, number]) => {
-    sessionStorage.setItem('lat', coords[0].toString());
-    sessionStorage.setItem('lng', coords[1].toString());
+    sessionStorage.setItem("lat", coords[0].toString());
+    sessionStorage.setItem("lng", coords[1].toString());
   };
 
   const reverseGeocode = async (lat: number, lon: number) => {
@@ -104,10 +115,10 @@ const CitizenDashboard: React.FC = () => {
       const data = await res.json();
       const addr = data.address || {};
 
-      const newAddress = data.display_name || '';
-      const newProvince = addr.state || '';
-      const newCity = addr.city || addr.town || addr.village || '';
-      const newMunicipality = addr.county || addr.municipality || '';
+      const newAddress = data.display_name || "";
+      const newProvince = addr.state || "";
+      const newCity = addr.city || addr.town || addr.village || "";
+      const newMunicipality = addr.county || addr.municipality || "";
 
       setAddress(newAddress);
       setProvince(newProvince);
@@ -120,19 +131,19 @@ const CitizenDashboard: React.FC = () => {
         municipalityId: newMunicipality,
       });
 
-      sessionStorage.setItem('address', newAddress);
-      sessionStorage.setItem('province', newProvince);
-      sessionStorage.setItem('city', newCity);
-      sessionStorage.setItem('municipality', newMunicipality);
+      sessionStorage.setItem("address", newAddress);
+      sessionStorage.setItem("province", newProvince);
+      sessionStorage.setItem("city", newCity);
+      sessionStorage.setItem("municipality", newMunicipality);
     } catch {
-      setAddress('');
-      setProvince('');
-      setCity('');
-      setMunicipality('');
+      setAddress("");
+      setProvince("");
+      setCity("");
+      setMunicipality("");
       form.setFieldsValue({
-        province: '',
-        city: '',
-        municipalityId: '',
+        province: "",
+        city: "",
+        municipalityId: "",
       });
     }
   };
@@ -152,46 +163,96 @@ const CitizenDashboard: React.FC = () => {
   const handleCreateIncident = () => {
     form.setFieldsValue({
       municipalityId: municipality,
-      latitude: position?.[0] || '',
-      longitude: position?.[1] || '',
+      latitude: position?.[0] || "",
+      longitude: position?.[1] || "",
       city,
       province,
     });
     setFullReportModalVisible(true);
   };
 
-  const handleAddFullReport = () => {
-    form.validateFields().then((values) => {
+  // const handleAddFullReport = () => {
+  //   form.validateFields().then((values) => {
+  //     const payload: IIncident = {
+  //       description: values.description,
+  //       status: "Submitted",
+  //       // imageUrl: values.imageUrl,
+  //       latitude: values.latitude,
+  //       longitude: values.longitude,
+  //       incidentAddress: { city: values.city, province: values.province },
+  //       reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
+  //       municipalityName: sessionStorage.getItem("municipality") || "",
+  //       serviceProviderName: "Unallocated"
+  //       //change serviceProviderName as needed
+  //     }
+  //     setFullReport([...fullReport, payload]);
+  //     createIncident(payload);
+  //     setFullReportModalVisible(false);
+  //     form.resetFields();
+  //     message.success('Full report submitted successfully!');
+  //     router.push("/citizen/incidents");
+  //   });
+  // };
+
+  const handleAddFullReport = async () => {
+    try {
+      const values = await form.validateFields();
+
+      const file = values.imageUrl?.[0]?.originFileObj;
+      if (!file) {
+        message.error("Please upload a pothole image.");
+        return;
+      }
+
+      const imageUrl = await uploadImage(file);
+      if (!imageUrl) {
+        message.error("Failed to upload pothole image.");
+        return;
+      }
+
       const payload: IIncident = {
         description: values.description,
         status: "Submitted",
-        // imageUrl: values.imageUrl,
+        imageUrl, // Send URL to backend
         latitude: values.latitude,
         longitude: values.longitude,
-        incidentAddress: { city: values.city, province: values.province },
+        incidentAddress: {
+          city: values.city,
+          province: values.province,
+        },
         reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
         municipalityName: sessionStorage.getItem("municipality") || "",
-        serviceProviderName: "Unallocated"
-        //change serviceProviderName as needed
-      }
+        serviceProviderName: "Unallocated",
+      };
+
+      await createIncident(payload);
+
       setFullReport([...fullReport, payload]);
-      createIncident(payload);
+      message.success("Pothole report submitted successfully!");
       setFullReportModalVisible(false);
       form.resetFields();
-      message.success('Full report submitted successfully!');
       router.push("/citizen/incidents");
-    });
+    } catch (error) {
+      console.error("Submit error:", error);
+      message.error("Something went wrong while submitting your report.");
+    }
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const normFile = (e: any) => (Array.isArray(e) ? e : e?.fileList);
+  // const normFile = (e: any) => (Array.isArray(e) ? e : e?.fileList);
 
   if (!position) {
     return (
-      <Flex justify="center" align="center" style={dashboardStyles.loadingContainer}>
+      <Flex
+        justify="center"
+        align="center"
+        style={dashboardStyles.loadingContainer}
+      >
         <Card style={cardStyles.loadingCard}>
           <Spin size="large" />
-          <div style={dashboardStyles.loadingText}>Loading your location...</div>
+          <div style={dashboardStyles.loadingText}>
+            Loading your location...
+          </div>
         </Card>
       </Flex>
     );
@@ -210,7 +271,10 @@ const CitizenDashboard: React.FC = () => {
             }
             style={cardStyles.standard}
           >
-            <CitizenMap position={position} onMarkerDragEnd={handleMarkerDragEnd} />
+            <CitizenMap
+              position={position}
+              onMarkerDragEnd={handleMarkerDragEnd}
+            />
           </Card>
         </Col>
 
@@ -233,7 +297,9 @@ const CitizenDashboard: React.FC = () => {
               </Descriptions.Item>
               <Descriptions.Item label="Province">{province}</Descriptions.Item>
               <Descriptions.Item label="City">{city}</Descriptions.Item>
-              <Descriptions.Item label="Municipality">{municipality}</Descriptions.Item>
+              <Descriptions.Item label="Municipality">
+                {municipality}
+              </Descriptions.Item>
             </Descriptions>
           </Card>
         </Col>
@@ -260,7 +326,10 @@ const CitizenDashboard: React.FC = () => {
                 >
                   Quick Report
                 </Button>
-                <Text type="secondary" style={dashboardStyles.buttonDescription}>
+                <Text
+                  type="secondary"
+                  style={dashboardStyles.buttonDescription}
+                >
                   Submit a quick incident report
                 </Text>
               </Col>
@@ -276,7 +345,10 @@ const CitizenDashboard: React.FC = () => {
                 >
                   Detailed Report
                 </Button>
-                <Text type="secondary" style={dashboardStyles.buttonDescription}>
+                <Text
+                  type="secondary"
+                  style={dashboardStyles.buttonDescription}
+                >
                   Create a comprehensive report with details
                 </Text>
               </Col>
@@ -321,14 +393,17 @@ const CitizenDashboard: React.FC = () => {
       >
         <div style={modalStyles.content}>
           <Text>
-            Are you sure you want to create a quick report for your current location?
+            Are you sure you want to create a quick report for your current
+            location?
           </Text>
           <Divider />
           <Descriptions column={1} size="small">
             <Descriptions.Item label="Location">
               {position[0].toFixed(6)}, {position[1].toFixed(6)}
             </Descriptions.Item>
-            <Descriptions.Item label="Municipality">{municipality}</Descriptions.Item>
+            <Descriptions.Item label="Municipality">
+              {municipality}
+            </Descriptions.Item>
           </Descriptions>
         </div>
       </Modal>
@@ -345,7 +420,9 @@ const CitizenDashboard: React.FC = () => {
         onCancel={() => setFullReportModalVisible(false)}
         footer={
           <Space>
-            <Button onClick={() => setFullReportModalVisible(false)}>Cancel</Button>
+            <Button onClick={() => setFullReportModalVisible(false)}>
+              Cancel
+            </Button>
             <Button type="primary" onClick={handleAddFullReport}>
               Submit
             </Button>
@@ -361,19 +438,31 @@ const CitizenDashboard: React.FC = () => {
               <Form.Item
                 name="description"
                 label="Description"
-                rules={[{ required: true, message: 'Please enter report description' }]}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter report description",
+                  },
+                ]}
               >
-                <Input.TextArea rows={4} placeholder="Describe the incident..." />
+                <Input.TextArea
+                  rows={4}
+                  placeholder="Describe the incident..."
+                />
               </Form.Item>
 
               <Form.Item
                 label="Upload Image"
                 name="imageUrl"
                 valuePropName="fileList"
-                getValueFromEvent={normFile}
+                getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
               >
-                <Upload action="/upload.do" listType="picture-card" maxCount={3}>
-                  <button style={modalStyles.uploadButton} type="button">
+                <Upload
+                  listType="picture-card"
+                  beforeUpload={() => false}
+                  maxCount={1}
+                >
+                  <button type="button">
                     <PlusOutlined />
                     <div style={{ marginTop: 8 }}>Upload</div>
                   </button>
@@ -383,9 +472,12 @@ const CitizenDashboard: React.FC = () => {
 
             <Col xs={24} lg={12}>
               <Form.Item label="Adjust Your Location">
-                <Space direction="vertical" style={{ width: '100%' }}>
+                <Space direction="vertical" style={{ width: "100%" }}>
                   <div style={modalStyles.mapContainer}>
-                    <CitizenMap position={position} onMarkerDragEnd={handleMarkerDragEnd} />
+                    <CitizenMap
+                      position={position}
+                      onMarkerDragEnd={handleMarkerDragEnd}
+                    />
                   </div>
                 </Space>
               </Form.Item>
@@ -422,7 +514,9 @@ const CitizenDashboard: React.FC = () => {
               <Form.Item
                 name="municipalityId"
                 label="Municipality"
-                rules={[{ required: true, message: 'Municipality is required' }]}
+                rules={[
+                  { required: true, message: "Municipality is required" },
+                ]}
               >
                 <Input readOnly value={municipality} />
               </Form.Item>
@@ -435,5 +529,3 @@ const CitizenDashboard: React.FC = () => {
 };
 
 export default CitizenDashboard;
-
-

@@ -89,6 +89,7 @@ const AddUser = () => {
       form.resetFields();
       message.success(`New User added Successfully`);
     });
+    
   };
 
   useEffect(() => {
@@ -155,6 +156,7 @@ const AddUser = () => {
             columns={columns}
             dataSource={citizens}
             className={styles.serviceProviderTable}
+            pagination={{ pageSize: 6 }}
             rowKey="key"
           />
           {/* {citizens.length > 0 ? (

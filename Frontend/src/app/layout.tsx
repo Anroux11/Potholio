@@ -13,6 +13,7 @@ import { ServiceProviderProvider } from "@/providers/serviceProvider-provider";
 import { IncidentProvider } from "@/providers/incident-provider";
 import { TechnicianProvider } from "@/providers/technician-providers";
 import { CitizenProvider } from "@/providers/citizen-provider";
+import { ImageProvider } from "@/providers/image-provider";
 
 export default function RootLayout({
   children,
@@ -42,21 +43,23 @@ export default function RootLayout({
         <body
         // style={{ display: "inline-flex", width: "100vw", height: "100vh" }}
         >
-          <CitizenProvider>
-          <TechnicianProvider>
-            <IncidentProvider>
-              <ServiceProviderProvider>
-                <MunicipalityRegisterProvider>
-                  <CitizenRegisterProvider>
-                    <UserLoginProvider>
-                      <AntdApp>{children}</AntdApp>
-                    </UserLoginProvider>
-                  </CitizenRegisterProvider>
-                </MunicipalityRegisterProvider>
-              </ServiceProviderProvider>
-            </IncidentProvider>
-          </TechnicianProvider>
-          </CitizenProvider>
+          <ImageProvider>
+            <CitizenProvider>
+              <TechnicianProvider>
+                <IncidentProvider>
+                  <ServiceProviderProvider>
+                    <MunicipalityRegisterProvider>
+                      <CitizenRegisterProvider>
+                        <UserLoginProvider>
+                          <AntdApp>{children}</AntdApp>
+                        </UserLoginProvider>
+                      </CitizenRegisterProvider>
+                    </MunicipalityRegisterProvider>
+                  </ServiceProviderProvider>
+                </IncidentProvider>
+              </TechnicianProvider>
+            </CitizenProvider>
+          </ImageProvider>
         </body>
       </ConfigProvider>
     </html>
