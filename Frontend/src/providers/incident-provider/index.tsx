@@ -39,13 +39,15 @@ export const IncidentProvider = ({
     await instance
       .get(endpoint)
       .then((response) => {
-        const filteredData = response.data.data.map((incident: IIncident) => ({
+        console.log(response.data.result.items[0].incidentAddress.city);
+        const filteredData = response.data.result.items.map((incident: IIncident) => ({
+          id: incident.id ?? "",
           description: incident.description ?? "",
           status: incident.status ?? "",
           imageUrl: incident.imageUrl ?? "",
           latitude: incident.latitude ?? "",
           longitude: incident.longitude ?? "",
-          incidentAddress: incident.incidentAddress ?? "",
+          incidentAddress: { city: incident.incidentAddress?.city ?? "AA", province: incident.incidentAddress?.province},
           municipalityName: incident.municipalityName ?? "",
         }));
         dispatch(getIncidentListSuccess(filteredData));
@@ -77,7 +79,8 @@ export const IncidentProvider = ({
     await instance
       .post(endpoint, incident)
       .then((response) => {
-        dispatch(createIncidentSuccess(response.data));
+        dispatch(createIncidentSuccess(response.data.data));
+        console.log(response.data)
       })
       .catch((error) => {
         console.error(error);
