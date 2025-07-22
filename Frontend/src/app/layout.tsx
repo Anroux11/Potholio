@@ -12,6 +12,7 @@ import { MunicipalityRegisterProvider } from "@/providers/auth-provider";
 import { ServiceProviderProvider } from "@/providers/serviceProvider-provider";
 import { IncidentProvider } from "@/providers/incident-provider";
 import { TechnicianProvider } from "@/providers/technician-providers";
+import { CitizenProvider } from "@/providers/citizen-provider";
 
 export default function RootLayout({
   children,
@@ -41,6 +42,7 @@ export default function RootLayout({
         <body
         // style={{ display: "inline-flex", width: "100vw", height: "100vh" }}
         >
+          <CitizenProvider>
           <TechnicianProvider>
             <IncidentProvider>
               <ServiceProviderProvider>
@@ -54,6 +56,7 @@ export default function RootLayout({
               </ServiceProviderProvider>
             </IncidentProvider>
           </TechnicianProvider>
+          </CitizenProvider>
         </body>
       </ConfigProvider>
     </html>

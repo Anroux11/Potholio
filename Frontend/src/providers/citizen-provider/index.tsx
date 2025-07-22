@@ -24,23 +24,34 @@ import {
   deleteCitizenError,
 } from "./actions";
 
-export const CitizenProvider = ({ children }: { children: React.ReactNode }) => {
+export const CitizenProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [state, dispatch] = useReducer(CitizenReducer, INITIAL_STATE);
   const instance = getAxiosInstance();
 
-  const getCitizenList = async (trainerId: string) => {
+  const getCitizenList = async () => {
     dispatch(getCitizenListPending());
-    const endpoint = `citizen/trainer/${trainerId}/citizens`;
+    const endpoint = `services/app/User/GetAll`;
     await instance
       .get(endpoint)
       .then((response) => {
-        const filteredData = response.data.data.map((citizen: ICitizen) => ({
-          fullName: citizen.firstName || "",
-          username: citizen.username || "",
-          lastName: citizen.lastName || "",
-          email: citizen.email || "",
-          activeState: citizen.activeState || true,
-        }));
+        const filteredData = response.data.result.items
+          .filter((citizen: ICitizen) =>
+            citizen.roleNames.includes("MUNICIPALITY")
+          )
+          .map((citizen: ICitizen) => ({
+            name: citizen.name || "",
+            userName: citizen.userName || "",
+            surname: citizen.surname || "",
+            emailAddress: citizen.emailAddress || "",
+            roleName: citizen.roleNames[0] || "",
+            // password: citizen.password || "",
+            activeState: citizen.isActive ?? true, // use nullish coalescing to preserve false values
+          }));
+        console.log("new data", filteredData);
         dispatch(getCitizenListSuccess(filteredData));
       })
       .catch((error) => {

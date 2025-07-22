@@ -1,5 +1,6 @@
 import { getAxiosInstance } from "../../utils/axiosInstance";
 import { jwtDecode } from "jwt-decode";
+import { useCitizenActions } from "../citizen-provider";
 import {
   MunicipalityRegisterStateContext,
   MunicipalityRegisterActionContext,
@@ -112,6 +113,7 @@ export const CitizenRegisterProvider = ({
     INITIAL_STATE_CITIZEN
   );
   const instance = getAxiosInstance();
+  const { getCitizenList } = useCitizenActions();
 
   const registerCitizen = async (payload: ICitizenRegister) => {
     dispatch(getRegisterCitizenPending());
@@ -119,11 +121,8 @@ export const CitizenRegisterProvider = ({
     await instance
       .post(endpoint, payload)
       .then((response) => {
-        const token = response.data.result.accessToken;
-        const decoded = jwtDecode(token);
-        sessionStorage.setItem("token", token);
-        sessionStorage.setItem("role", JSON.stringify(decoded));
-        dispatch(getRegisterCitizenSuccess(token));
+        dispatch(getRegisterCitizenSuccess(response.data));  
+        getCitizenList();
       })
       .catch((error) => {
         console.error(error);
