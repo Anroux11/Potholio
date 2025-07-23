@@ -46,7 +46,6 @@ export const MunicipalityProvider = ({
             longitude: municipality.longitude ?? "",
           }));
           dispatch(getMunicipalityListSuccess(filteredData));
-          console.log("food items", filteredData);
         })
         .catch((error) => {
           console.error(error);

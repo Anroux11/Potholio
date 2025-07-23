@@ -50,7 +50,7 @@ const CreateServiceProvider: React.FC = () => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log("Error creating service provider:: ", error);
+      console.error(error);
       message.error("Creating Service Provider failed");
     }
     setIsModalOpen(false);

@@ -1,14 +1,11 @@
 import { createContext } from "react";
+import { Address } from "../incident-provider/context";
 export interface IMunicipality {
   id: string;
   name: string;
   buildingAddress: Address[];
   latitude: string;
   longitude: string;
-}
-export interface Address {
-  province: string;
-  city: string;
 }
 export interface IMunicipalityStateContext {
   isPending: boolean; 

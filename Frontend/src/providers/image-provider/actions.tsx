@@ -13,10 +13,6 @@ export enum ImageActionEnums {
   uploadImagePending = "UPLOAD_IMAGE_PENDING",
   uploadImageSuccess = "UPLOAD_IMAGE_SUCCESS",
   uploadImageError = "UPLOAD_IMAGE_ERROR",
-
-  deleteImagePending = "DELETE_IMAGE_PENDING",
-  deleteImageSuccess = "DELETE_IMAGE_SUCCESS",
-  deleteImageError = "DELETE_IMAGE_ERROR",
 }
 
 // export const getImagePending = createAction<IImageStateContext>(
@@ -79,24 +75,3 @@ export const uploadImageError = createAction<IImageStateContext>(
   ImageActionEnums.uploadImageError,
   () => ({ isPending: false, isSuccess: false, isError: true })
 );
-
-// export const deletImagePending = createAction<IImageStateContext>(
-//   ImageActionEnums.deleteImagePending,
-//   () => ({ isPending: true, isSuccess: false, isError: false })
-// );
-
-// export const deleteImageSuccess = createAction<
-//   IImageStateContext,
-//   IImage
-// >(ImageActionEnums.deleteImageSuccess, (image: IImage) => ({
-//   isPending: false,
-//   isSuccess: true,
-//   isError: false,
-//   image,
-// }));
-
-// export const deleteImageError = createAction<IImageStateContext>(
-//   ImageActionEnums.deleteImageError,
-//   () => ({ isPending: false, isSuccess: false, isError: true })
-// );
-

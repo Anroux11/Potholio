@@ -31,18 +31,6 @@ export const ImageReducer = handleActions<
     //   ...state,
     //   ...action.payload,
     // }),
-    // [IncidentActionEnums.createIncidentPending]: (state, action) => ({
-    //   ...state,
-    //   ...action.payload,
-    // }),
-    // [IncidentActionEnums.createIncidentSuccess]: (state, action) => ({
-    //   ...state,
-    //   ...action.payload,
-    // }),
-    // [IncidentActionEnums.createIncidentError]: (state, action) => ({
-    //   ...state,
-    //   ...action.payload,
-    // }),
     // [IncidentActionEnums.updateIncidentPending]: (state, action) => ({
     //   ...state,
     //   ...action.payload,
@@ -52,18 +40,6 @@ export const ImageReducer = handleActions<
     //   ...action.payload,
     // }),
     // [IncidentActionEnums.updateIncidentError]: (state, action) => ({
-    //   ...state,
-    //   ...action.payload,
-    // }),
-    // [IncidentActionEnums.deleteIncidentPending]: (state, action) => ({
-    //   ...state,
-    //   ...action.payload,
-    // }),
-    // [IncidentActionEnums.deleteIncidentSuccess]: (state, action) => ({
-    //   ...state,
-    //   ...action.payload,
-    // }),
-    // [IncidentActionEnums.deleteIncidentError]: (state, action) => ({
     //   ...state,
     //   ...action.payload,
     // }),

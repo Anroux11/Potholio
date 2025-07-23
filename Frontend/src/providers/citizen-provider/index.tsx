@@ -48,10 +48,8 @@ export const CitizenProvider = ({
             surname: citizen.surname || "",
             emailAddress: citizen.emailAddress || "",
             roleName: citizen.roleNames[0] || "",
-            // password: citizen.password || "",
-            activeState: citizen.isActive ?? true, // use nullish coalescing to preserve false values
+            activeState: citizen.isActive ?? true,
           }));
-        console.log("new data", filteredData);
         dispatch(getCitizenListSuccess(filteredData));
       })
       .catch((error) => {
