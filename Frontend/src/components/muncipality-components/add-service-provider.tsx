@@ -13,6 +13,7 @@ import {
 } from "antd/es";
 import { PlusOutlined } from "@ant-design/icons";
 import { useServiceProviderActions } from "@/providers/serviceProvider-provider";
+import { Address } from "@/providers/incident-provider/context";
 
 const CreateServiceProvider: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +25,7 @@ const CreateServiceProvider: React.FC = () => {
     id: string;
     name: string;
     emailAddress: string;
-    buildingAddress: [];
+    buildingAddress: Address;
     password: string;
     latitude: string;
     longitude: string;
