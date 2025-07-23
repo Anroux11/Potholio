@@ -39,19 +39,25 @@ export const IncidentProvider = ({
     await instance
       .get(endpoint)
       .then((response) => {
-        console.log(response.data.result.items[0].incidentAddress.city);
-        const filteredData = response.data.result.items.map((incident: IIncident) => ({
-          id: incident.id ?? "",
-          description: incident.description ?? "",
-          status: incident.status ?? "",
-          imageUrl: incident.imageUrl ?? "",
-          latitude: incident.latitude ?? "",
-          longitude: incident.longitude ?? "",
-          incidentAddress: { city: incident.incidentAddress?.city ?? "AA", province: incident.incidentAddress?.province},
-          municipalityName: incident.municipalityName ?? "",
-        }));
+        const userId = parseInt(sessionStorage.getItem("userId") || "");
+        const municipality = sessionStorage.getItem("municipalityName") || "";
+        console.log(response.data.result.items)
+        const filteredData = response.data.result.items
+          .filter((incident: IIncident) => incident.reportingUserId === userId || incident.municipalityName === municipality)
+          .map((incident: IIncident) => ({
+            id: incident.id ?? "",
+            description: incident.description ?? "",
+            status: incident.status ?? "",
+            imageUrl: incident.imageUrl ?? "",
+            latitude: incident.latitude ?? null,
+            longitude: incident.longitude ?? null,
+            incidentAddress: {
+              city: incident.incidentAddress?.city ?? "Unknown",
+              province: incident.incidentAddress?.province ?? "Unknown",
+            },
+            municipalityName: incident.municipalityName ?? "",
+          }));
         dispatch(getIncidentListSuccess(filteredData));
-        console.log("incident list", filteredData);
       })
       .catch((error) => {
         console.error(error);
@@ -61,7 +67,7 @@ export const IncidentProvider = ({
 
   const getIncident = async (id: string) => {
     dispatch(getIncidentPending());
-    const endpoint = `/services/incident${id}`;
+    const endpoint = `services/app/Incident/Get?Id=${id}`;
     await instance
       .get(endpoint)
       .then((response) => {
@@ -80,7 +86,6 @@ export const IncidentProvider = ({
       .post(endpoint, incident)
       .then((response) => {
         dispatch(createIncidentSuccess(response.data.data));
-        console.log(response.data)
       })
       .catch((error) => {
         console.error(error);
@@ -90,7 +95,7 @@ export const IncidentProvider = ({
 
   const updateIncident = async (incident: IIncident) => {
     dispatch(updateIncidentPending());
-    const endpoint = `/incidents/${incident.id}`;
+    const endpoint = `services/app/Incident/Update`;
     await instance
       .put(endpoint, incident)
       .then((response) => {
@@ -104,7 +109,7 @@ export const IncidentProvider = ({
 
   const deleteIncident = async (id: string) => {
     dispatch(deleteIncidentPending());
-    const endpoint = `https://fakestoreapi.com/incidents/${id}`;
+    const endpoint = `services/app/Incident/Delete?Id=${id}`;
     await instance
       .delete(endpoint)
       .then((response) => {

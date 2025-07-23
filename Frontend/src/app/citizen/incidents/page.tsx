@@ -8,6 +8,7 @@ import {
   Tag,
   Flex,
   Spin,
+  Image
 } from "antd/es";
 import type { ColumnsType } from "antd/es/table";
 import { useStyles } from "./style/styles";
@@ -70,8 +71,8 @@ const IncidentListPage = () => {
           status === "Submitted"
             ? "yellow"
             : status === "Completed"
-            ? "blue"
-            : "orange";
+              ? "blue"
+              : "orange";
         return <Tag color={color}>{status}</Tag>;
       },
     },
@@ -118,6 +119,14 @@ const IncidentListPage = () => {
           >
             {selectedIncident && (
               <>
+                <p>
+                  {selectedIncident.imageUrl && (
+                    <Image
+                      width={200}
+                      src={selectedIncident.imageUrl}
+                    />
+                  )}
+                </p>
                 <p>
                   <strong>Description:</strong>{" "}
                   {selectedIncident.description}

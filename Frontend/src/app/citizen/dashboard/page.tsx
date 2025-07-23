@@ -32,9 +32,8 @@ import {
   buttonStyles,
   modalStyles,
 } from "./style/styles";
-import { IIncident } from "@/providers/incident-provider/context";
+import { Address, IIncident } from "@/providers/incident-provider/context";
 import { useIncidentActions } from "@/providers/incident-provider";
-import { Address } from "@/providers/municipality-provider/context";
 import { useImageActions } from "@/providers/image-provider";
 
 const { Text } = Typography;

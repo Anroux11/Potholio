@@ -67,7 +67,7 @@ const AddUser = () => {
       await registerCitizen(payload);
       message.success("Registered successfully!");
     } catch (error) {
-      console.log("Register error:: ", error);
+      console.error(error);
       message.error("Failed to add a user. Please try again.");
     }
     setLoading(false);
@@ -89,7 +89,7 @@ const AddUser = () => {
       form.resetFields();
       message.success(`New User added Successfully`);
     });
-    
+
   };
 
   useEffect(() => {

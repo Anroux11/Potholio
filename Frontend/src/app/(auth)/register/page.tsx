@@ -49,26 +49,26 @@ const RegistrationForm = () => {
 
 
   const handleRegister: FormProps<FieldType>["onFinish"] = async (values) => {
-    setLoading(true);  
-      try {
-        const payload = {
-          emailAddress: values.emailAddress,
-          password: values.password,
-          roleName: "Citizen",
-          userName: values.userName,
-          name: values.name,
-          surname: values.surname,
-        };
-        await registerCitizen(payload);
-        message.success("Registered successfully!");
-        router.push("/login");
-      } catch (error) {
-        console.log("Register error:: ", error);
-        message.error("Register failed. Please try again.");
-      }
-      setLoading(false);
-      return router.push("/login");
+    setLoading(true);
+    try {
+      const payload = {
+        emailAddress: values.emailAddress,
+        password: values.password,
+        roleName: "Citizen",
+        userName: values.userName,
+        name: values.name,
+        surname: values.surname,
+      };
+      await registerCitizen(payload);
+      message.success("Registered successfully!");
+      router.push("/login");
+    } catch (error) {
+      console.error(error);
+      message.error("Register failed. Please try again.");
     }
+    setLoading(false);
+    return router.push("/login");
+  }
 
   return (
     <>
@@ -155,56 +155,56 @@ const RegistrationForm = () => {
                       }
                     />
                   </Form.Item>
-                      <Form.Item
-                        name="userName"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input your username!",
-                          },
-                        ]}
-                      >
-                        <Input
-                          size="large"
-                          placeholder="Username"
-                          prefix={<UserOutlined />}
-                          className={styles.input}
-                        />
-                      </Form.Item>
+                  <Form.Item
+                    name="userName"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your username!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      size="large"
+                      placeholder="Username"
+                      prefix={<UserOutlined />}
+                      className={styles.input}
+                    />
+                  </Form.Item>
 
-                      <Form.Item
-                        name="name"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input your First Name!",
-                          },
-                        ]}
-                      >
-                        <Input
-                          size="large"
-                          placeholder="First Name"
-                          prefix={<UserOutlined />}
-                          className={styles.input}
-                        />
-                      </Form.Item>
+                  <Form.Item
+                    name="name"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your First Name!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      size="large"
+                      placeholder="First Name"
+                      prefix={<UserOutlined />}
+                      className={styles.input}
+                    />
+                  </Form.Item>
 
-                      <Form.Item
-                        name="surname"
-                        rules={[
-                          {
-                            required: true,
-                            message: "Please input your Last Name!",
-                          },
-                        ]}
-                      >
-                        <Input
-                          size="large"
-                          placeholder="Last Name"
-                          prefix={<UserOutlined />}
-                          className={styles.input}
-                        />
-                      </Form.Item>
+                  <Form.Item
+                    name="surname"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your Last Name!",
+                      },
+                    ]}
+                  >
+                    <Input
+                      size="large"
+                      placeholder="Last Name"
+                      prefix={<UserOutlined />}
+                      className={styles.input}
+                    />
+                  </Form.Item>
                   <Form.Item>
                     <Button
                       type="primary"

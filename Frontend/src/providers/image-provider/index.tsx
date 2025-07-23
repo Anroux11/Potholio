@@ -1,6 +1,5 @@
 "use client";
 
-// import { getAxiosInstance } from "@/utils/axiosInstance";
 import { ImageReducer } from "./reducer";
 import { useContext, useReducer } from "react";
 
@@ -14,65 +13,6 @@ export const ImageProvider = ({
   children: React.ReactNode;
 }) => {
   const [state, dispatch] = useReducer(ImageReducer, INITIAL_STATE);
-
-//   const getImage = async (request: IImage) => {
-//     dispatch(submitJobApplicationPending());
-//     instance
-//       .post(endpoint, request)
-//       .then((response) => {
-//         if (response.status === 200) {
-//           dispatch(submitJobApplicationSuccess());
-//         }
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//         dispatch(submitJobApplicationError());
-//       });
-//   };
-
-//   const getJobApplications = async () => {
-//     dispatch(getJobApplicationsPending());
-//     const endpoint = `/api/services/app/JobApplication/GetAll`;
-//     await instance
-//       .get(endpoint)
-//       .then((response) => {
-//         dispatch(getJobApplicationsSuccess(response.data.result.items));
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//         dispatch(getJobApplicationsError());
-//       });
-//   };
-
-//   const updateJobApplication = async (request: IJobApplication) => {
-//     dispatch(UpdateJobApplicationPending());
-//     const endPoint = `/api/services/app/JobApplication/Update`;
-//     await instance
-//       .put(endPoint, request)
-//       .then((response) => {
-//         dispatch(UpdateJobApplicationSuccess(response.data.resutls));
-//       })
-//       .catch((err) => {
-//         dispatch(UpdateJobApplicationError());
-//         console.error(err);
-//       });
-//   };
-
-//   const getJobApplicationById = async (id: string) => {
-//     dispatch(getJobApplicationByIdPending());
-//     const endpoint = `/api/services/app/JobApplication/Get?id=${id}`;
-//     try {
-//       const response = await instance.get(endpoint);
-//       if (response.status === 200) {
-//         dispatch(getJobApplicationByIdSuccess(response.data.result));
-//         return response.data.result;
-//       }
-//     } catch (error) {
-//       console.error("Error getting job application:", error);
-//       dispatch(getJobApplicationByIdError());
-//       throw error;
-//     }
-//   };
 
   const uploadImage = async (file: File): Promise<string> => {
     dispatch(uploadImagePending());

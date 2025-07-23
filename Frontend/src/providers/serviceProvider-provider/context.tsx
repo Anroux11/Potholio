@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { Address } from "../incident-provider/context";
 export interface IServiceProvider {
     id: string;
     name: string;
@@ -9,11 +10,6 @@ export interface IServiceProvider {
     longitude: string;
     municipalityId: string //might chnge
 }
-export interface Address {
-    province: string;
-    city: string;
-}
-
 export interface IServiceProviderStateContext {
     isPending: boolean;
     isSuccess: boolean;

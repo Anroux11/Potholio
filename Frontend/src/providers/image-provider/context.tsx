@@ -16,7 +16,6 @@ export interface IImageActionContext {
 //   getImages: () => void;
 //   getImage: (id: string) => void;
   uploadImage: (file: File) => Promise<string>;
-//   deleteImage: (id: string) => void;
 }
 
 export const INITIAL_STATE: IImageStateContext = {

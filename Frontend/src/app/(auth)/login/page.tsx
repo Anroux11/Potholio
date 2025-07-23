@@ -44,7 +44,7 @@ const Login = () => {
       await userLogin(payload);
       setLoading(false);
       const user = sessionStorage.getItem("role") || "";
-      
+
       if (user === "Admin") {
         message.success("Login successfully!");
         router.push("/admin/dashboard");
@@ -60,14 +60,11 @@ const Login = () => {
       }
     } catch (error) {
       setLoading(false);
-      console.log("Error logging in:: ", error);
+      console.error(error);
       message.error("Login failed. Please check your credentials.");
     }
   }
 
-  // const handleLogin = () => {
-  //   return router.push("/municipality/dashboard")
-  // }
 
   return (
     <>
