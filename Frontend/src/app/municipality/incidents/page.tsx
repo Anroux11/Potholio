@@ -9,6 +9,8 @@ import {
   useIncidentState,
 } from "@/providers/incident-provider";
 import { IIncident } from "@/providers/incident-provider/context";
+import { IServiceProvider } from "@/providers/serviceProvider-provider/context";
+import { useServiceProviderActions, useServiceProviderState } from "@/providers/serviceProvider-provider";
 
 const { Option } = Select;
 
@@ -17,22 +19,28 @@ const IncidentListPage = () => {
   const { incidents } = useIncidentState();
   const { getIncidentList, updateIncident } = useIncidentActions();
 
+  const { serviceProviders } = useServiceProviderState();
+  const { getServiceProviderList } = useServiceProviderActions();
+
   const [selectedIncident, setSelectedIncident] = useState<IIncident | null>(
     null
   );
-  const serviceProvider = ["John Doe Construction", "BAW Roadworks", "Boxfusion Road Repair"];
   const [assignMode, setAssignMode] = useState(false);
-  const [selectedServiceProvider, setSelectedServiceProvider] = useState<string>();
+  const [selectedServiceProvider, setSelectedServiceProvider] = useState<IServiceProvider | null>(
+    null
+  );
   const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     getIncidentList();
+    getServiceProviderList();
   }, []);
 
-  const handleView = (incident: IIncident) => {
+
+  const handleView = (incident: IIncident, serviceProvider?: IServiceProvider) => {
     setSelectedIncident(incident);
     setAssignMode(false);
-    setSelectedServiceProvider(undefined);
+    setSelectedServiceProvider(serviceProvider ?? null);
     setModalVisible(true);
   };
 
@@ -43,31 +51,19 @@ const IncidentListPage = () => {
   const handleConfirmAssign = () => {
     if (!selectedIncident || !selectedServiceProvider) return;
 
-    // const updatedIncidents = incidents?.map((inc) =>
-    //   inc.id === selectedIncident.id
-    //     ? { ...inc, status: "Assigned", ServiceProvider: selectedServiceProvider }
-    //     : inc
-    // );
-
     const payload: IIncident = {
       ...selectedIncident,
       status: "Assigned",
-      serviceProviderName: selectedServiceProvider,
-    } 
+      serviceProviderName: selectedServiceProvider.name,
+    }
 
     updateIncident(payload);
     setModalVisible(false);
-    message.success(`Assigned to ${selectedServiceProvider}`);
+    message.success(`Assigned to ${selectedServiceProvider.name}`);
   };
 
   const handleComplete = () => {
     if (!selectedIncident) return;
-
-    // const updatedIncidents = incidents?.map((svrp) =>
-    //   svrp.id === selectedIncident.id
-    //     ? { ...svrp, status: "Completed" }
-    //     : svrp
-    // );
 
     const payload: IIncident = {
       ...selectedIncident,
@@ -100,7 +96,7 @@ const IncidentListPage = () => {
     },
     {
       title: "Service Provider",
-      dataIndex: "serviceProvider",
+      dataIndex: "serviceProviderName",
       key: "serviceProvider",
       render: (srvP) => srvP || "-",
     },
@@ -108,7 +104,10 @@ const IncidentListPage = () => {
       title: "Action",
       key: "action",
       render: (_, record) => (
-        <Button type="link" onClick={() => handleView(record)}>
+        <Button
+          type="link"
+          onClick={() => handleView(record, serviceProviders?.find(sp => sp.name === record.serviceProviderName))}
+        >
           View
         </Button>
       ),
@@ -169,14 +168,18 @@ const IncidentListPage = () => {
             <Select
               placeholder="Select Service Provider"
               style={{ width: "100%" }}
-              onChange={(value) => setSelectedServiceProvider(value)}
+              onChange={(value) =>
+                setSelectedServiceProvider(serviceProviders?.find((sp) => sp.id === value) || null)
+              }
+              value={selectedServiceProvider?.id}
             >
-              {serviceProvider.map((srvP, index) => (
-                <Option key={index} value={srvP}>
-                  {srvP}
+              {serviceProviders?.map((srvP) => (
+                <Option key={srvP.id} value={srvP.id}>
+                  {srvP.name}
                 </Option>
               ))}
             </Select>
+
           </>
         )}
       </Modal>

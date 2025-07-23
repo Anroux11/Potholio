@@ -35,7 +35,8 @@ const ServiceProviderPage = () => {
         password: values.password,
         latitude: values.latitude,
         longitude: values.longitude,
-        municipalityId: values.municipalityId
+        municipalityId: values.municipalityId,
+        municipalityName: values.municipalityName,
       }
       createServiceProvider(payload);
       setServiceProviders([...serviceProviders, payload]);
