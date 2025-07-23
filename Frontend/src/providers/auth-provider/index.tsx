@@ -121,7 +121,7 @@ export const CitizenRegisterProvider = ({
     await instance
       .post(endpoint, payload)
       .then((response) => {
-        dispatch(getRegisterCitizenSuccess(response.data));  
+        dispatch(getRegisterCitizenSuccess(response.data));
         getCitizenList();
       })
       .catch((error) => {
@@ -170,31 +170,33 @@ export const UserLoginProvider = ({
 }) => {
   const [state, dispatch] = useReducer(UserLoginReducer, INITIAL_STATE_USER);
   const instance = getAxiosInstance();
+  const { currentUser } = useCurrentUserActions();
 
+  const userLogin = async (payload: IUserLogin) => {
+    dispatch(getUserLoginPending());
+    const endpoint = `/TokenAuth/Authenticate`;
+    await instance
+      .post(endpoint, payload)
+      .then((response) => {
+        const token = response.data.result.accessToken;
+        console.log("Token:", response.data.result);
+        const decoded = decodeToken(token);
+        const userRole = decoded[AbpTokenProperies.role];
+        const userId = decoded[AbpTokenProperies.nameidentifier];
 
- const userLogin = async (payload: IUserLogin) => {
-  dispatch(getUserLoginPending());
-  const endpoint = `/TokenAuth/Authenticate`;
-  await instance
-    .post(endpoint, payload)
-    .then((response) => {
-      const token = response.data.result.accessToken;
-      console.log("Token:", response.data.result);
-      const decoded = decodeToken(token);
-      const userRole = decoded[AbpTokenProperies.role];
-      const userId = decoded[AbpTokenProperies.nameidentifier];
-      
-      sessionStorage.setItem("token", token);
-      sessionStorage.setItem("role", userRole);
-      sessionStorage.setItem("userId", userId);
-      
-      dispatch(getUserLoginSuccess(token));
-    })
-    .catch((error) => {
-      console.error(error);
-      dispatch(getUserLoginError());
-    });
-};
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("role", userRole);
+        sessionStorage.setItem("userId", userId);
+
+        currentUser();
+
+        dispatch(getUserLoginSuccess(token));
+      })
+      .catch((error) => {
+        console.error(error);
+        dispatch(getUserLoginError());
+      });
+  };
 
   return (
     <UserLoginStateContext.Provider value={state}>
@@ -241,26 +243,28 @@ export const CurrentUserProvider = ({
   const instance = getAxiosInstance();
 
   const currentUser = async () => {
-    const token = sessionStorage.getItem("token")?.trim();
+    // const token = sessionStorage.getItem("token")?.trim();
     dispatch(getCurrentUserPending());
-    const endpoint = `user/current`;
+    const endpoint = `services/app/Session/GetCurrentLoginInformations`;
     await instance
-      .get(endpoint, {
-        headers: {
-          Authorization: `${token}`,
-        },
-      })
+      .get(endpoint)
+    await instance
+      .get(endpoint)
       .then((response) => {
-        sessionStorage.setItem(
-          "currentUser",
-          JSON.stringify(response.data.data.id)
-        );
-        dispatch(getCurrentUserSuccess(response.data.data));
+        const result = response.data.result.user.name;
+        console.log("Current User:", result);
+        const municipalityName = result || "";
+
+        console.log("Saving municipalityName to sessionStorage:", municipalityName);
+        sessionStorage.setItem("municipalityName", municipalityName);
+
+        dispatch(getCurrentUserSuccess(result));
       })
       .catch((error) => {
         console.error(error);
         dispatch(getCurrentUserError());
       });
+
   };
 
   return (
