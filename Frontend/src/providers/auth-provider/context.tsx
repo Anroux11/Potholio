@@ -94,7 +94,9 @@ export const UserLoginActionContext = createContext<
 export interface ICurrentUser {
   id: string;
   name: string;
-  email: string;
+  userName?: string;
+  surname?: string
+  emailAddress: string;
   role: string;
   activeState: boolean;
   date: string;
@@ -103,10 +105,10 @@ export interface ICurrentUserStateContext {
   isPending: boolean;
   isSuccess: boolean; 
   isError: boolean; 
-  currentUser?: ICurrentUser; 
+  user?: ICurrentUser; 
 }
 export interface ICurrentUserActionContext {
-  currentUser: () => void; 
+  currentUser: () => void;
 }
 
 export const INITIAL_STATE_CURRENT: ICurrentUserStateContext = {

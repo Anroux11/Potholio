@@ -243,7 +243,7 @@ export const CurrentUserProvider = ({
   const currentUser = async () => {
     const token = sessionStorage.getItem("token")?.trim();
     dispatch(getCurrentUserPending());
-    const endpoint = `user/current`;
+    const endpoint = `services/app/Session/GetCurrentLoginInformations`;
     await instance
       .get(endpoint, {
         headers: {
@@ -253,9 +253,9 @@ export const CurrentUserProvider = ({
       .then((response) => {
         sessionStorage.setItem(
           "currentUser",
-          JSON.stringify(response.data.data.id)
+          JSON.stringify(response.data.result.user.id)
         );
-        dispatch(getCurrentUserSuccess(response.data.data));
+        dispatch(getCurrentUserSuccess(response.data.result.user));
       })
       .catch((error) => {
         console.error(error);
