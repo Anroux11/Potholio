@@ -24,6 +24,7 @@ import {
   deleteIncidentError,
   getIncidentSuccess,
 } from "./actions";
+import { useCurrentUserActions } from "../auth-provider";
 
 export const IncidentProvider = ({
   children,
@@ -32,6 +33,7 @@ export const IncidentProvider = ({
 }) => {
   const [state, dispatch] = useReducer(IncidentReducer, INITIAL_STATE);
   const instance = getAxiosInstance();
+  const { currentUser} = useCurrentUserActions();
 
   const getIncidentList = async () => {
     dispatch(getIncidentListPending());
@@ -39,9 +41,10 @@ export const IncidentProvider = ({
     await instance
       .get(endpoint)
       .then((response) => {
+        currentUser();
         const userId = parseInt(sessionStorage.getItem("userId") || "");
-        const municipality = sessionStorage.getItem("municipalityName") || "";
-        console.log(response.data.result.items)
+        const municipality = (sessionStorage.getItem("municipalityName") || "").toString();
+        console.log(municipality);
         const filteredData = response.data.result.items
           .filter((incident: IIncident) => incident.reportingUserId === userId || incident.municipalityName === municipality)
           .map((incident: IIncident) => ({
@@ -56,7 +59,11 @@ export const IncidentProvider = ({
               province: incident.incidentAddress?.province ?? "Unknown",
             },
             municipalityName: incident.municipalityName ?? "",
+            reportingUserId: incident.reportingUserId ?? 0,
+            serviceProviderName: incident.serviceProviderName ?? "",
+            
           }));
+          console.log("Filtered Data:", filteredData);
         dispatch(getIncidentListSuccess(filteredData));
       })
       .catch((error) => {

@@ -13,6 +13,7 @@ import {
 } from "antd/es";
 import { PlusOutlined } from "@ant-design/icons";
 import { useServiceProviderActions } from "@/providers/serviceProvider-provider";
+import { IServiceProvider } from "@/providers/serviceProvider-provider/context";
 
 const CreateServiceProvider: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,18 +21,7 @@ const CreateServiceProvider: React.FC = () => {
   const [form] = Form.useForm();
   const { createServiceProvider } = useServiceProviderActions();
 
-  type FieldType = {
-    id: string;
-    name: string;
-    emailAddress: string;
-    buildingAddress: [];
-    password: string;
-    latitude: string;
-    longitude: string;
-    municipalityId: string;
-  };
-
-  const handleCreate: FormProps<FieldType>["onFinish"] = async (values) => {
+  const handleCreate: FormProps<IServiceProvider>["onFinish"] = (values) => {
     setLoading(true);
     try {
       const payload = {
@@ -43,10 +33,11 @@ const CreateServiceProvider: React.FC = () => {
         latitude: values.latitude,
         longitude: values.longitude,
         municipalityId: values.municipalityId,
+        municipalityName: values.municipalityName,
 
       };
 
-      await createServiceProvider(payload);
+      createServiceProvider(payload);
       setLoading(false);
     } catch (error) {
       setLoading(false);

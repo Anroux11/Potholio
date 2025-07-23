@@ -4,44 +4,49 @@ import { useState } from "react";
 import { Table, Button, Modal, Form, Input, Space, message } from "antd/es";
 import type { ColumnsType } from "antd/es/table";
 import { useStyles } from "./style/styles";
+import { IServiceProvider } from "@/providers/serviceProvider-provider/context";
+import { useServiceProviderActions } from "@/providers/serviceProvider-provider";
+import { Address } from "@/providers/incident-provider/context";
 
-type ServiceProvider = {
-  key: string;
-  name: string;
-  email: string;
-  contactNumber: string;
-  address: string;
-};
+// type ServiceProvider = {
+//   key: string;
+//   name: string;
+//   email: string;
+//   contactNumber: string;
+//   address: string;
+// };
 
 const ServiceProviderPage = () => {
   const { styles } = useStyles();
 
-  const [serviceProviders, setServiceProviders] = useState<ServiceProvider[]>([
-    { key: "1", name: "John Doe Construction", email: "JohnDoeConstruction@mail.com", contactNumber: "0112345678", address: "20 Main Road Johannesburg" },
-    { key: "2", name: "BAW Roadworks", email: "BAW@mail.com", contactNumber: "0744562317", address: "6 Grad Road Pretoria" },
-    { key: "2", name: "Boxfusion Road Repair", email: "BoxRoadRepair@mail.com", contactNumber: "0317789955", address: "67 Eve Avenue Centurion " },
-  ]);
+  const [serviceProviders, setServiceProviders] = useState<IServiceProvider[]>([]);
 
   const [modalVisible, setModalVisible] = useState(false);
+  const { createServiceProvider } = useServiceProviderActions();
   const [form] = Form.useForm();
 
-  const handleAddServiceProvider= () => {
+  const handleAddServiceProvider = () => {
     form.validateFields().then(values => {
-      const newServP: ServiceProvider = {
-        key: (serviceProviders.length + 1).toString(),
+      const addressPayload: Address = { city: values.city, province: values.province };
+      const payload: IServiceProvider = {
         name: values.name,
-        email: values.email,
-        contactNumber: values.contactNumber,
-        address: values.address,
-      };
-      setServiceProviders([...serviceProviders, newServP]);
+        emailAddress: values.email,
+        buildingAddress: addressPayload,
+        password: values.password,
+        latitude: values.latitude,
+        longitude: values.longitude,
+        municipalityId: values.municipalityId,
+        municipalityName: values.municipalityName,
+      }
+      createServiceProvider(payload);
+      setServiceProviders([...serviceProviders, payload]);
       setModalVisible(false);
       form.resetFields();
       message.success(`Added Service Provider ${values.name}`);
     });
   };
 
-  const columns: ColumnsType<ServiceProvider> = [
+  const columns: ColumnsType<IServiceProvider> = [
     {
       title: "Name",
       dataIndex: "name",
