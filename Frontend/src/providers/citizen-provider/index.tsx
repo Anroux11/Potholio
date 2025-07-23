@@ -40,14 +40,14 @@ export const CitizenProvider = ({
       .then((response) => {
         const filteredData = response.data.result.items
           .filter((citizen: ICitizen) =>
-            citizen.roleNames.includes("MUNICIPALITY")
+            citizen.roleNames?.includes("MUNICIPALITY")
           )
           .map((citizen: ICitizen) => ({
             name: citizen.name || "",
             userName: citizen.userName || "",
             surname: citizen.surname || "",
             emailAddress: citizen.emailAddress || "",
-            roleName: citizen.roleNames[0] || "",
+            roleName: citizen.roleName[0] || "",
             activeState: citizen.isActive ?? true,
           }));
         dispatch(getCitizenListSuccess(filteredData));
@@ -93,7 +93,7 @@ export const CitizenProvider = ({
 
   const updateCitizen = async (citizen: ICitizen) => {
     dispatch(updateCitizenPending());
-    const endpoint = `/citizens/${citizen}`;
+    const endpoint = `services/app/User/Update`;
     await instance
       .put(endpoint, citizen)
       .then((response) => {

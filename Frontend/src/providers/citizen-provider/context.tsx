@@ -1,6 +1,6 @@
 import { createContext } from "react";
 export interface ICitizen {
-  // id?: string;
+  id?: number;
   // username: string;
   // firstName?: string;
   // lastName?: string;
@@ -15,7 +15,7 @@ export interface ICitizen {
   fullName?: string;
   lastLoginTime?: Date;
   creationTime?: Date;
-  roleNames: [string];
+  roleNames?: [string];
   roleName: string;
   password?: string
 }
