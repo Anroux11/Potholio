@@ -258,7 +258,13 @@ export const CurrentUserProvider = ({
         console.log("Saving municipalityName to sessionStorage:", municipalityName);
         sessionStorage.setItem("municipalityName", municipalityName);
 
-        dispatch(getCurrentUserSuccess(result));
+        sessionStorage.setItem(
+          "currentUser",
+          JSON.stringify(response.data.result.user.id)
+        );
+        dispatch(getCurrentUserSuccess(response.data.result.user));
+
+        // dispatch(getCurrentUserSuccess(result));
       })
       .catch((error) => {
         console.error(error);

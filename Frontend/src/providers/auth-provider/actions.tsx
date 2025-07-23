@@ -131,7 +131,7 @@ export const getCurrentUserSuccess = createAction<
     isPending: false,
     isSuccess: true,
     isError: false,
-    currentuser,
+    user: currentuser,
   })
 );
 

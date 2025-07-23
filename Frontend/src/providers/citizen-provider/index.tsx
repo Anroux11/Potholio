@@ -47,7 +47,7 @@ export const CitizenProvider = ({
             userName: citizen.userName || "",
             surname: citizen.surname || "",
             emailAddress: citizen.emailAddress || "",
-            roleName: citizen.roleName[0] || "",
+            roleName: citizen.roleNames?.[0] || "",
             activeState: citizen.isActive ?? true,
           }));
         dispatch(getCitizenListSuccess(filteredData));
@@ -60,7 +60,7 @@ export const CitizenProvider = ({
 
   const getCitizen = async (id: string) => {
     dispatch(getCitizenPending());
-    const endpoint = `/citizens/${id}`;
+    const endpoint = `services/app/User/Get?Id=${id}`;
     await instance
       .get(endpoint)
       .then((response) => {
@@ -107,7 +107,7 @@ export const CitizenProvider = ({
 
   const deleteCitizen = async (id: string) => {
     dispatch(deleteCitizenPending());
-    const endpoint = `https://fakestoreapi.com/citizens/${id}`;
+    const endpoint = `services/app/User/Delete?Id=${id}`;
     await instance
       .delete(endpoint)
       .then((response) => {
