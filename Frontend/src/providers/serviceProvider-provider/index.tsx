@@ -24,6 +24,7 @@ import {
   deleteServiceProviderSuccess,
   deleteServiceProviderError,
 } from "./actions";
+import { useCurrentUserActions } from "../auth-provider";
 
 export const ServiceProviderProvider = ({
   children,
@@ -32,6 +33,7 @@ export const ServiceProviderProvider = ({
 }) => {
   const [state, dispatch] = useReducer(ServiceProviderReducer, INITIAL_STATE);
   const instance = getAxiosInstance();
+  const { currentUser } = useCurrentUserActions();
 
   const getServiceProviderList = async () => {
     dispatch(getServiceProviderListPending());
@@ -39,8 +41,13 @@ export const ServiceProviderProvider = ({
     await instance
       .get(endpoint)
       .then((response) => {
-        const filteredData = response.data.data.map(
+        currentUser();
+        const municipality = (sessionStorage.getItem("municipalityName") || "").toString();
+        const filteredData = response.data.result.items
+          .filter((serviceProvider: IServiceProvider) => serviceProvider.municipalityName === municipality)
+          .map(
           (serviceProvider: IServiceProvider) => ({
+            id: serviceProvider.id,
             name: serviceProvider.name ?? "",
             emailAddress: serviceProvider.emailAddress ?? "",
             buildingAddress: serviceProvider.buildingAddress ?? "",
@@ -48,8 +55,12 @@ export const ServiceProviderProvider = ({
             latitude: serviceProvider.latitude ?? "",
             longitude: serviceProvider.longitude ?? "",
             municipalityId: serviceProvider.municipalityId ?? "",
+            municipalityName: serviceProvider.municipalityName ?? "",
           })
         );
+
+        console.log("Filtered Service Providers:", filteredData);
+
         dispatch(getServiceProviderListSuccess(filteredData));
       })
       .catch((error) => {

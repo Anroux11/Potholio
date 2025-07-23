@@ -59,6 +59,8 @@ export const IncidentProvider = ({
               province: incident.incidentAddress?.province ?? "Unknown",
             },
             municipalityName: incident.municipalityName ?? "",
+            reportingUserId: incident.reportingUserId ?? 0,
+            serviceProviderName: incident.serviceProviderName ?? "",
             
           }));
           console.log("Filtered Data:", filteredData);

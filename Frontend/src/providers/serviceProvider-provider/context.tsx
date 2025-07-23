@@ -9,6 +9,7 @@ export interface IServiceProvider {
     latitude: string;
     longitude: string;
     municipalityId: string //might chnge
+    municipalityName: string;
 }
 
 export interface IServiceProviderStateContext {
