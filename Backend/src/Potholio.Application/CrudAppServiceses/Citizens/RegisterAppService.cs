@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Services;
 using Abp.Authorization;
+using Abp.Domain.Repositories;
 using Abp.UI;
 using Potholio.Authorization.Users;
 using Potholio.CrudAppServiceses.Citizens.DTo;
@@ -12,6 +13,7 @@ namespace Potholio.CrudAppServiceses.Citizens
     public class RegisterAppService : ApplicationService
     {
         private readonly UserManager _userManager;
+        private readonly IRepository<User, long> _userRepository;
 
         public RegisterAppService(UserManager userManager)
         {
@@ -45,6 +47,18 @@ namespace Potholio.CrudAppServiceses.Citizens
             {
                 throw new UserFriendlyException("No Citizen available:", ex.Message);
             }
+            await CurrentUnitOfWork.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(User user)
+        {
+            await _userRepository.UpdateAsync(user);
+            await CurrentUnitOfWork.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(User user)
+        {
+            await _userRepository.DeleteAsync(user);
             await CurrentUnitOfWork.SaveChangesAsync();
         }
     }
