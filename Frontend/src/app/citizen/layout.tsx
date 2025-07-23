@@ -70,7 +70,7 @@ const CitizenLayout = ({ children }: { children: React.ReactNode }) => {
                     onClick={(info) => {
                         if (info.key === "1") router.push("/citizen/dashboard");
                         if (info.key === "2") router.push("/citizen/incidents");
-                        if (info.key === "3") router.push("/citizen/technicians");
+                        if (info.key === "3") router.push("/citizen/settings");
                     }}
                     items={[
                         {
