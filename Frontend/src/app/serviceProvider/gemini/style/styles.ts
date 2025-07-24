@@ -43,7 +43,7 @@ export const useStyles = createStyles({
   responseBox: css`
     margin-top: 2rem;
     white-space: pre-wrap;
-    background: #f5f5f5;
+    background: gray;
     padding: 1rem;
     border-radius: 8px;
   `,
