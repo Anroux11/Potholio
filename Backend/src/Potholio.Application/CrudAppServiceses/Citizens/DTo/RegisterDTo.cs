@@ -1,14 +1,7 @@
-﻿using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
-using Potholio.Authorization.Roles;
+﻿using Abp.AutoMapper;
 using Potholio.Authorization.Users;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Potholio.CrudAppServiceses.Citizens.DTo
 {

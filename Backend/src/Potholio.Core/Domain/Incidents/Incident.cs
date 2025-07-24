@@ -3,7 +3,6 @@ using Potholio.Authorization.Users;
 using Potholio.Domain.Addresses;
 using Potholio.Domain.Municipalities;
 using Potholio.Domain.ServiceProviders;
-using Potholio.Enums;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 

@@ -1,14 +1,17 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Abp.UI;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Potholio.Authorization.Users;
+using Potholio.CrudAppServiceses.Citizens.DTo;
 using Potholio.CrudAppServiceses.Reports;
 using Potholio.CrudAppServiceses.ServiceProviders.Dto;
 using Potholio.Domain.Municipalities;
 using Potholio.Domain.ServiceProviders;
+using Potholio.EmailService;
 using System;
 using System.Threading.Tasks;
 
@@ -18,11 +21,15 @@ namespace Potholio.CrudAppServiceses.ServiceProviders
     {
         private readonly IRepository<Municipality, Guid> _municipalityRepository;
         private readonly IRepository<ServiceProvider, Guid> _serviceProviderRepository;
+        private readonly UserManager _userManager;
+        private readonly ISendGridEmailService _sendGridEmailService;
 
-        public ServiceProviderAppService(IRepository<ServiceProvider, Guid> repository, IRepository<Municipality, Guid> municipalityRepository) : base(repository)
+        public ServiceProviderAppService(IRepository<ServiceProvider, Guid> repository, IRepository<Municipality, Guid> municipalityRepository, UserManager userManager, ISendGridEmailService sendGridEmailService) : base(repository)
         {
             _serviceProviderRepository = repository;
             _municipalityRepository = municipalityRepository;
+            _userManager = userManager;
+            _sendGridEmailService = sendGridEmailService;
         }
 
         public async Task<Guid> GetMunicipalityIdByNameAsync(string name)
@@ -46,6 +53,39 @@ namespace Potholio.CrudAppServiceses.ServiceProviders
             input.MunicipalityId = municipalityId;
 
             input.Password = new PasswordHasher<ServiceProviderDto>(new OptionsWrapper<PasswordHasherOptions>(new PasswordHasherOptions())).HashPassword(input, input.Password);
+
+            // try to create user of type ServiceProvider
+            try
+            {
+                var register = new RegisterDTo
+                {
+                    UserName = input.Email,
+                    Name = input.Name,
+                    Surname = "", // Optional
+                    EmailAddress = input.Email,
+                    Password = input.Password,
+                    roleName = "ServiceProvider"
+                };
+                var user = ObjectMapper.Map<User>(register);
+                user.IsActive = true;
+                user.IsEmailConfirmed = true;
+                user.TenantId = null;
+                var result = await _userManager.CreateAsync(user, input.Password);
+                await _userManager.AddToRoleAsync(user, "ServiceProvider");
+                await CurrentUnitOfWork.SaveChangesAsync();
+            }
+            catch(Exception ex)
+            {
+                throw new UserFriendlyException("register failed: ", ex.ToString());
+            }
+
+            await _sendGridEmailService.SendEmailAsync(
+                   input.Email,
+                   "Welcome to Potholio",
+                   "<p>You have successfully registered. Thank you!</p>"
+               );
+
+            await CurrentUnitOfWork.SaveChangesAsync();
 
             return await base.CreateAsync(input);
         }

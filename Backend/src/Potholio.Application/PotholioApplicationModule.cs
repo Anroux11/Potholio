@@ -1,7 +1,9 @@
 ﻿using Abp.AutoMapper;
+using Abp.Events.Bus.Handlers;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Potholio.Authorization;
+//using Potholio.EventBus;
 
 namespace Potholio
 {
@@ -25,6 +27,16 @@ namespace Potholio
                 // Scan the assembly for classes which inherit from AutoMapper.Profile
                 cfg => cfg.AddMaps(thisAssembly)
             );
+
         }
+
+        //public override void PostInitialize()
+        //{
+        //    var eventBus = IocManager.Resolve<IEventBus>();
+        //    var handler = IocManager.Resolve<ServiceProviderEventHandler>();
+
+        //    eventBus.Subscribe<ServiceProviderCreatedEvent>(handler.Handle);
+
+        //}
     }
 }
