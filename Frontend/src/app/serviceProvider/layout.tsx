@@ -13,6 +13,7 @@ import {
 import { Button, Layout, Menu, Modal, theme, Image } from "antd/es";
 import Title from "antd/es/typography/Title";
 import { useStyles } from "./style/styles";
+import withAuth from "@/hoc/withAuth";
 
 const { Header, Sider, Content } = Layout;
 
@@ -138,4 +139,4 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default ServiceProviderLayout;
+export default withAuth(ServiceProviderLayout, { allowedRoles: ["ServiceProvider"] });
