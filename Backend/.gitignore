@@ -254,3 +254,6 @@ paket-files/
 src/Potholio.Web.Mvc/secrets.json
 src/Potholio.Web.Host/secrets.json
 src/Potholio.Migrator/secrets.json
+
+*.env
+.env.*

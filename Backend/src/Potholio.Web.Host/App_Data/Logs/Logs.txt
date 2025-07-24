@@ -317,3 +317,233 @@ INFO  2025-07-23 09:59:14,525 [28   ] .Mvc.Infrastructure.ObjectResultExecutor -
 INFO  2025-07-23 09:59:14,531 [28   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Users.UserAppService.UpdateAsync (Potholio.Application) in 6582.4827ms
 INFO  2025-07-23 09:59:14,540 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Users.UserAppService.UpdateAsync (Potholio.Application)'
 INFO  2025-07-23 09:59:14,548 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 PUT https://localhost:44311/api/services/app/User/Update - 200 - application/json;+charset=utf-8 6635.4624ms
+DEBUG 2025-07-24 07:44:35,787 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-07-24 07:44:36,350 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-07-24 07:44:36,363 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.Web.Host.Startup.PotholioWebHostModule, Potholio.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioWebCoreModule, Potholio.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,366 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioApplicationModule, Potholio.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,366 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioCoreModule, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,366 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,367 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,367 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,368 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,368 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.EntityFrameworkCore.PotholioEntityFrameworkModule, Potholio.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,369 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,369 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,369 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,370 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,370 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,370 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:36,372 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-07-24 07:44:36,633 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-24 07:44:36,633 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-24 07:44:36,633 [1    ] o.Configuration.LanguageManagementConfig - Converted Potholio (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-24 07:44:36,633 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-24 07:44:36,914 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Potholio.EntityFrameworkCore.PotholioDbContext, Potholio.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:44:37,024 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-07-24 07:44:37,048 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-07-24 07:44:37,055 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-07-24 07:44:37,058 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Potholio
+DEBUG 2025-07-24 07:44:37,061 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-07-24 07:44:37,065 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-07-24 07:44:37,072 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Potholio.MultiTenancy.Tenant, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Potholio.Authorization.Users.User, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-07-24 07:44:37,085 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2025-07-24 07:44:37,085 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Users.Dto.CreateUserDto
+DEBUG 2025-07-24 07:44:37,087 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Users.Dto.UserDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Roles.Dto.PermissionDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.MultiTenancy.Dto.TenantDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Technicians.Dto.TechnicianDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.ServiceProviders.Dto.ServiceProviderDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Reports.DTo.IncidentDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.MunicipalityAdmin.Dto.MunicipalityDto
+DEBUG 2025-07-24 07:44:37,088 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Citizens.DTo.RegisterDTo
+INFO  2025-07-24 07:44:50,562 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-07-24 07:44:51,203 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-07-24 07:44:51,293 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-07-24 07:44:51,298 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-07-24 07:44:51,301 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Potholio\Backend\src\Potholio.Web.Host
+INFO  2025-07-24 07:44:51,629 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host)'
+INFO  2025-07-24 07:44:51,712 [7    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Potholio.Web.Host.Controllers.HomeController (Potholio.Web.Host).
+INFO  2025-07-24 07:44:53,241 [7    ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-07-24 07:44:53,276 [7    ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host) in 1535.5239ms
+INFO  2025-07-24 07:44:53,281 [7    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host)'
+INFO  2025-07-24 07:44:53,312 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 2123.7013ms
+INFO  2025-07-24 07:44:53,327 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-07-24 07:44:53,449 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 123.1071ms
+INFO  2025-07-24 07:44:53,451 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-07-24 07:44:53,459 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/ui/abp.swagger.js - - -
+INFO  2025-07-24 07:44:53,461 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/ui/abp.js - - -
+INFO  2025-07-24 07:44:53,477 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-07-24 07:44:53,481 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16519 application/javascript;+charset=utf-8 21.0367ms
+INFO  2025-07-24 07:44:53,488 [7    ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger/ui/abp.js was not modified
+INFO  2025-07-24 07:44:53,492 [15   ] NetCore.StaticFiles.StaticFileMiddleware - The file /swagger/ui/abp.swagger.js was not modified
+INFO  2025-07-24 07:44:53,499 [7    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/ui/abp.js - 304 - text/javascript 36.8306ms
+INFO  2025-07-24 07:44:53,501 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/ui/abp.swagger.js - 304 - text/javascript 40.0817ms
+INFO  2025-07-24 07:44:53,635 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 156.7634ms
+INFO  2025-07-24 07:44:53,677 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-07-24 07:44:53,687 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-07-24 07:44:54,391 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
+INFO  2025-07-24 07:44:54,424 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Potholio.Web.Host.Controllers.AntiForgeryController (Potholio.Web.Host).
+INFO  2025-07-24 07:44:54,593 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 906.0606ms
+INFO  2025-07-24 07:44:55,426 [16   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-24 07:44:55,446 [16   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host) in 1015.6893ms
+INFO  2025-07-24 07:44:55,450 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
+INFO  2025-07-24 07:44:55,456 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1778.4545ms
+INFO  2025-07-24 07:45:33,494 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-07-24 07:45:33,522 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 21.5532ms
+INFO  2025-07-24 07:45:33,531 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-07-24 07:45:33,533 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-07-24 07:45:33,538 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16519 application/javascript;+charset=utf-8 6.5880ms
+INFO  2025-07-24 07:45:33,558 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 27.7705ms
+INFO  2025-07-24 07:45:33,581 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-07-24 07:45:33,585 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
+INFO  2025-07-24 07:45:33,589 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-07-24 07:45:33,592 [11   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Potholio.Web.Host.Controllers.AntiForgeryController (Potholio.Web.Host).
+INFO  2025-07-24 07:45:33,698 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 105.9273ms
+INFO  2025-07-24 07:45:34,584 [26   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-24 07:45:34,589 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host) in 992.6002ms
+INFO  2025-07-24 07:45:34,593 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
+INFO  2025-07-24 07:45:34,597 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1015.1796ms
+INFO  2025-07-24 07:46:18,424 [16   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - application/json 172
+INFO  2025-07-24 07:46:18,437 [16   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-24 07:46:18,443 [16   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-24 07:46:18,464 [16   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:46:18,521 [16   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Register", controller = "Register"}. Executing controller action with signature System.Threading.Tasks.Task RegisterAsync(Potholio.CrudAppServiceses.Citizens.DTo.RegisterDTo) on controller Potholio.CrudAppServiceses.Citizens.RegisterAppService (Potholio.Application).
+INFO  2025-07-24 07:46:28,957 [28   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-24 07:46:28,961 [28   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application) in 10436.3159ms
+INFO  2025-07-24 07:46:28,964 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:46:28,969 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - 200 - application/json;+charset=utf-8 10543.7377ms
+DEBUG 2025-07-24 07:52:30,662 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2025-07-24 07:52:30,694 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2025-07-24 07:52:30,702 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.Web.Host.Startup.PotholioWebHostModule, Potholio.Web.Host, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,703 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioWebCoreModule, Potholio.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,704 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioApplicationModule, Potholio.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,704 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.PotholioCoreModule, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,704 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,704 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,704 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Potholio.EntityFrameworkCore.PotholioEntityFrameworkModule, Potholio.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=9.4.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:30,706 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2025-07-24 07:52:30,748 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-24 07:52:30,748 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-24 07:52:30,748 [1    ] o.Configuration.LanguageManagementConfig - Converted Potholio (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-24 07:52:30,748 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2025-07-24 07:52:30,960 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: Potholio.EntityFrameworkCore.PotholioDbContext, Potholio.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2025-07-24 07:52:31,056 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2025-07-24 07:52:31,075 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2025-07-24 07:52:31,080 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2025-07-24 07:52:31,083 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Potholio
+DEBUG 2025-07-24 07:52:31,086 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2025-07-24 07:52:31,090 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2025-07-24 07:52:31,095 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[Potholio.MultiTenancy.Tenant, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Potholio.Authorization.Users.User, Potholio.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2025-07-24 07:52:31,106 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2025-07-24 07:52:31,106 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Users.Dto.CreateUserDto
+DEBUG 2025-07-24 07:52:31,108 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Users.Dto.UserDto
+DEBUG 2025-07-24 07:52:31,108 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2025-07-24 07:52:31,108 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Sessions.Dto.UserLoginInfoDto
+DEBUG 2025-07-24 07:52:31,108 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.Roles.Dto.PermissionDto
+DEBUG 2025-07-24 07:52:31,108 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2025-07-24 07:52:31,108 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.MultiTenancy.Dto.TenantDto
+DEBUG 2025-07-24 07:52:31,108 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Technicians.Dto.TechnicianDto
+DEBUG 2025-07-24 07:52:31,109 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.ServiceProviders.Dto.ServiceProviderDto
+DEBUG 2025-07-24 07:52:31,109 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Reports.DTo.IncidentDto
+DEBUG 2025-07-24 07:52:31,109 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.MunicipalityAdmin.Dto.MunicipalityDto
+DEBUG 2025-07-24 07:52:31,109 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Potholio.CrudAppServiceses.Citizens.DTo.RegisterDTo
+INFO  2025-07-24 07:52:43,150 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,fa,ja,zh-Hans
+INFO  2025-07-24 07:52:43,769 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/ - - -
+INFO  2025-07-24 07:52:43,921 [1    ] Microsoft.Hosting.Lifetime               - Application started. Press Ctrl+C to shut down.
+INFO  2025-07-24 07:52:43,927 [1    ] Microsoft.Hosting.Lifetime               - Hosting environment: Development
+INFO  2025-07-24 07:52:43,929 [1    ] Microsoft.Hosting.Lifetime               - Content root path: C:\Users\Willem\Documents\Github\Potholio\Backend\src\Potholio.Web.Host
+INFO  2025-07-24 07:52:44,146 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host)'
+INFO  2025-07-24 07:52:44,240 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Potholio.Web.Host.Controllers.HomeController (Potholio.Web.Host).
+INFO  2025-07-24 07:52:45,772 [17   ] vc.Infrastructure.RedirectResultExecutor - Executing RedirectResult, redirecting to /swagger.
+INFO  2025-07-24 07:52:45,802 [17   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host) in 1537.3905ms
+INFO  2025-07-24 07:52:45,809 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.HomeController.Index (Potholio.Web.Host)'
+INFO  2025-07-24 07:52:45,841 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/ - 302 - - 2080.4506ms
+INFO  2025-07-24 07:52:45,846 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/index.html - - -
+INFO  2025-07-24 07:52:45,980 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/index.html - 200 - text/html;charset=utf-8 139.6294ms
+INFO  2025-07-24 07:52:46,035 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_vs/browserLink - - -
+INFO  2025-07-24 07:52:46,039 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - - -
+INFO  2025-07-24 07:52:46,052 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_framework/aspnetcore-browser-refresh.js - 200 16519 application/javascript;+charset=utf-8 11.4622ms
+INFO  2025-07-24 07:52:46,115 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/_vs/browserLink - 200 - text/javascript;+charset=UTF-8 83.0196ms
+INFO  2025-07-24 07:52:46,247 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - - -
+INFO  2025-07-24 07:52:46,255 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
+INFO  2025-07-24 07:52:46,270 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "SetCookie", controller = "AntiForgery", area = ""}. Executing controller action with signature Void SetCookie() on controller Potholio.Web.Host.Controllers.AntiForgeryController (Potholio.Web.Host).
+INFO  2025-07-24 07:52:46,342 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - - -
+INFO  2025-07-24 07:52:46,483 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/swagger/v1/swagger.json - 200 - application/json;charset=utf-8 139.5587ms
+INFO  2025-07-24 07:52:47,543 [17   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-24 07:52:47,558 [17   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host) in 1284.205ms
+INFO  2025-07-24 07:52:47,568 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.Web.Host.Controllers.AntiForgeryController.SetCookie (Potholio.Web.Host)'
+INFO  2025-07-24 07:52:47,572 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 GET https://localhost:44311/AntiForgery/SetCookie - 200 - application/json;+charset=utf-8 1324.6927ms
+INFO  2025-07-24 07:53:39,267 [17   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - application/json 172
+INFO  2025-07-24 07:53:39,273 [17   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-24 07:53:39,274 [17   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-24 07:53:39,284 [17   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:53:39,297 [17   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Register", controller = "Register"}. Executing controller action with signature System.Threading.Tasks.Task RegisterAsync(Potholio.CrudAppServiceses.Citizens.DTo.RegisterDTo) on controller Potholio.CrudAppServiceses.Citizens.RegisterAppService (Potholio.Application).
+INFO  2025-07-24 07:53:49,860 [11   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-24 07:53:49,867 [11   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application) in 10564.9231ms
+INFO  2025-07-24 07:53:49,872 [11   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:53:49,878 [11   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - 200 - application/json;+charset=utf-8 10608.2617ms
+INFO  2025-07-24 07:55:36,905 [22   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - application/json 172
+INFO  2025-07-24 07:55:36,915 [22   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-24 07:55:36,942 [22   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-24 07:55:36,951 [22   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:55:36,962 [22   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Register", controller = "Register"}. Executing controller action with signature System.Threading.Tasks.Task RegisterAsync(Potholio.CrudAppServiceses.Citizens.DTo.RegisterDTo) on controller Potholio.CrudAppServiceses.Citizens.RegisterAppService (Potholio.Application).
+WARN  2025-07-24 07:55:39,678 [22   ] Mvc.ExceptionHandling.AbpExceptionFilter - Username 'anroux11' is already taken.
+Abp.UI.UserFriendlyException: Username 'anroux11' is already taken.
+   at Abp.Authorization.Users.AbpUserManager`2.CheckDuplicateUsernameOrEmailAddressAsync(Nullable`1 expectedUserId, String userName, String emailAddress)
+   at Abp.Authorization.Users.AbpUserManager`2.CreateAsync(TUser user)
+   at Microsoft.AspNetCore.Identity.UserManager`1.CreateAsync(TUser user, String password)
+   at Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync(RegisterDTo input) in C:\Users\Willem\Documents\Github\Potholio\Backend\src\Potholio.Application\CrudAppServiceses\Citizens\RegisterAppService.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+INFO  2025-07-24 07:55:39,701 [22   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-24 07:55:39,720 [22   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application) in 2743.4558ms
+INFO  2025-07-24 07:55:39,726 [22   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:55:39,730 [22   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - 500 - application/json;+charset=utf-8 2843.0982ms
+INFO  2025-07-24 07:56:22,205 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - application/json 172
+INFO  2025-07-24 07:56:22,209 [15   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-24 07:56:22,211 [15   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-24 07:56:22,213 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:56:22,217 [15   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Register", controller = "Register"}. Executing controller action with signature System.Threading.Tasks.Task RegisterAsync(Potholio.CrudAppServiceses.Citizens.DTo.RegisterDTo) on controller Potholio.CrudAppServiceses.Citizens.RegisterAppService (Potholio.Application).
+WARN  2025-07-24 07:56:23,914 [15   ] Mvc.ExceptionHandling.AbpExceptionFilter - Username 'anroux11' is already taken.
+Abp.UI.UserFriendlyException: Username 'anroux11' is already taken.
+   at Abp.Authorization.Users.AbpUserManager`2.CheckDuplicateUsernameOrEmailAddressAsync(Nullable`1 expectedUserId, String userName, String emailAddress)
+   at Abp.Authorization.Users.AbpUserManager`2.CreateAsync(TUser user)
+   at Microsoft.AspNetCore.Identity.UserManager`1.CreateAsync(TUser user, String password)
+   at Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync(RegisterDTo input) in C:\Users\Willem\Documents\Github\Potholio\Backend\src\Potholio.Application\CrudAppServiceses\Citizens\RegisterAppService.cs:line 33
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+INFO  2025-07-24 07:56:23,924 [15   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-24 07:56:23,933 [15   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application) in 1708.6033ms
+INFO  2025-07-24 07:56:23,951 [15   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:56:23,959 [15   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - 500 - application/json;+charset=utf-8 1747.7243ms
+INFO  2025-07-24 07:56:54,526 [22   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - application/json 172
+INFO  2025-07-24 07:56:54,528 [22   ] pNetCore.Cors.Infrastructure.CorsService - CORS policy execution failed.
+INFO  2025-07-24 07:56:54,533 [22   ] pNetCore.Cors.Infrastructure.CorsService - Request origin https://localhost:44311 does not have permission to access the resource.
+INFO  2025-07-24 07:56:54,536 [22   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:56:54,539 [22   ] c.Infrastructure.ControllerActionInvoker - Route matched with {area = "app", action = "Register", controller = "Register"}. Executing controller action with signature System.Threading.Tasks.Task RegisterAsync(Potholio.CrudAppServiceses.Citizens.DTo.RegisterDTo) on controller Potholio.CrudAppServiceses.Citizens.RegisterAppService (Potholio.Application).
+INFO  2025-07-24 07:57:04,354 [26   ] .Mvc.Infrastructure.ObjectResultExecutor - Executing ObjectResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2025-07-24 07:57:04,361 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application) in 9815.5458ms
+INFO  2025-07-24 07:57:04,370 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Potholio.CrudAppServiceses.Citizens.RegisterAppService.RegisterAsync (Potholio.Application)'
+INFO  2025-07-24 07:57:04,377 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished HTTP/2 POST https://localhost:44311/api/services/app/Register/Register - 200 - application/json;+charset=utf-8 9846.7381ms

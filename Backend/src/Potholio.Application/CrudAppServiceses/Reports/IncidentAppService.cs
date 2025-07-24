@@ -83,7 +83,7 @@ namespace Potholio.CrudAppServiceses.Reports
         public override async Task<PagedResultDto<IncidentDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
         {
             var incidents = await _incidentRepository
-                .GetAllIncluding(i => i.incidentAddress, i => i.Municipality).ToListAsync();
+                .GetAllIncluding(i => i.incidentAddress, i => i.Municipality, s => s.serviceProvider).ToListAsync();
             return await base.GetAllAsync(input);
         }
     }
