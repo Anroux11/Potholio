@@ -52,6 +52,8 @@ namespace Potholio.CrudAppServiceses.ServiceProviders
             var municipalityId = await GetMunicipalityIdByNameAsync(input.MunicipalityName);
             input.MunicipalityId = municipalityId;
 
+            var rawPassword = input.Password;
+
             input.Password = new PasswordHasher<ServiceProviderDto>(new OptionsWrapper<PasswordHasherOptions>(new PasswordHasherOptions())).HashPassword(input, input.Password);
 
             // try to create user of type ServiceProvider
@@ -59,18 +61,18 @@ namespace Potholio.CrudAppServiceses.ServiceProviders
             {
                 var register = new RegisterDTo
                 {
-                    UserName = input.Email,
+                    UserName = input.Name,
                     Name = input.Name,
-                    Surname = "", // Optional
+                    Surname = "",
                     EmailAddress = input.Email,
-                    Password = input.Password,
+                    Password = rawPassword,
                     roleName = "ServiceProvider"
                 };
                 var user = ObjectMapper.Map<User>(register);
                 user.IsActive = true;
                 user.IsEmailConfirmed = true;
                 user.TenantId = null;
-                var result = await _userManager.CreateAsync(user, input.Password);
+                var result = await _userManager.CreateAsync(user, rawPassword);
                 await _userManager.AddToRoleAsync(user, "ServiceProvider");
                 await CurrentUnitOfWork.SaveChangesAsync();
             }
