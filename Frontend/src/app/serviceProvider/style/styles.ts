@@ -50,4 +50,21 @@ export const useStyles = createStyles({
     overflow: hidden;
     text-overflow: ellipsis;
   `,
+  logoutBtn: css`
+  color: colorBgContainer
+    display: flex;
+    align-items: center;
+    justify-content: collapsed ? center : flex-start;
+    height: 50px;
+    &:hover {
+      color: danger;
+    }
+  `,
+  logout: css`
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 8px;
+  `,
 })

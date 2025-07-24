@@ -145,4 +145,10 @@ export const useStyles = createStyles({
     justify: space-between;
     align: center;
   `,
+  loginBtn: css`
+  width: 300px ;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+  `,
 });

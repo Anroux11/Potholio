@@ -121,7 +121,7 @@ const Login = () => {
                   >
                     <Input
                       size="large"
-                      placeholder="Email"
+                      placeholder="Email or Username"
                       prefix={<MailOutlined />}
                       className={styles.input}
                     />

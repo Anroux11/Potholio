@@ -51,6 +51,7 @@ const CitizenLayout = ({ children }: { children: React.ReactNode }) => {
                 breakpoint="lg"
                 collapsedWidth="80"
                 onBreakpoint={(broken) => setCollapsed(broken)}
+                style={{ position: "relative" }}
             >
                 <div className={styles.imageContainer}>
                     <Image
@@ -91,13 +92,14 @@ const CitizenLayout = ({ children }: { children: React.ReactNode }) => {
                     ]}
                 />
 
-                <div style={{ marginTop: "auto", padding: "12px" }}>
+                <div className={styles.logout}>
                     <Button
                         type="default"
                         danger
                         icon={<LogoutOutlined />}
                         block
                         onClick={() => setLogoutModalVisible(true)}
+                        className={styles.logoutBtn}
                     >
                         {!collapsed && "Logout"}
                     </Button>

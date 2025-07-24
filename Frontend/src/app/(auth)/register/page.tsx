@@ -14,18 +14,9 @@ import {
   EyeTwoTone,
   EyeInvisibleOutlined,
 } from "@ant-design/icons";
-import {
-  Form,
-  Input,
-  Button,
-  FormProps,
-  message,
-  Flex,
-  Spin,
-} from "antd/es";
-import {
-  useRegisterCitizenActions,
-} from "@/providers/auth-provider";
+import { Form, Input, Button, FormProps, message, Flex, Spin } from "antd/es";
+import { useRegisterCitizenActions } from "@/providers/auth-provider";
+import Link from "next/link";
 
 type FieldType = {
   emailAddress: string;
@@ -47,7 +38,6 @@ const RegistrationForm = () => {
   const [loading, setLoading] = useState(false);
   const { registerCitizen } = useRegisterCitizenActions();
 
-
   const handleRegister: FormProps<FieldType>["onFinish"] = async (values) => {
     setLoading(true);
     try {
@@ -68,7 +58,7 @@ const RegistrationForm = () => {
     }
     setLoading(false);
     return router.push("/login");
-  }
+  };
 
   return (
     <>
@@ -139,7 +129,6 @@ const RegistrationForm = () => {
                         pattern: new RegExp(
                           "(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
                         ),
-                        // This regex requires at least one uppercase letter, one lowercase letter, one digit, and a minimum length of 8 characters
                         message: "Does not meet requirements",
                       },
                     ]}
@@ -216,7 +205,19 @@ const RegistrationForm = () => {
                       Register
                     </Button>
                   </Form.Item>
+                  <Link href="/login" className={styles.loginBtn}>
+                  <Button
+                    type="default"
+                    block
+                    style={{ width: "300px" }}
+                    size="large"
+                    
+                  >
+                    Back to Login
+                  </Button>
+                </Link>
                 </Form>
+                
               </div>
             </div>
           </div>
@@ -224,6 +225,6 @@ const RegistrationForm = () => {
       )}
     </>
   );
-}
+};
 
 export default RegistrationForm;

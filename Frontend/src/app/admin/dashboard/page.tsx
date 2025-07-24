@@ -97,9 +97,6 @@ const AddUser = () => {
     getCitizenList();
   }, [""]);
 
-  // const fetchCitizens = async () => {
-  //   await getCitizenList();
-  // };
 
   const columns: ColumnsType<ICitizen> = [
     {
