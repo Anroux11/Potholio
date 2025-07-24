@@ -73,8 +73,9 @@ const ServiceProviderPage = () => {
 
             <Divider orientation="left">Recent Incidents</Divider>
             <Card className={styles.incidentCard}>
-                <IncidentList />
+                <IncidentList incidents={incidents?.slice(0, 3) || []} />
             </Card>
+
         </div>
     );
 };

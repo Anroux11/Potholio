@@ -49,8 +49,15 @@ export const ServiceProviderProvider = ({
           (serviceProvider: IServiceProvider) => ({
             id: serviceProvider.id,
             name: serviceProvider.name ?? "",
-            emailAddress: serviceProvider.emailAddress ?? "",
-            buildingAddress: serviceProvider.buildingAddress ?? "",
+            email: serviceProvider.email ?? "",
+            buildingAddress: {
+              city: serviceProvider.address?.city ?? "Unknown",
+              province: serviceProvider.address?.province ?? "Unknown",
+            },
+            address: {
+              city: serviceProvider.address?.city ?? "Unknown",
+              province: serviceProvider.address?.province ?? "Unknown",
+            },
             password: serviceProvider.password ?? "",
             latitude: serviceProvider.latitude ?? "",
             longitude: serviceProvider.longitude ?? "",
@@ -58,7 +65,7 @@ export const ServiceProviderProvider = ({
             municipalityName: serviceProvider.municipalityName ?? "",
           })
         );
-
+        console.log("Filtered Service Providers:", filteredData);
         dispatch(getServiceProviderListSuccess(filteredData));
       })
       .catch((error) => {

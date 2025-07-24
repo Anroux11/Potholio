@@ -1,21 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-
-// import Image from "next/image";
 import { useStyles } from "./style/styles";
 import Typography from "antd/es/typography";
 import { useRouter } from "next/navigation";
 import { Button, Divider, Flex, Form, FormProps, Input, Spin } from "antd/es";
-// import Link from "next/link";
-// import Flex from "antd/es/flex";
 import message from "antd/es/message";
 import "@ant-design/v5-patch-for-react-19";
 import Image from "next/image";
 import {
   EyeInvisibleOutlined,
   EyeTwoTone,
-  GoogleOutlined,
   LockOutlined,
   MailOutlined,
 } from "@ant-design/icons";
@@ -54,6 +49,9 @@ const Login = () => {
       } else if (user === "Municipality") {
         message.success("Login successfully!");
         router.push("/municipality/dashboard");
+      } else if (user === "ServiceProvider") {
+        message.success("Login successfully!");
+        router.push("/serviceProvider/dashboard");
       } else {
         message.success("Could not find user");
         router.push("/login");
@@ -166,23 +164,6 @@ const Login = () => {
                       Register
                     </a>
                   </Divider>
-
-                  <Form.Item>
-                    <Button
-                      block
-                      htmlType="submit"
-                      type="primary"
-                      style={{
-                        width: "300px",
-                        fontWeight: "bold",
-                        backgroundColor: "#1E3E62",
-                      }}
-                      size="large"
-                    >
-                      <GoogleOutlined />
-                      Sign in with Google
-                    </Button>
-                  </Form.Item>
                 </Form>
               </div>
             </div>

@@ -1,171 +1,171 @@
-"use client";
+// "use client";
 
-import React, { useState } from "react";
-import {
-  Button,
-  Flex,
-  Form,
-  FormProps,
-  Input,
-  message,
-  Modal,
-  Spin,
-} from "antd/es";
-import { PlusOutlined } from "@ant-design/icons";
-import { useServiceProviderActions } from "@/providers/serviceProvider-provider";
-import { IServiceProvider } from "@/providers/serviceProvider-provider/context";
+// import React, { useState } from "react";
+// import {
+//   Button,
+//   Flex,
+//   Form,
+//   FormProps,
+//   Input,
+//   message,
+//   Modal,
+//   Spin,
+// } from "antd/es";
+// import { PlusOutlined } from "@ant-design/icons";
+// import { useServiceProviderActions } from "@/providers/serviceProvider-provider";
+// import { IServiceProvider } from "@/providers/serviceProvider-provider/context";
 
-const CreateServiceProvider: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [form] = Form.useForm();
-  const { createServiceProvider } = useServiceProviderActions();
+// const CreateServiceProvider: React.FC = () => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [loading, setLoading] = useState(false);
+//   const [form] = Form.useForm();
+//   const { createServiceProvider } = useServiceProviderActions();
 
-  const handleCreate: FormProps<IServiceProvider>["onFinish"] = (values) => {
-    setLoading(true);
-    try {
-      const payload = {
-        id: values.id,
-        name: values.name,
-        emailAddress: values.emailAddress,
-        buildingAddress: values.buildingAddress,
-        password: values.password,
-        latitude: values.latitude,
-        longitude: values.longitude,
-        municipalityId: values.municipalityId,
-        municipalityName: values.municipalityName,
+//   const handleCreate: FormProps<IServiceProvider>["onFinish"] = (values) => {
+//     setLoading(true);
+//     try {
+//       const payload = {
+//         id: values.id,
+//         name: values.name,
+//         emailAddress: values.email,
+//         buildingAddress: values.buildingAddress,
+//         password: values.password,
+//         latitude: values.latitude,
+//         longitude: values.longitude,
+//         municipalityId: values.municipalityId,
+//         municipalityName: values.municipalityName,
 
-      };
+//       };
 
-      createServiceProvider(payload);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.error(error);
-      message.error("Creating Service Provider failed");
-    }
-    setIsModalOpen(false);
-  };
+//       createServiceProvider(payload);
+//       setLoading(false);
+//     } catch (error) {
+//       setLoading(false);
+//       console.error(error);
+//       message.error("Creating Service Provider failed");
+//     }
+//     setIsModalOpen(false);
+//   };
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+//   const showModal = () => {
+//     setIsModalOpen(true);
+//   };
 
-  const handleCancel = () => {
-    form.resetFields();
-    setIsModalOpen(false);
-  };
+//   const handleCancel = () => {
+//     form.resetFields();
+//     setIsModalOpen(false);
+//   };
 
-  const formItemLayout = {
-    labelCol: {
-      xs: { span: 24 },
-      sm: { span: 6 },
-    },
-    wrapperCol: {
-      xs: { span: 24 },
-      sm: { span: 14 },
-    },
-  };
+//   const formItemLayout = {
+//     labelCol: {
+//       xs: { span: 24 },
+//       sm: { span: 6 },
+//     },
+//     wrapperCol: {
+//       xs: { span: 24 },
+//       sm: { span: 14 },
+//     },
+//   };
 
-  return (
-    <>
-      {loading ? (
-        <div>
-          <Flex
-            justify="center"
-            align="center"
-            style={{ marginBottom: 20, width: "100%", height: "100vh" }}
-          >
-            <Spin size="large" />
-          </Flex>
-        </div>
-      ) : (
-        <>
-          <Button type="primary" onClick={showModal} icon={<PlusOutlined />}>
-            Service
-          </Button>
+//   return (
+//     <>
+//       {loading ? (
+//         <div>
+//           <Flex
+//             justify="center"
+//             align="center"
+//             style={{ marginBottom: 20, width: "100%", height: "100vh" }}
+//           >
+//             <Spin size="large" />
+//           </Flex>
+//         </div>
+//       ) : (
+//         <>
+//           <Button type="primary" onClick={showModal} icon={<PlusOutlined />}>
+//             Service
+//           </Button>
 
-          <Modal
-            title="Add an item"
-            closable={{ "aria-label": "Custom Close Button" }}
-            open={isModalOpen}
-            onCancel={handleCancel}
-            footer={[]}
-          >
-            <br />
-            <Form
-              {...formItemLayout}
-              name="add-food-item"
-              form={form}
-              style={{ maxWidth: 500 }}
-              initialValues={{ variant: "filled" }}
-              onFinish={handleCreate}
-            >
-              <Form.Item
-                label="Name"
-                name="name"
-                rules={[
-                  { required: true, message: "Please enter Name" },
-                ]}
-              >
-                <Input />
-              </Form.Item>
+//           <Modal
+//             title="Add an item"
+//             closable={{ "aria-label": "Custom Close Button" }}
+//             open={isModalOpen}
+//             onCancel={handleCancel}
+//             footer={[]}
+//           >
+//             <br />
+//             <Form
+//               {...formItemLayout}
+//               name="add-food-item"
+//               form={form}
+//               style={{ maxWidth: 500 }}
+//               initialValues={{ variant: "filled" }}
+//               onFinish={handleCreate}
+//             >
+//               <Form.Item
+//                 label="Name"
+//                 name="name"
+//                 rules={[
+//                   { required: true, message: "Please enter Name" },
+//                 ]}
+//               >
+//                 <Input />
+//               </Form.Item>
 
-              <Form.Item
-                label="Email"
-                name="email"
-                rules={[{ required: true, message: "Please enter email" }]}
-              >
-                <Input />
-              </Form.Item>
+//               <Form.Item
+//                 label="Email"
+//                 name="email"
+//                 rules={[{ required: true, message: "Please enter email" }]}
+//               >
+//                 <Input />
+//               </Form.Item>
 
-              <Form.Item
-                label="Address"
-                name="addres"
-                rules={[{ required: true, message: "Please enter the address" }]}
-              >
-                <Input />
-              </Form.Item>
+//               <Form.Item
+//                 label="Address"
+//                 name="addres"
+//                 rules={[{ required: true, message: "Please enter the address" }]}
+//               >
+//                 <Input />
+//               </Form.Item>
 
-              <Form.Item
-                label="Contact Number"
-                name="fat"
-                rules={[{ required: true, message: "Please enter Contact Number" }]}
-              >
-                <Input />
-              </Form.Item>
+//               <Form.Item
+//                 label="Contact Number"
+//                 name="fat"
+//                 rules={[{ required: true, message: "Please enter Contact Number" }]}
+//               >
+//                 <Input />
+//               </Form.Item>
 
-              <Button
-                block
-                type="primary"
-                htmlType="submit"
-                style={{
-                  width: "150px",
-                  fontWeight: "bold",
-                }}
-                size="large"
-              >
-                Create
-              </Button>
+//               <Button
+//                 block
+//                 type="primary"
+//                 htmlType="submit"
+//                 style={{
+//                   width: "150px",
+//                   fontWeight: "bold",
+//                 }}
+//                 size="large"
+//               >
+//                 Create
+//               </Button>
 
-              <Button
-                key="cancel"
-                type="primary"
-                onClick={handleCancel}
-                style={{
-                  width: "100px",
-                  marginLeft: "1rem",
-                }}
-                size="large"
-              >
-                Cancel
-              </Button>
-            </Form>
-          </Modal>
-        </>
-      )}
-    </>
-  );
-};
+//               <Button
+//                 key="cancel"
+//                 type="primary"
+//                 onClick={handleCancel}
+//                 style={{
+//                   width: "100px",
+//                   marginLeft: "1rem",
+//                 }}
+//                 size="large"
+//               >
+//                 Cancel
+//               </Button>
+//             </Form>
+//           </Modal>
+//         </>
+//       )}
+//     </>
+//   );
+// };
 
-export default CreateServiceProvider;
+// export default CreateServiceProvider;
