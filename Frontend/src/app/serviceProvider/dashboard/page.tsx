@@ -55,7 +55,7 @@ const ServiceProviderPage = () => {
                         size="large"
                         block
                         className={styles.quickActionButton}
-                        onClick={() => router.push("./technicians")}
+                        onClick={() => router.push("./gemini")}
                     >
                         Interact with AI
                     </Button>
