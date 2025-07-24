@@ -5,10 +5,10 @@ import { useRouter, usePathname } from "next/navigation";
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    ToolOutlined,
     LogoutOutlined,
     HomeOutlined,
     FileTextOutlined,
+    WechatOutlined
 } from "@ant-design/icons";
 import { Button, Layout, Menu, Modal, theme, Image } from "antd/es";
 import Title from "antd/es/typography/Title";
@@ -31,7 +31,7 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
     const getSelectedKey = () => {
         if (pathname.includes("/dashboard")) return "1";
         if (pathname.includes("/incidents")) return "2";
-        if (pathname.includes("/technicians")) return "3";
+        if (pathname.includes("/gemini")) return "3";
         return "1";
     };
 
@@ -70,7 +70,7 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
                     onClick={(info) => {
                         if (info.key === "1") router.push("/serviceProvider/dashboard");
                         if (info.key === "2") router.push("/serviceProvider/incidents");
-                        if (info.key === "3") router.push("/serviceProvider/technicians");
+                        if (info.key === "3") router.push("/serviceProvider/gemini");
                     }}
                     items={[
                         {
@@ -85,8 +85,8 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
                         },
                         {
                             key: "3",
-                            icon: <ToolOutlined />,
-                            label: "Technicians",
+                            icon: <WechatOutlined />,
+                            label: "Interact with AI",
                         },
                     ]}
                 />
