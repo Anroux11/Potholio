@@ -179,7 +179,6 @@ export const UserLoginProvider = ({
       .post(endpoint, payload)
       .then((response) => {
         const token = response.data.result.accessToken;
-        console.log("Token:", response.data.result);
         const decoded = decodeToken(token);
         const userRole = decoded[AbpTokenProperies.role];
         const userId = decoded[AbpTokenProperies.nameidentifier];
@@ -252,10 +251,7 @@ export const CurrentUserProvider = ({
       .get(endpoint)
       .then((response) => {
         const result = response.data.result.user.name;
-        console.log("Current User:", result);
         const municipalityName = result || "";
-
-        console.log("Saving municipalityName to sessionStorage:", municipalityName);
         sessionStorage.setItem("municipalityName", municipalityName);
 
         sessionStorage.setItem(

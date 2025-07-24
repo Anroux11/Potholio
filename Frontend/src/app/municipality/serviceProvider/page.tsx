@@ -8,13 +8,6 @@ import { IServiceProvider } from "@/providers/serviceProvider-provider/context";
 import { useServiceProviderActions } from "@/providers/serviceProvider-provider";
 import { Address } from "@/providers/incident-provider/context";
 
-// type ServiceProvider = {
-//   key: string;
-//   name: string;
-//   email: string;
-//   contactNumber: string;
-//   address: string;
-// };
 
 const ServiceProviderPage = () => {
   const { styles } = useStyles();

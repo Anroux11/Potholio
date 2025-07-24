@@ -59,8 +59,6 @@ export const ServiceProviderProvider = ({
           })
         );
 
-        console.log("Filtered Service Providers:", filteredData);
-
         dispatch(getServiceProviderListSuccess(filteredData));
       })
       .catch((error) => {
