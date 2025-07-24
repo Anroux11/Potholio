@@ -254,6 +254,12 @@ export const CurrentUserProvider = ({
         const municipalityName = result || "";
         sessionStorage.setItem("municipalityName", municipalityName);
 
+        const result2 = response.data.result.user.name;
+
+        const serviceProviderName = result2 || "";
+
+        sessionStorage.setItem("serviceProviderName", serviceProviderName);
+
         sessionStorage.setItem(
           "currentUser",
           JSON.stringify(response.data.result.user.id)

@@ -15,7 +15,7 @@ import "@ant-design/v5-patch-for-react-19";
 
 const { Option } = Select;
 
-const IncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] }) => {
+const ServicePIncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] }) => {
   const { styles } = useStyles();
   const { incidents: contextIncidents } = useIncidentState();
   const incidents = passedIncidents ?? contextIncidents;
@@ -38,7 +38,7 @@ const IncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] 
   useEffect(() => {
     getIncidentList();
     getServiceProviderList();
-  }, [IncidentList]);
+  }, [ServicePIncidentList]);
 
 
   const handleView = (incident: IIncident, serviceProvider?: IServiceProvider) => {
@@ -48,32 +48,32 @@ const IncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] 
     setModalVisible(true);
   };
 
-  const handleAssign = () => {
-    setAssignMode(true);
-  };
+//   const handleAssign = () => {
+//     setAssignMode(true);
+//   };
 
-  const handleConfirmAssign = async () => {
-    setLoading(true);
-    try {
-      if (!selectedIncident || !selectedServiceProvider) return;
+//   const handleConfirmAssign = async () => {
+//     setLoading(true);
+//     try {
+//       if (!selectedIncident || !selectedServiceProvider) return;
 
-      const payload: IIncident = {
-        ...selectedIncident,
-        status: "Assigned",
-        serviceProviderName: selectedServiceProvider?.name,
-      }
-      await updateIncident(payload);
-      setModalVisible(false);
-      message.success(`Assigned to ${selectedServiceProvider.name}`);
-      getIncidentList();
-    } catch (error) {
+//       const payload: IIncident = {
+//         ...selectedIncident,
+//         status: "Assigned",
+//         serviceProviderName: selectedServiceProvider?.name,
+//       }
+//       await updateIncident(payload);
+//       setModalVisible(false);
+//       message.success(`Assigned to ${selectedServiceProvider.name}`);
+//       getIncidentList();
+//     } catch (error) {
 
-      console.error(error);
-      message.error("Assigning Incident failed");
-    }
+//       console.error(error);
+//       message.error("Assigning Incident failed");
+//     }
 
-    setLoading(false);
-  };
+//     setLoading(false);
+//   };
 
   const handleComplete = async () => {
     setLoading(true);
@@ -117,10 +117,10 @@ const IncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] 
       },
     },
     {
-      title: "Service Provider",
-      dataIndex: "serviceProviderName",
-      key: "serviceProvider",
-      render: (srvP) => srvP || "-",
+      title: "Municipality Name",
+      dataIndex: "municipalityName",
+      key: "municipalityName",
+      render: (municipality) => municipality || "-",
     },
     {
       title: "Action",
@@ -160,30 +160,14 @@ const IncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] 
             open={modalVisible}
             onCancel={handleCancel}
             footer={
-              assignMode ? (
-                <Space>
-                  <Button onClick={() => setAssignMode(false)}>Back</Button>
-                  <Button
-                    type="primary"
-                    disabled={!selectedServiceProvider}
-                    onClick={handleConfirmAssign}
-                  >
-                    Confirm Assignment
-                  </Button>
-                </Space>
-              ) : (
                 <Space>
                   {selectedIncident?.status === "Assigned" && (
                     <Button type="primary" onClick={handleComplete}>
                       Mark as Completed
                     </Button>
                   )}
-                  {selectedIncident?.status !== "Completed" && (
-                    <Button onClick={handleAssign}>Assign</Button>
-                  )}
                   <Button onClick={handleCancel}>Close</Button>
                 </Space>
-              )
             }
           >
             {selectedIncident && !assignMode && (
@@ -203,7 +187,7 @@ const IncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] 
                 </p>
                 <p><strong>Description:</strong> {selectedIncident.description}</p>
                 <p><strong>Status:</strong> {selectedIncident.status}</p>
-                <p><strong>Service Provider:</strong> {selectedIncident.serviceProviderName || "-"}</p>
+                <p><strong>Municipality Name:</strong> {selectedIncident.municipalityName || "-"}</p>
               </>
             )}
 
@@ -233,4 +217,4 @@ const IncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] 
   );
 };
 
-export default IncidentList;
+export default ServicePIncidentList;

@@ -47,7 +47,7 @@ export const IncidentProvider = ({
         const filteredData = response.data.result.items
           .filter((incident: IIncident) =>
             incident.reportingUserId === userId ||
-            incident.municipalityName === municipality
+            incident.municipalityName === municipality || incident.serviceProviderName === sessionStorage.getItem("serviceProviderName")
           )
           .sort((a: IIncident, b: IIncident) =>
             new Date(b.incidentAddress?.creationTime ?? "").getTime() -
