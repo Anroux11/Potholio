@@ -3,12 +3,13 @@ import { Address } from "../incident-provider/context";
 export interface IServiceProvider {
     id?: string;
     name: string;
-    emailAddress: string;
-    buildingAddress: Address;
+    email: string;
+    address?: Address;
+    buildingAddress?: Address;
     password: string;
     latitude: string;
     longitude: string;
-    municipalityId: string //might chnge
+    municipalityId?: string //might chnge
     municipalityName: string;
 }
 

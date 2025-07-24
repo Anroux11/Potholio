@@ -15,9 +15,10 @@ import "@ant-design/v5-patch-for-react-19";
 
 const { Option } = Select;
 
-const IncidentList = () => {
+const IncidentList = ({ incidents: passedIncidents }: { incidents?: IIncident[] }) => {
   const { styles } = useStyles();
-  const { incidents } = useIncidentState();
+  const { incidents: contextIncidents } = useIncidentState();
+  const incidents = passedIncidents ?? contextIncidents;
   const { getIncidentList, updateIncident } = useIncidentActions();
 
   const { serviceProviders } = useServiceProviderState();
@@ -49,7 +50,6 @@ const IncidentList = () => {
 
   const handleAssign = () => {
     setAssignMode(true);
-    IncidentList();
   };
 
   const handleConfirmAssign = async () => {
@@ -151,7 +151,7 @@ const IncidentList = () => {
             columns={columns}
             dataSource={incidents}
             className={styles.incidentTable}
-            pagination={{ pageSize: 3 }}
+            pagination={{ pageSize: 5 }}
             rowKey="id"
           />
 

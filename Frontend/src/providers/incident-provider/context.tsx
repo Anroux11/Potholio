@@ -15,6 +15,7 @@ export interface Address {
   province: string;
   city: string;
   creationTime?: string;
+  isDeleted?: boolean;
 }
 
 export interface IIncidentStateContext {
