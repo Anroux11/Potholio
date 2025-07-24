@@ -25,18 +25,15 @@ const ServiceProviderPage = () => {
         getServiceProviderList();
     }, [""]);
 
-    // const handleViewClients = () => {
-    //     router.push("/municipality/incidents");
-    // }
 
     return (
         <div className={styles.dashboardContainer}>
             <Row gutter={[20, 20]} className={styles.summaryRow}>
                 <Col xs={24} sm={10} md={12}>
                     <Card className={styles.summaryCard}>
-                        <h3>Total Incidents</h3>
+                        <h3>Incidents</h3>
                         <p className="count">{incidents?.length || 0}</p>
-                        <p>Open issues</p>
+                        <p>Total Incidents</p>
                     </Card>
                 </Col>
                 <Col xs={24} sm={10} md={12}>
@@ -50,7 +47,7 @@ const ServiceProviderPage = () => {
 
             <Divider orientation="left">Quick Actions</Divider>
             <Row gutter={[16, 16]} className={styles.quickActionsRow}>
-                <Col xs={24} sm={8}>
+                <Col xs={24} sm={12}>
                     <Button
                         type="primary"
                         size="large"
@@ -61,18 +58,7 @@ const ServiceProviderPage = () => {
                         View all Incidents
                     </Button>
                 </Col>
-                <Col xs={24} sm={8}>
-                    <Button
-                        type="default"
-                        size="large"
-                        block
-                        className={styles.quickActionButton}
-                        onClick={() => router.push("./serviceProvider")}
-                    >
-                        Add Service Providers
-                    </Button>
-                </Col>
-                <Col xs={24} sm={8}>
+                <Col xs={24} sm={12}>
                     <Button
                         type="dashed"
                         size="large"

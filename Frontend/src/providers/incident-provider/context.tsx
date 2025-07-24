@@ -14,6 +14,7 @@ export interface IIncident {
 export interface Address {
   province: string;
   city: string;
+  creationTime?: string;
 }
 
 export interface IIncidentStateContext {

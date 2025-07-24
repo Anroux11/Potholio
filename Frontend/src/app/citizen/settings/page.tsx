@@ -20,8 +20,6 @@ const SettingsPage = () => {
   const [form] = Form.useForm();
 
   useEffect(() => {
-    // console.log("user", user);
-    // debugger
     const fetchUser = async () => {
       await currentUser();
     };
@@ -43,7 +41,6 @@ const SettingsPage = () => {
       await updateCitizen(payload);
 
       message.success("Profile updated successfullys!");
-      //   form.resetFields();
     } catch (error) {
       console.error("Update error:", error);
       message.error("Something went wrong while updating your details.");
@@ -64,7 +61,6 @@ const SettingsPage = () => {
   };
 
   return (
-    <>
       <div className={styles.updateContainer}>
         <div
           style={{
@@ -148,7 +144,6 @@ const SettingsPage = () => {
           </Modal>
         </div>
       </div>
-    </>
   );
 };
 

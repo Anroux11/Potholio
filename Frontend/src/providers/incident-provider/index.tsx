@@ -33,7 +33,7 @@ export const IncidentProvider = ({
 }) => {
   const [state, dispatch] = useReducer(IncidentReducer, INITIAL_STATE);
   const instance = getAxiosInstance();
-  const { currentUser} = useCurrentUserActions();
+  const { currentUser } = useCurrentUserActions();
 
   const getIncidentList = async () => {
     dispatch(getIncidentListPending());
@@ -44,9 +44,15 @@ export const IncidentProvider = ({
         currentUser();
         const userId = parseInt(sessionStorage.getItem("userId") || "");
         const municipality = (sessionStorage.getItem("municipalityName") || "").toString();
-        console.log(municipality);
         const filteredData = response.data.result.items
-          .filter((incident: IIncident) => incident.reportingUserId === userId || incident.municipalityName === municipality)
+          .filter((incident: IIncident) =>
+            incident.reportingUserId === userId ||
+            incident.municipalityName === municipality
+          )
+          .sort((a: IIncident, b: IIncident) =>
+            new Date(b.incidentAddress?.creationTime ?? "").getTime() -
+            new Date(a.incidentAddress?.creationTime ?? "").getTime()
+          )
           .map((incident: IIncident) => ({
             id: incident.id ?? "",
             description: incident.description ?? "",
@@ -61,9 +67,7 @@ export const IncidentProvider = ({
             municipalityName: incident.municipalityName ?? "",
             reportingUserId: incident.reportingUserId ?? 0,
             serviceProviderName: incident.serviceProviderName ?? "",
-            
           }));
-          console.log("Filtered Data:", filteredData);
         dispatch(getIncidentListSuccess(filteredData));
       })
       .catch((error) => {

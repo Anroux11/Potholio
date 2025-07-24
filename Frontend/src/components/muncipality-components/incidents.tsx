@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Button, Modal, Select, Space, Tag, message } from "antd/es";
+import { Table, Button, Modal, Select, Space, Tag, message, Flex, Spin } from "antd/es";
 import type { ColumnsType } from "antd/es/table";
 import { useStyles } from "../../app/municipality/incidents/style/styles";
 import {
@@ -26,17 +26,18 @@ const IncidentList = () => {
   const [selectedIncident, setSelectedIncident] = useState<IIncident | null>(
     null
   );
-  
+
   const [selectedServiceProvider, setSelectedServiceProvider] = useState<IServiceProvider | null>(
     null
   )
   const [assignMode, setAssignMode] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getIncidentList();
     getServiceProviderList();
-  }, [""]);
+  }, [IncidentList]);
 
 
   const handleView = (incident: IIncident, serviceProvider?: IServiceProvider) => {
@@ -48,33 +49,52 @@ const IncidentList = () => {
 
   const handleAssign = () => {
     setAssignMode(true);
+    IncidentList();
   };
 
-  const handleConfirmAssign = () => {
-    if (!selectedIncident || !selectedServiceProvider) return;
+  const handleConfirmAssign = async () => {
+    setLoading(true);
+    try {
+      if (!selectedIncident || !selectedServiceProvider) return;
 
-    const payload: IIncident = {
-      ...selectedIncident,
-      status: "Assigned",
-      serviceProviderName: selectedServiceProvider?.name,
-    } 
+      const payload: IIncident = {
+        ...selectedIncident,
+        status: "Assigned",
+        serviceProviderName: selectedServiceProvider?.name,
+      }
+      await updateIncident(payload);
+      setModalVisible(false);
+      message.success(`Assigned to ${selectedServiceProvider.name}`);
+      getIncidentList();
+    } catch (error) {
 
-    updateIncident(payload);
-    setModalVisible(false);
-    message.success(`Assigned to ${selectedServiceProvider.name}`);
-  };
-
-  const handleComplete = () => {
-    if (!selectedIncident) return;
-
-    const payload: IIncident = {
-      ...selectedIncident,
-      status: "Completed",
+      console.error(error);
+      message.error("Assigning Incident failed");
     }
 
-    updateIncident(payload);
-    setModalVisible(false);
-    message.success(`Marked incident ${selectedIncident.id} as Completed`);
+    setLoading(false);
+  };
+
+  const handleComplete = async () => {
+    setLoading(true);
+    try {
+      if (!selectedIncident) return;
+
+      const payload: IIncident = {
+        ...selectedIncident,
+        status: "Completed",
+      }
+
+      await updateIncident(payload);
+      setModalVisible(false);
+      message.success(`Marked incident ${selectedIncident.id} as Completed`);
+      getIncidentList();
+    } catch (error) {
+      console.error(error);
+      message.error("Completing Incident failed");
+    }
+
+    setLoading(false);
   };
 
   const handleCancel = () => {
@@ -98,7 +118,7 @@ const IncidentList = () => {
     },
     {
       title: "Service Provider",
-      dataIndex: "serviceProvider",
+      dataIndex: "serviceProviderName",
       key: "serviceProvider",
       render: (srvP) => srvP || "-",
     },
@@ -114,75 +134,89 @@ const IncidentList = () => {
   ];
 
   return (
-    <div className={styles.incidentContainer}>
-      <Table
-        columns={columns}
-        dataSource={incidents}
-        className={styles.incidentTable}
-        pagination={{ pageSize: 3 }}
-        rowKey="id"
-      />
+    <>
+      {loading ? (
+        <div>
+          <Flex
+            justify="center"
+            align="center"
+            style={{ marginBottom: 20, width: "100%", height: "100vh" }}
+          >
+            <Spin size="large" />
+          </Flex>
+        </div>
+      ) : (
+        <div className={styles.incidentContainer}>
+          <Table
+            columns={columns}
+            dataSource={incidents}
+            className={styles.incidentTable}
+            pagination={{ pageSize: 3 }}
+            rowKey="id"
+          />
 
-      <Modal
-        title={selectedIncident ? `Incident: ${selectedIncident.id}` : ""}
-        open={modalVisible}
-        onCancel={handleCancel}
-        footer={
-          assignMode ? (
-            <Space>
-              <Button onClick={() => setAssignMode(false)}>Back</Button>
-              <Button
-                type="primary"
-                disabled={!selectedServiceProvider}
-                onClick={handleConfirmAssign}
-              >
-                Confirm Assignment
-              </Button>
-            </Space>
-          ) : (
-            <Space>
-              {selectedIncident?.status === "Assigned" && (
-                <Button type="primary" onClick={handleComplete}>
-                  Mark as Completed
-                </Button>
-              )}
-              {selectedIncident?.status !== "Completed" && (
-                <Button onClick={handleAssign}>Assign</Button>
-              )}
-              <Button onClick={handleCancel}>Close</Button>
-            </Space>
-          )
-        }
-      >
-        {selectedIncident && !assignMode && (
-          <>
-            <p><strong>Description:</strong> {selectedIncident.description}</p>
-            <p><strong>Status:</strong> {selectedIncident.status}</p>
-            <p><strong>Service Provider:</strong> {selectedIncident.serviceProviderName || "-"}</p>
-          </>
-        )}
+          <Modal
+            title={selectedIncident ? `Incident: ${selectedIncident.id}` : ""}
+            open={modalVisible}
+            onCancel={handleCancel}
+            footer={
+              assignMode ? (
+                <Space>
+                  <Button onClick={() => setAssignMode(false)}>Back</Button>
+                  <Button
+                    type="primary"
+                    disabled={!selectedServiceProvider}
+                    onClick={handleConfirmAssign}
+                  >
+                    Confirm Assignment
+                  </Button>
+                </Space>
+              ) : (
+                <Space>
+                  {selectedIncident?.status === "Assigned" && (
+                    <Button type="primary" onClick={handleComplete}>
+                      Mark as Completed
+                    </Button>
+                  )}
+                  {selectedIncident?.status !== "Completed" && (
+                    <Button onClick={handleAssign}>Assign</Button>
+                  )}
+                  <Button onClick={handleCancel}>Close</Button>
+                </Space>
+              )
+            }
+          >
+            {selectedIncident && !assignMode && (
+              <>
+                <p><strong>Description:</strong> {selectedIncident.description}</p>
+                <p><strong>Status:</strong> {selectedIncident.status}</p>
+                <p><strong>Service Provider:</strong> {selectedIncident.serviceProviderName || "-"}</p>
+              </>
+            )}
 
-        {assignMode && (
-          <>
-            <p>Select a Service Provider to assign this incident:</p>
-            <Select
-              placeholder="Select Service Provider"
-              style={{ width: "100%" }}
-              onChange={(value) =>
-                setSelectedServiceProvider(serviceProviders?.find((sp) => sp.id === value) || null)
-              }
-              value={selectedServiceProvider?.id}
-            >
-              {serviceProviders?.map((srvP) => (
-                <Option key={srvP.id} value={srvP.id}>
-                  {srvP.name}
-                </Option>
-              ))}
-            </Select>
-          </>
-        )}
-      </Modal>
-    </div>
+            {assignMode && (
+              <>
+                <p>Select a Service Provider to assign this incident:</p>
+                <Select
+                  placeholder="Select Service Provider"
+                  style={{ width: "100%" }}
+                  onChange={(value) =>
+                    setSelectedServiceProvider(serviceProviders?.find((sp) => sp.id === value) || null)
+                  }
+                  value={selectedServiceProvider?.id}
+                >
+                  {serviceProviders?.map((srvP) => (
+                    <Option key={srvP.id} value={srvP.id}>
+                      {srvP.name}
+                    </Option>
+                  ))}
+                </Select>
+              </>
+            )}
+          </Modal>
+        </div>
+      )}
+    </>
   );
 };
 
