@@ -4,6 +4,8 @@ using Abp.Domain.Repositories;
 using Abp.UI;
 using Potholio.Authorization.Users;
 using Potholio.CrudAppServiceses.Citizens.DTo;
+using Potholio.EmailService;
+using SendGrid;
 using System;
 using System.Threading.Tasks;
 
@@ -14,10 +16,12 @@ namespace Potholio.CrudAppServiceses.Citizens
     {
         private readonly UserManager _userManager;
         private readonly IRepository<User, long> _userRepository;
+        private readonly ISendGridEmailService _sendGridEmailService;
 
-        public RegisterAppService(UserManager userManager)
+        public RegisterAppService(UserManager userManager, ISendGridEmailService sendGrid)
         {
             _userManager = userManager;
+            _sendGridEmailService = sendGrid;
         }
 
         public async Task RegisterAsync(RegisterDTo input)
@@ -42,6 +46,13 @@ namespace Potholio.CrudAppServiceses.Citizens
                 {
                     await _userManager.AddToRoleAsync(user, "ServiceProvider");
                 }
+
+                await _sendGridEmailService.SendEmailAsync(
+                    input.EmailAddress,
+                    "Welcome to Potholio",
+                    "<p>You have successfully registered. Thank you!</p>"
+                );
+
             }
             catch (Exception ex)
             {
