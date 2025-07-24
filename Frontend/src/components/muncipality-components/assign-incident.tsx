@@ -51,8 +51,6 @@ const AssignIncident: React.FC = () => {
           size={componentSize as SizeType}
           style={{ maxWidth: 600 }}
           name="assign-incident"
-          //  onFinish={handleAssign}
-          // form={form}
         >
           <Form.Item label="Select" name="selectService">
             <Select>

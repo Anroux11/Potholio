@@ -76,7 +76,7 @@ const ServiceProviderLayout = ({ children }: { children: React.ReactNode }) => {
 
         <div className={styles.logout}>
           <Button
-            type="primary"
+            type="default"
             icon={<LogoutOutlined />}
             danger
             block
