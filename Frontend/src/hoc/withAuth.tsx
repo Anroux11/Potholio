@@ -18,7 +18,7 @@ const withAuth = <P extends object> (
 
         useEffect(() => {
             const token = sessionStorage.getItem("token");
-            const userRole = sessionStorage.getItem("userRole");
+            const userRole = sessionStorage.getItem("role");
 
             if (!token) {
                 router.push("/login");
@@ -27,11 +27,13 @@ const withAuth = <P extends object> (
 
             if (allowedRoles.length > 0 && !allowedRoles.includes(userRole || "")) {
                 if (userRole === "Admin") {
-                    router.push("/municipality");
+                    router.push("/admin/dashboard");
+                } else if (userRole === "Municipality") {
+                    router.push("/municipality/dashboard");
                 } else if (userRole === "Citizen") {
-                    router.push("/citizenDashBoard");
+                    router.push("/citizen/dashboard");
                 } else if (userRole === "ServiceProvider") {
-                    router.push("/serviceprovider/ashboard");
+                    router.push("/serviceProvider/dashboard");
                 } else {
                     message.error("Login failed. Please check your credentials.");
                 }

@@ -14,6 +14,7 @@ import { Button, Layout, Menu, Modal, theme, Image } from "antd/es";
 import Title from "antd/es/typography/Title";
 import { useStyles } from "@/app/serviceProvider/style/styles";
 import "@ant-design/v5-patch-for-react-19";
+import withAuth from "@/hoc/withAuth";
 
 const { Header, Sider, Content } = Layout;
 
@@ -140,4 +141,4 @@ const CitizenLayout = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default CitizenLayout;
+export default withAuth(CitizenLayout, { allowedRoles: ["Citizen"] });
