@@ -156,23 +156,6 @@ const AddUser = () => {
             pagination={{ pageSize: 6 }}
             rowKey="key"
           />
-          {/* {citizens.length > 0 ? (
-            <Table
-              columns={columns}
-              dataSource={citizens}
-              className={styles.serviceProviderTable}
-              rowKey="key"
-            />
-          ) : (
-            <Empty description="No citizens found" />
-          )} */}
-
-          {/* <Table
-            columns={columns}
-            dataSource={citizens}
-            className={styles.serviceProviderTable}
-            rowKey="key"
-          /> */}
 
           <Modal
             title="Add User"
@@ -208,7 +191,7 @@ const AddUser = () => {
                   },
                 ]}
               >
-                <Input />
+                <Input.Password />
               </Form.Item>
 
               <Form.Item
@@ -236,7 +219,6 @@ const AddUser = () => {
               <Form.Item
                 name="name"
                 label="Choose Municipality"
-                // className={styles.select}
                 rules={[
                   {
                     required: true,
@@ -245,8 +227,6 @@ const AddUser = () => {
                 ]}
               >
                 <Select
-                //   onChange={onChange}
-                //   className={styles.municipalitySelect}
                 >
                   <Select.Option value="City of Ekurhuleni Metropolitan Municipality">
                     City of Ekurhuleni Metropolitan Municipality

@@ -88,14 +88,12 @@ const CitizenDashboard: React.FC = () => {
     const payload: IIncident = {
       description: "Quick Report",
       status: "Submitted",
-      // imageUrl: "",
       latitude: position ? position[0] : 0,
       longitude: position ? position[1] : 0,
       incidentAddress: addressPayload,
       reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
       municipalityName: sessionStorage.getItem("municipality") || "",
       serviceProviderName: "Unallocated",
-      //change serviceProviderName as needed
     };
     createIncident(payload);
     setQuickReportModalVisible(false);
@@ -170,29 +168,6 @@ const CitizenDashboard: React.FC = () => {
     setFullReportModalVisible(true);
   };
 
-  // const handleAddFullReport = () => {
-  //   form.validateFields().then((values) => {
-  //     const payload: IIncident = {
-  //       description: values.description,
-  //       status: "Submitted",
-  //       // imageUrl: values.imageUrl,
-  //       latitude: values.latitude,
-  //       longitude: values.longitude,
-  //       incidentAddress: { city: values.city, province: values.province },
-  //       reportingUserId: parseInt(sessionStorage.getItem("userId") ?? "0"),
-  //       municipalityName: sessionStorage.getItem("municipality") || "",
-  //       serviceProviderName: "Unallocated"
-  //       //change serviceProviderName as needed
-  //     }
-  //     setFullReport([...fullReport, payload]);
-  //     createIncident(payload);
-  //     setFullReportModalVisible(false);
-  //     form.resetFields();
-  //     message.success('Full report submitted successfully!');
-  //     router.push("/citizen/incidents");
-  //   });
-  // };
-
   const handleAddFullReport = async () => {
     try {
       const values = await form.validateFields();
@@ -212,7 +187,7 @@ const CitizenDashboard: React.FC = () => {
       const payload: IIncident = {
         description: values.description,
         status: "Submitted",
-        imageUrl, // Send URL to backend
+        imageUrl,
         latitude: values.latitude,
         longitude: values.longitude,
         incidentAddress: {
@@ -236,9 +211,6 @@ const CitizenDashboard: React.FC = () => {
       message.error("Something went wrong while submitting your report.");
     }
   };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // const normFile = (e: any) => (Array.isArray(e) ? e : e?.fileList);
 
   if (!position) {
     return (
@@ -374,7 +346,6 @@ const CitizenDashboard: React.FC = () => {
         )}
       </Row>
 
-      {/* Quick Report Modal */}
       <Modal
         open={quickReportModalVisible}
         title={
