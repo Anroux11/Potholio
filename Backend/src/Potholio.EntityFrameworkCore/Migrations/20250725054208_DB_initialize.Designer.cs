@@ -12,8 +12,8 @@ using Potholio.EntityFrameworkCore;
 namespace Potholio.Migrations
 {
     [DbContext(typeof(PotholioDbContext))]
-    [Migration("20250721110714_DB_Initilize")]
-    partial class DB_Initilize
+    [Migration("20250725054208_DB_initialize")]
+    partial class DB_initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
