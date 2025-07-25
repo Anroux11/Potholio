@@ -10,6 +10,7 @@ using Potholio.Authorization.Roles;
 using Potholio.Authorization.Users;
 using Potholio.Domain.Addresses;
 using Potholio.Domain.Municipalities;
+using Potholio.Domain.ServiceProviders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -143,6 +144,68 @@ namespace Potholio.EntityFrameworkCore.Seed.Host
                     }
                 }
                 _context.SaveChanges();
+
+                // Seed default ServiceProvider user and entity
+                var serviceProviderEmail = "Unallocated@potholio.com";
+                var existingServiceProviderUser = _context.Users.IgnoreQueryFilters()
+                    .FirstOrDefault(u => u.TenantId == null && u.EmailAddress == serviceProviderEmail);
+
+                if (existingServiceProviderUser == null)
+                {
+                    var serviceProviderUser = new User
+                    {
+                        TenantId = null,
+                        UserName = "Unallocated",
+                        Name = "Unallocated",
+                        Surname = "Unallocated",
+                        EmailAddress = serviceProviderEmail,
+                        IsEmailConfirmed = true,
+                        IsActive = true
+                    };
+
+                    serviceProviderUser.Password = new PasswordHasher<User>(
+                        new OptionsWrapper<PasswordHasherOptions>(new PasswordHasherOptions()))
+                        .HashPassword(serviceProviderUser, "Provider123!");
+
+                    serviceProviderUser.SetNormalizedNames();
+
+                    existingServiceProviderUser = _context.Users.Add(serviceProviderUser).Entity;
+                    _context.SaveChanges();
+
+                    // Assign ServiceProvider role
+                    var serviceProviderRole = _context.Roles.IgnoreQueryFilters()
+                        .FirstOrDefault(r => r.TenantId == null && r.Name == "ServiceProvider");
+
+                    if (serviceProviderRole != null)
+                    {
+                        _context.UserRoles.Add(new UserRole(null, existingServiceProviderUser.Id, serviceProviderRole.Id));
+                        _context.SaveChanges();
+                    }
+
+                    // Link to a municipality
+                    var tshwaneMunicipality = _context.Municipalities
+                        .FirstOrDefault(m => m.Name == "City of Tshwane Metropolitan Municipality");
+
+                    if (tshwaneMunicipality != null)
+                    {
+                        var serviceProviderEntity = new ServiceProvider
+                        {
+                            Id = Guid.NewGuid(),
+                            Name = "Unallocated",
+                            Email = serviceProviderEmail,
+                            MunicipalityId = tshwaneMunicipality.Id,
+                            Password = serviceProviderUser.Password,
+                            Address = new Address
+                            {
+                                City = "Pretoria",
+                                Province = "Gauteng",
+                            }
+                        };
+
+                        _context.ServiceProviders.Add(serviceProviderEntity);
+                        _context.SaveChanges();
+                    }
+                }
             }
         }
     }

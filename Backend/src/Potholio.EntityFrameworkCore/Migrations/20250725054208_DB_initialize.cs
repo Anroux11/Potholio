@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Potholio.Migrations
 {
     /// <inheritdoc />
-    public partial class DB_Initilize : Migration
+    public partial class DB_initialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
