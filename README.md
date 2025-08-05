@@ -108,6 +108,9 @@ Potholio/
 https://www.figma.com/design/ODLD6WT6YKTRYkbcbpw7mE/Potholio?node-id=0-1&p=f&t=HfRMtatKgqIONx4H-0
 
 ---
+## Domain Model Link
+
+https://drive.google.com/file/d/16GjXy_w0cJaVgVrxaiwbls2DHrEFZclA/view?usp=sharing
 
 ## Life Demo
 
